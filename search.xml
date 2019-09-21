@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[hexo博客搭建]]></title>
+    <url>%2F2019%2F09%2F19%2Fhexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[hexo博客搭建一、博客基本操作 博客部署到本地 hexo clean 清楚缓存hexo g 生成静态网页hexo s 本地启动预览查看 http://localhost:4000 部署到git服务器上 hexo deploy https://foreverxwwl.github.io/ next主题安装 git clone https://github.com/iissnan/hexo-theme-next themes/next 进入配置文件_config.yml 找到 theme 设置为 theme: next 二、next主题设置 增加标签页等页面 进入next主题的配置文件 _config.yml 找到menu: 将要添加的页面注释删掉 在blog页面 hexo n page tags 增加标签tags页面 hexo n page categories 增加分类categories页面 修改头像姓名等信息 主要参考文档在主题的_config文件中修改 头像 avatar: 修改地址主题 scheme: 设置大的标题、姓名在全局的_config.yml中的 title: 新建一篇博客 hexo n hexo博客搭建用markdowm编写博客 启用功能 （1）启用侧边栏社交链接 进入主题的_config.yml文件 将social: 一栏的注释取消 （2）启用打赏功能 进入主题的_config.yml文件 将reward项目注释删除 comment：加上用语 也可在后面添加图片 （3）设置头像样式 进入目录 \blog\themes\next\source\css_common\components\sidebar 修改sidebar-author.styl文件中的样式 12345678910111213&gt; &gt; .site-author-image &#123;&gt; &gt; display: block;&gt; &gt; margin: 0 auto;&gt; &gt; padding: $site-author-image-padding;&gt; &gt; max-width: $site-author-image-width;&gt; &gt; height: $site-author-image-height;&gt; &gt; border: $site-author-image-border-width solid $site-author-image-border-color;&gt; &gt; border-radius: 50%;&gt; &gt; transition: 3s all;&gt; &gt; &#125;&gt; &gt; .site-author-image:hover&#123;&gt; &gt; transform: rotate(360deg);&gt; &gt; &#125; （3）设置首页阅读全文 在主题配置文件中找到auto_excerpt:选项 将false 改为true 并设置可看长度 也可在博客编辑时在相应位置添加;此代码以下的点击查看 （4）添加动态背景 在主题配置文件找到canvas 默认都是关闭的 将需要的设置为true （5）修改文章内链接样式 进入F:\blog\themes\next\source\css_common\components\post\post.sty 在尾部添加样式 123456789.post-body p a&#123; color: #345; border-bottom: none; font-size: 13px;/*字体大小*/ font-weight: 500; /*字体粗细*/ &amp;:hover&#123; color: #fcfcfc; &#125;&#125; （6）修改文章底部标签 进入F:\blog\themes\next\layout_macro\post.swig 修改 tag.path 可将这行的 # 替换成别的 1&lt;a href="&#123;&#123; url_for(tag.path) &#125;&#125;" rel="tag"&gt; &lt;i class="fa fa-tag"&gt;&lt;/i&gt; （7）Valine评论系统 进入主题配置文件 打开 valine https://leancloud.cn/ 网站配置appid并在配置文件中使用 （8）搜索，统计功能 都是进入next主题官网 开启第三方服务]]></content>
+      <categories>
+        <category>基础知识学习</category>
+      </categories>
+      <tags>
+        <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github学习]]></title>
+    <url>%2F2019%2F09%2F19%2Fgithub%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[github基本操作 初始化 git init 状态查看 git status 添加到暂存区 git add 提交到本地库 git commit -m 查看历史 git log / git –online / git reflog 版本前进或后退 git reset –hard &lt;索引值&gt; / git reset –hard HEAD~2 比较工作区与暂存区文件差异 git diff [文件名] 将工作区与本地库文件比较 git diff [本地库历史版本（HEAD）] [文件名] 分支管理 创建分支 git branch [分支名] 查看分支 git branch -v 切换分支 git checkout [分支名] 合并分支 git merge [分支名] 解决冲突 git add git commit -m 远程库操作 创建远程库地址别名 git remote add [远程库地址] 查看别名 git remote -v 推送 git push [远程库地址名] [分支名] 克隆 git clone [远程库地址名] 拉取 git pull [远程库地址名] [远程库分支] 抓取 git fetch [远程库地址名] [远程库分支] 合并 git merge [远程库地址名/远程库分支] 跨团队合作 团队2进入团队1项目目录,点击fork。 团队2 git clone &lt;远程地址&gt;，修改并commit，git push 提交到远程库。 团队2进入页面，点击 pull requests、 new pull requests， Create pull requests 然后发消息给团队1。 团队1点击pull requests，Commits 、files changed 代码审核。 如果没有问题 则点击 merge pull request 并添加-m信息，结束远程库修改。 团队1将远程库拉取到本地 git pull origin master。]]></content>
+      <categories>
+        <category>基础知识学习</category>
+      </categories>
+      <tags>
+        <tag>git学习</tag>
+      </tags>
+  </entry>
+</search>
