@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数据结构–链表（单链表）从今天开始，工作室统一开始复习算法，明年蓝桥杯都进国赛哈哈哈。去年蓝桥杯的国赛还是有些遗憾，今年一定要好好学学，拿个国二。 链表是数据结构中最基础的存储结构。相比于数组，他是动态的，不论从存储内容还是存储长度来说都是动态的。可以借此延伸出其他很多数据结构。  对以下程序的变量说明：Node 结构体变量，一般用来定义节点；LinkList结构体指针，一般用来定义头节点；l一般">
+<meta name="keywords" content="数据结构,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链表复习">
+<meta property="og:url" content="http://yoursite.com/2019/09/24/链表复习（单链表）/index.html">
+<meta property="og:site_name" content="昊波波的博客">
+<meta property="og:description" content="数据结构–链表（单链表）从今天开始，工作室统一开始复习算法，明年蓝桥杯都进国赛哈哈哈。去年蓝桥杯的国赛还是有些遗憾，今年一定要好好学学，拿个国二。 链表是数据结构中最基础的存储结构。相比于数组，他是动态的，不论从存储内容还是存储长度来说都是动态的。可以借此延伸出其他很多数据结构。  对以下程序的变量说明：Node 结构体变量，一般用来定义节点；LinkList结构体指针，一般用来定义头节点；l一般">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-24T12:34:06.105Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="链表复习">
+<meta name="twitter:description" content="数据结构–链表（单链表）从今天开始，工作室统一开始复习算法，明年蓝桥杯都进国赛哈哈哈。去年蓝桥杯的国赛还是有些遗憾，今年一定要好好学学，拿个国二。 链表是数据结构中最基础的存储结构。相比于数组，他是动态的，不论从存储内容还是存储长度来说都是动态的。可以借此延伸出其他很多数据结构。  对以下程序的变量说明：Node 结构体变量，一般用来定义节点；LinkList结构体指针，一般用来定义头节点；l一般">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/24/链表复习（单链表）/">
+
+
+
+
+
+  <title>链表复习 | 昊波波的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">昊波波的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学习中的点点滴滴</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/链表复习（单链表）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="昊波波">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="昊波波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">链表复习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T11:41:22+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+              
+            </span>
+          
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/24/链表复习（单链表）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/24/链表复习（单链表）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数据结构–链表（单链表）"><a href="#数据结构–链表（单链表）" class="headerlink" title="数据结构–链表（单链表）"></a>数据结构–链表（单链表）</h1><p>从今天开始，工作室统一开始复习算法，明年蓝桥杯都进国赛哈哈哈。去年蓝桥杯的国赛还是有些遗憾，今年一定要好好学学，拿个国二。</p>
+<p>链表是数据结构中最基础的存储结构。相比于数组，他是动态的，不论从存储内容还是存储长度来说都是动态的。可以借此延伸出其他很多数据结构。</p>
+<blockquote>
+<p>对以下程序的变量说明：Node 结构体变量，一般用来定义节点；LinkList结构体指针，一般用来定义头节点；l一般用来指向头结点，引导整个链表；s，r一般用于操作过程中用来移动的指针。</p>
+</blockquote>
+<h2 id="1-链表基本结构体的定义："><a href="#1-链表基本结构体的定义：" class="headerlink" title="1. 链表基本结构体的定义："></a>1. 链表基本结构体的定义：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span> * <span class="title">next</span>;</span></span><br><span class="line">&#125;Node, *LinkList;</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+
+<p>其中定义两个变量，一个结构体类型的Node，一个指向结构体类型的指针变量 LinkList,在后续的算法中，这两者作用基本相同，LinkList用来申明头指针，Node * 用来申明节点指针，方便区分。</p>
+<h2 id="2-链表初始化"><a href="#2-链表初始化" class="headerlink" title="2. 链表初始化"></a>2. 链表初始化</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">InitList(LinkList * l)</span><br><span class="line">&#123;</span><br><span class="line">	*l = (LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">	(*l)-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始化链表的操作使用了二重指针，应为要头结点l是在主函数申明好的，在初始化函数中要改变指针的值，就需要二重指针，用LinkList * 申明。</p>
+<h2 id="3-头插法建立新链表"><a href="#3-头插法建立新链表" class="headerlink" title="3. 头插法建立新链表"></a>3. 头插法建立新链表</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatFormHead</span><span class="params">(LinkList l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * s;</span><br><span class="line">	<span class="keyword">int</span> c;</span><br><span class="line">	<span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (flag)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;c);</span><br><span class="line">		<span class="keyword">if</span> (c != <span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">			s-&gt;data = c;</span><br><span class="line">			s-&gt;next = l-&gt;next;</span><br><span class="line">			l-&gt;next = s;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			flag = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此方法在建立链表时，始终从头结点后面插入新的节点，所以插入以后可以将输入逆序。修改指针顺序为先修改新增节点的指针指向头结点的下一个节点，再让头结点指向新增节点。</p>
+<h2 id="4-尾插法建立新链表"><a href="#4-尾插法建立新链表" class="headerlink" title="4.尾插法建立新链表"></a>4.尾插法建立新链表</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatFormTail</span><span class="params">(LinkList l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * s;</span><br><span class="line">	Node * r = l;</span><br><span class="line">	<span class="keyword">int</span> c;</span><br><span class="line">	<span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (flag)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;c);</span><br><span class="line">		<span class="keyword">if</span> (c != <span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">			s-&gt;data = c;</span><br><span class="line">			r-&gt;next = s;</span><br><span class="line">			r = r-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			flag = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		r-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此方法建立新链表时，是从链表节点的尾部新增节点，所以插入的顺序是正序。应为要保留头结点，所以尾插法还需借用一个行的指针变量r为移动的指针。</p>
+<h2 id="5-查找操作"><a href="#5-查找操作" class="headerlink" title="5.查找操作"></a>5.查找操作</h2><h3 id="5-1-按照元素值key查找"><a href="#5-1-按照元素值key查找" class="headerlink" title="5.1 按照元素值key查找"></a>5.1 按照元素值key查找</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node * <span class="title">locate</span><span class="params">(LinkList l, <span class="keyword">int</span> key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * r = l;</span><br><span class="line">	<span class="keyword">while</span> (r-&gt;data != key)</span><br><span class="line">	&#123;</span><br><span class="line">		r = r-&gt;next;</span><br><span class="line">		<span class="keyword">if</span> (r == <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"查找不到相应值"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-1-按照顺序查找第i个"><a href="#5-1-按照顺序查找第i个" class="headerlink" title="5.1 按照顺序查找第i个"></a>5.1 按照顺序查找第i个</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node * <span class="title">getNode</span><span class="params">(LinkList l, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * r = l;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (r != <span class="literal">NULL</span> || j &lt;= i)</span><br><span class="line">	&#123;</span><br><span class="line">		r = r-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (r == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"查找值不合理"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查找操作时要注意查找位置是否合法，则要进行多次判断</p>
+<h2 id="6-删除节点"><a href="#6-删除节点" class="headerlink" title="6.删除节点"></a>6.删除节点</h2><p>删除第i个元素，并将该元素内容存入 data中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DeleteList</span><span class="params">(LinkList l, <span class="keyword">int</span> i, <span class="keyword">int</span> * data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * r = l;</span><br><span class="line">	Node * p = l;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (i &lt;= <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"查找序号不合法"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; j &lt; i - <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"查找序号不合法"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	r = p-&gt;next;</span><br><span class="line">	p-&gt;next = r-&gt;next;</span><br><span class="line">	data = &amp;(r-&gt;data);</span><br><span class="line">	<span class="built_in">free</span>(r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>删除操作时，先按照查找操作找到相应位置，再移动指针，删除以后要将空间free掉。<br>值得注意的是次过程需要两个指针，一个（p指针）指向待删除节点前的节点，另一个（r)指针指向待删除元素。</p>
+<h2 id="7-在链表第i个元素前插入一个元素"><a href="#7-在链表第i个元素前插入一个元素" class="headerlink" title="7. 在链表第i个元素前插入一个元素"></a>7. 在链表第i个元素前插入一个元素</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在单链表l的第i个元素前插入一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lnslist</span><span class="params">(LinkList l, <span class="keyword">int</span> i, <span class="keyword">int</span> idata)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * pre, *s;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">	pre = l;</span><br><span class="line">	<span class="keyword">if</span> (i &lt;= <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"查找序号不合法"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> ((pre != <span class="literal">NULL</span>) &amp;&amp; (j&lt;i - <span class="number">1</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		pre = pre-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (pre == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"查找序号不合法"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	s = (Node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">	s-&gt;data = idata;</span><br><span class="line">	s-&gt;next = pre-&gt;next;</span><br><span class="line">	pre-&gt;next = s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此操作是将查找与头插法相结合的应用。</p>
+<h2 id="8-计算链表长度并输出"><a href="#8-计算链表长度并输出" class="headerlink" title="8.计算链表长度并输出"></a>8.计算链表长度并输出</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//计算链表长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">listlength</span><span class="params">(LinkList l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * p;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">	p = l-&gt;next;</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//链表输出</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintList</span><span class="params">(LinkList l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * r = l-&gt;next;</span><br><span class="line">	<span class="keyword">while</span> (r-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, r-&gt;data);</span><br><span class="line">		r = r-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>, r-&gt;data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-链表合并"><a href="#9-链表合并" class="headerlink" title="9.链表合并"></a>9.链表合并</h2><h3 id="9-1将两个增有序的链表合成一个减有序的链表"><a href="#9-1将两个增有序的链表合成一个减有序的链表" class="headerlink" title="9.1将两个增有序的链表合成一个减有序的链表"></a>9.1将两个增有序的链表合成一个减有序的链表</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LinkList <span class="title">MergeList</span><span class="params">(LinkList l1, LinkList l2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * s;</span><br><span class="line">	Node * temp;</span><br><span class="line">	s = l1;</span><br><span class="line">	l1 = l1-&gt;next;</span><br><span class="line">	s-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	temp = l2;</span><br><span class="line">	l2 = l2-&gt;next;</span><br><span class="line">	<span class="built_in">free</span>(temp);</span><br><span class="line">	<span class="keyword">while</span> (l1 != <span class="literal">NULL</span> &amp;&amp; l2 != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (l1-&gt;data &lt;= l2-&gt;data)&#123;</span><br><span class="line">			temp = l1;</span><br><span class="line">			l1 = l1-&gt;next;</span><br><span class="line">			temp-&gt;next = s-&gt;next;</span><br><span class="line">			s-&gt;next = temp;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			temp = l2;</span><br><span class="line">			l2 = l2-&gt;next;</span><br><span class="line">			temp-&gt;next = s-&gt;next;</span><br><span class="line">			s-&gt;next = temp;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (l1 == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span> (l2 != <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = l2;</span><br><span class="line">			l2 = l2-&gt;next;</span><br><span class="line">			temp-&gt;next = s-&gt;next;</span><br><span class="line">			s-&gt;next = temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span> (l1 != <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = l1;</span><br><span class="line">			l1 = l1-&gt;next;</span><br><span class="line">			temp-&gt;next = s-&gt;next;</span><br><span class="line">			s-&gt;next = temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此过程中，值得注意的就是（1）在合并过程中，应为一开始将头结点指向了空，且在合并指针变化过程中会使当前节点指针域改变，所以要先有一个temp指针为当前节点修改，l1指针直接指向下一个节点。（2）还有一点就是合并过程中，当一个链表先结束时，另一个链表也要继续头插法插入不能直接插在后面。</p>
+<h3 id="9-2-将两个增有序的链表合成一个增有序的链表"><a href="#9-2-将两个增有序的链表合成一个增有序的链表" class="headerlink" title="9.2 将两个增有序的链表合成一个增有序的链表"></a>9.2 将两个增有序的链表合成一个增有序的链表</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LinkList <span class="title">mergelinklist</span><span class="params">(LinkList la, LinkList lb)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node * r, *p, *s;</span><br><span class="line">	LinkList lc;</span><br><span class="line">	r = la-&gt;next;</span><br><span class="line">	p = lb-&gt;next;</span><br><span class="line">	lc = la;</span><br><span class="line">	lc-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	s = lc;</span><br><span class="line">	<span class="keyword">while</span> (r-&gt;next != <span class="literal">NULL</span> || p-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (r-&gt;data &lt;= p-&gt;data)</span><br><span class="line">		&#123;</span><br><span class="line">			s-&gt;next = r;</span><br><span class="line">			s = r;</span><br><span class="line">			r = r-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			s-&gt;next = p;</span><br><span class="line">			s = p;</span><br><span class="line">			p = p-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (r-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">		s-&gt;next = r;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		s-&gt;next = p;</span><br><span class="line">	<span class="built_in">free</span>(lb);</span><br><span class="line">	<span class="keyword">return</span>(lc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-主函数"><a href="#10-主函数" class="headerlink" title="10.主函数"></a>10.主函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LinkList l1;</span><br><span class="line">	InitList(&amp;l1);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入第一个链表"</span>);</span><br><span class="line">	CreatFormTail(l1);</span><br><span class="line">	PrintList(s);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"> <i class="fa fa-tag"></i> 数据结构</a>
+          
+            <a href="/tags/算法/" rel="tag"> <i class="fa fa-tag"></i> 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/19/hexo博客搭建/" rel="next" title="hexo博客搭建">
+                <i class="fa fa-chevron-left"></i> hexo博客搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="昊波波">
+            
+              <p class="site-author-name" itemprop="name">昊波波</p>
+              <p class="site-description motion-element" itemprop="description">希望能体验从未有过的情感，希望能遇见一些想法不同的人</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/foreverxwwl" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:455702707@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构–链表（单链表）"><span class="nav-number">1.</span> <span class="nav-text">数据结构–链表（单链表）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-链表基本结构体的定义："><span class="nav-number">1.1.</span> <span class="nav-text">1. 链表基本结构体的定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-链表初始化"><span class="nav-number">1.2.</span> <span class="nav-text">2. 链表初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-头插法建立新链表"><span class="nav-number">1.3.</span> <span class="nav-text">3. 头插法建立新链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-尾插法建立新链表"><span class="nav-number">1.4.</span> <span class="nav-text">4.尾插法建立新链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查找操作"><span class="nav-number">1.5.</span> <span class="nav-text">5.查找操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-按照元素值key查找"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 按照元素值key查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-按照顺序查找第i个"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.1 按照顺序查找第i个</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-删除节点"><span class="nav-number">1.6.</span> <span class="nav-text">6.删除节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-在链表第i个元素前插入一个元素"><span class="nav-number">1.7.</span> <span class="nav-text">7. 在链表第i个元素前插入一个元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-计算链表长度并输出"><span class="nav-number">1.8.</span> <span class="nav-text">8.计算链表长度并输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-链表合并"><span class="nav-number">1.9.</span> <span class="nav-text">9.链表合并</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1将两个增有序的链表合成一个减有序的链表"><span class="nav-number">1.9.1.</span> <span class="nav-text">9.1将两个增有序的链表合成一个减有序的链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-将两个增有序的链表合成一个增有序的链表"><span class="nav-number">1.9.2.</span> <span class="nav-text">9.2 将两个增有序的链表合成一个增有序的链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-主函数"><span class="nav-number">1.10.</span> <span class="nav-text">10.主函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=558261233&auto=1&height=66"></iframe>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-[object Object]"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昊波波</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">symbols_count_time.count_total：</span>
+    
+	<span title="Site words total count">
+     字 </span>
+    <!--<span title="symbols_count_time.count_total"></span>-->
+  
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'f1AecbFu1rzghgiOyiy3HCja-gzGzoHsz',
+        appKey: '2sRTSS9926O2qduIJ532XEOp',
+        placeholder: '快来评论吧',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
