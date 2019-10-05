@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="博客搭建,">
+  <meta name="keywords" content="javaWeb,JDBC,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="hexo博客搭建一、博客基本操作 博客部署到本地 hexo clean 清楚缓存hexo g 生成静态网页hexo s 本地启动预览查看  http://localhost:4000   部署到git服务器上 hexo deploy  https://foreverxwwl.github.io/         next主题安装  git clone https://github.com/iiss">
-<meta name="keywords" content="博客搭建">
+<meta name="description" content="jdbc连接池与Template数据库连接池 概念：其实就是一个容器(集合)，存放数据库连接的容器。当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户来访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。 好处：1. 节约资源   2. 用户访问高效 C3P0：数据库连接池技术。Druid：数据库连接池实现技术，由阿里巴巴提供。  c3p0数据库连接池 导入ja">
+<meta name="keywords" content="javaWeb,JDBC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo博客搭建">
-<meta property="og:url" content="http://yoursite.com/2019/09/19/hexo博客搭建/index.html">
+<meta property="og:title" content="JDBC连接池与Template">
+<meta property="og:url" content="http://yoursite.com/2019/10/05/JDBC连接池与Template/index.html">
 <meta property="og:site_name" content="昊波波的博客">
-<meta property="og:description" content="hexo博客搭建一、博客基本操作 博客部署到本地 hexo clean 清楚缓存hexo g 生成静态网页hexo s 本地启动预览查看  http://localhost:4000   部署到git服务器上 hexo deploy  https://foreverxwwl.github.io/         next主题安装  git clone https://github.com/iiss">
+<meta property="og:description" content="jdbc连接池与Template数据库连接池 概念：其实就是一个容器(集合)，存放数据库连接的容器。当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户来访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。 好处：1. 节约资源   2. 用户访问高效 C3P0：数据库连接池技术。Druid：数据库连接池实现技术，由阿里巴巴提供。  c3p0数据库连接池 导入ja">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-22T08:06:09.991Z">
+<meta property="og:updated_time" content="2019-10-05T13:38:01.433Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo博客搭建">
-<meta name="twitter:description" content="hexo博客搭建一、博客基本操作 博客部署到本地 hexo clean 清楚缓存hexo g 生成静态网页hexo s 本地启动预览查看  http://localhost:4000   部署到git服务器上 hexo deploy  https://foreverxwwl.github.io/         next主题安装  git clone https://github.com/iiss">
+<meta name="twitter:title" content="JDBC连接池与Template">
+<meta name="twitter:description" content="jdbc连接池与Template数据库连接池 概念：其实就是一个容器(集合)，存放数据库连接的容器。当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户来访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。 好处：1. 节约资源   2. 用户访问高效 C3P0：数据库连接池技术。Druid：数据库连接池实现技术，由阿里巴巴提供。  c3p0数据库连接池 导入ja">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/19/hexo博客搭建/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/05/JDBC连接池与Template/">
 
 
 
 
 
-  <title>hexo博客搭建 | 昊波波的博客</title>
+  <title>JDBC连接池与Template | 昊波波的博客</title>
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/hexo博客搭建/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/JDBC连接池与Template/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="昊波波">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo博客搭建</h1>
+          <h1 class="post-title" itemprop="name headline">JDBC连接池与Template</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T16:04:51+08:00">
-                2019-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-05T18:08:55+08:00">
+                2019-10-05
               </time>
             
 
@@ -344,8 +344,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础知识学习/" itemprop="url" rel="index">
-                    <span itemprop="name">基础知识学习</span>
+                  <a href="/categories/javaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">javaWeb</span>
                   </a>
                 </span>
 
@@ -364,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/19/hexo博客搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/19/hexo博客搭建/" itemprop="commentCount"></span>
+                <a href="/2019/10/05/JDBC连接池与Template/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/05/JDBC连接池与Template/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -398,142 +398,82 @@
       
 
       
-        <h1 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a>hexo博客搭建</h1><h2 id="一、博客基本操作"><a href="#一、博客基本操作" class="headerlink" title="一、博客基本操作"></a>一、博客基本操作</h2><ol>
-<li><h3 id="博客部署到本地"><a href="#博客部署到本地" class="headerlink" title="博客部署到本地"></a>博客部署到本地</h3><blockquote>
-<p>hexo clean 清楚缓存<br>hexo g 生成静态网页<br>hexo s 本地启动预览查看  <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
-</blockquote>
-</li>
-<li><h3 id="部署到git服务器上"><a href="#部署到git服务器上" class="headerlink" title="部署到git服务器上"></a>部署到git服务器上</h3><blockquote>
-<p>hexo deploy  <a href="https://foreverxwwl.github.io/" target="_blank" rel="noopener">https://foreverxwwl.github.io/</a>      </p>
-</blockquote>
-</li>
-<li><h3 id="next主题安装"><a href="#next主题安装" class="headerlink" title="next主题安装"></a>next主题安装</h3><blockquote>
+        <h1 id="jdbc连接池与Template"><a href="#jdbc连接池与Template" class="headerlink" title="jdbc连接池与Template"></a>jdbc连接池与Template</h1><h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><ol>
+<li>概念：其实就是一个容器(集合)，存放数据库连接的容器。当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户来访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。</li>
+<li>好处：1. 节约资源   2. 用户访问高效</li>
+<li>C3P0：数据库连接池技术。Druid：数据库连接池实现技术，由阿里巴巴提供。</li>
+</ol>
+<h2 id="c3p0数据库连接池"><a href="#c3p0数据库连接池" class="headerlink" title="c3p0数据库连接池"></a>c3p0数据库连接池</h2><ol>
+<li><p>导入jar包 </p>
 <ol>
-<li>git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a> themes/next</li>
-<li>进入配置文件_config.yml  找到 theme 设置为 theme: next</li>
+<li>c3p0-0.9.5.2.jar  2. mchange-commons-java-0.2.12.jar </li>
 </ol>
-</blockquote>
+</li>
+<li><p>定义配置文件c3p0-cnfig.xml<br> 在定义配置文件时，也要注意版本问题，可直接放在src目录下</p>
+</li>
+<li><p>创建数据库连接池对象ComboPooledDataSource()<br> DataSource ds  = new ComboPooledDataSource();</p>
+</li>
+<li><p>获取连接gitConnection<br> Connection conn = ds.getConnection();</p>
+<h2 id="Druid数据库连接池"><a href="#Druid数据库连接池" class="headerlink" title="Druid数据库连接池"></a>Druid数据库连接池</h2></li>
+<li><p>导入jar包 druid-1.0.9.jar</p>
+</li>
+<li><p>定义配置文件：</p>
+<ol>
+<li>是properties形式的</li>
+<li>可以叫任意名称，可以放在任意目录下</li>
+</ol>
+</li>
+<li><p>加载配置文件。Properties</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStream is = DruidDemo.class.getClassLoader().getResourceAsStream(<span class="string">"druid.properties"</span>);</span><br><span class="line">Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line">pro.load(is);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取数据库连接池对象：通过工厂来来获取  DruidDataSourceFactory并</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataSource ds = DruidDataSourceFactory.createDataSource(pro);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取连接：getConnection</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection conn = ds.getConnection();</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
-<h2 id="二、next主题设置"><a href="#二、next主题设置" class="headerlink" title="二、next主题设置"></a>二、next主题设置</h2><ol>
-<li><h3 id="增加标签页等页面"><a href="#增加标签页等页面" class="headerlink" title="增加标签页等页面"></a>增加标签页等页面</h3></li>
+<h2 id="定义Druid数据库连接池工具类JDBCUtils"><a href="#定义Druid数据库连接池工具类JDBCUtils" class="headerlink" title="定义Druid数据库连接池工具类JDBCUtils"></a>定义Druid数据库连接池工具类JDBCUtils</h2><ol>
+<li>提供静态代码块加载配置文件，初始化连接池对象</li>
+<li>获取连接方法：通过数据库连接池获取连接</li>
+<li>释放资源</li>
+<li>获取连接池的方法</li>
 </ol>
-<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCUtils</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> DataSource ds = <span class="keyword">null</span>;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//1.加载配置文件</span></span><br><span class="line">            Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line">            pro.load(JDBCUtils.class.getClassLoader().getResourceAsStream(<span class="string">"Druid.properties"</span>));</span><br><span class="line">            <span class="comment">//获取获取数据库连接池对象dataSource</span></span><br><span class="line">            ds = DruidDataSourceFactory.createDataSource(pro);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取连接</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ds.getConnection();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 释放资源</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">(Statement statement, Connection connection)</span> </span>&#123;</span><br><span class="line">        close(<span class="keyword">null</span>,statement,connection);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">(ResultSet resultSet, Statement statement, Connection connection)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (resultSet != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                resultSet.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (statement != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                statement.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (connection != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                connection.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取连接池方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DataSource <span class="title">getDataSource</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ds;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a>Spring JDBC</h2><p>是Spring框架对jdbc的简单封装，提供了JDBCTemplate对象简化jdbc开发</p>
 <ol>
-<li>进入next主题的配置文件 _config.yml</li>
-<li>找到menu: 将要添加的页面注释删掉</li>
-<li>在blog页面  hexo n page tags 增加标签tags页面</li>
-<li>hexo n page categories 增加分类categories页面</li>
+<li>导入jar包</li>
+<li>创建JDBCTemplate对象，依赖于数据源DataSource<br> JDBCTemplate template = new JDBCTemplate（ds）；</li>
+<li>调用JDBCTemplate方法操作<ol>
+<li>update() 方法，执行增删改语句</li>
+<li>queryForMap():查询结果将结果集封装为map集合，将列名作为key，将值作为value 将这条记录封装为一个map集合，查询的结果集长度只能是1。</li>
 </ol>
-</blockquote>
-<ol start="2">
-<li><h3 id="修改头像姓名等信息"><a href="#修改头像姓名等信息" class="headerlink" title="修改头像姓名等信息"></a>修改头像姓名等信息</h3></li>
+</li>
 </ol>
-<blockquote>
-<p>主要参考文档在主题的_config文件中修改</p>
-<blockquote>
-<p>头像 avatar: 修改地址<br>主题 scheme: </p>
-</blockquote>
-<p>设置大的标题、姓名在全局的_config.yml中的  title:</p>
-</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">"select * from emp where id = ? or id = ?"</span>;</span><br><span class="line">        Map&lt;String, Object&gt; map = template.queryForMap(sql, <span class="number">1001</span>,<span class="number">1002</span>);</span><br><span class="line">        System.out.println(map);</span><br><span class="line">        <span class="comment">//&#123;id=1001, ename=孙悟空, job_id=4, mgr=1004, joindate=2000-12-17, salary=10000.00, bonus=null, dept_id=20&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
-<li><h3 id="新建一篇博客"><a href="#新建一篇博客" class="headerlink" title="新建一篇博客"></a>新建一篇博客</h3></li>
-</ol>
-<blockquote>
-<ol>
-<li>hexo n hexo博客搭建</li>
-<li>用markdowm编写博客</li>
-</ol>
-</blockquote>
-<ol start="4">
-<li><h3 id="启用功能"><a href="#启用功能" class="headerlink" title="启用功能"></a>启用功能</h3></li>
-</ol>
-<blockquote>
-<h4 id="（1）启用侧边栏社交链接"><a href="#（1）启用侧边栏社交链接" class="headerlink" title="（1）启用侧边栏社交链接"></a>（1）启用侧边栏社交链接</h4></blockquote>
-<blockquote>
-<blockquote>
-<ol>
-<li>进入主题的_config.yml文件</li>
-<li>将social: 一栏的注释取消</li>
-</ol>
-</blockquote>
-</blockquote>
-<blockquote>
-<h4 id="（2）启用打赏功能"><a href="#（2）启用打赏功能" class="headerlink" title="（2）启用打赏功能"></a>（2）启用打赏功能</h4><blockquote>
-<ol>
-<li>进入主题的_config.yml文件</li>
-<li>将reward项目注释删除</li>
-<li>comment：加上用语   也可在后面添加图片</li>
-</ol>
-</blockquote>
-</blockquote>
-<blockquote>
-<h4 id="（3）设置头像样式"><a href="#（3）设置头像样式" class="headerlink" title="（3）设置头像样式"></a>（3）设置头像样式</h4><blockquote>
-<ol>
-<li>进入目录  \blog\themes\next\source\css_common\components\sidebar</li>
-<li>修改sidebar-author.styl文件中的样式</li>
-</ol>
-</blockquote>
-</blockquote>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt; <span class="selector-class">.site-author-image</span> &#123;</span><br><span class="line">&gt; &gt;   <span class="attribute">display</span>: block;</span><br><span class="line">&gt; &gt;   <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&gt; &gt;   <span class="attribute">padding</span>: <span class="variable">$site-author-image-padding</span>;</span><br><span class="line">&gt; &gt;   <span class="attribute">max-width</span>: <span class="variable">$site-author-image-width</span>;</span><br><span class="line">&gt; &gt;   <span class="attribute">height</span>: <span class="variable">$site-author-image-height</span>;</span><br><span class="line">&gt; &gt;   <span class="attribute">border</span>: <span class="variable">$site-author-image-border-width</span> solid <span class="variable">$site-author-image-border-color</span>;</span><br><span class="line">&gt; &gt;   <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">&gt; &gt;   <span class="attribute">transition</span>: <span class="number">3s</span> all;</span><br><span class="line">&gt; &gt; &#125;</span><br><span class="line">&gt; &gt; <span class="selector-class">.site-author-image</span>:hover&#123;</span><br><span class="line">&gt; &gt;   <span class="attribute">transform</span>: rotate(<span class="number">360deg</span>);</span><br><span class="line">&gt; &gt; &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="（3）设置首页阅读全文"><a href="#（3）设置首页阅读全文" class="headerlink" title="（3）设置首页阅读全文"></a>（3）设置首页阅读全文</h4><blockquote>
-<ol>
-<li>在主题配置文件中找到auto_excerpt:选项</li>
-<li>将false 改为true 并设置可看长度</li>
-<li>也可在博客编辑时在相应位置添加<a id="more"></a>;此代码以下的点击查看 </li>
-</ol>
-</blockquote>
-</blockquote>
-<blockquote>
-<h3 id="（4）添加动态背景"><a href="#（4）添加动态背景" class="headerlink" title="（4）添加动态背景"></a>（4）添加动态背景</h3><blockquote>
-<ol>
-<li>在主题配置文件找到canvas 默认都是关闭的</li>
-<li>将需要的设置为true</li>
-</ol>
-</blockquote>
-</blockquote>
-<blockquote>
-<h4 id="（5）修改文章内链接样式"><a href="#（5）修改文章内链接样式" class="headerlink" title="（5）修改文章内链接样式"></a>（5）修改文章内链接样式</h4><blockquote>
-<ol>
-<li>进入F:\blog\themes\next\source\css_common\components\post\post.sty</li>
-<li>在尾部添加样式</li>
-</ol>
-</blockquote>
-</blockquote>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#345</span>;</span><br><span class="line">  <span class="attribute">border-bottom</span>: none;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">13px</span>;<span class="comment">/*字体大小*/</span></span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">500</span>; <span class="comment">/*字体粗细*/</span></span><br><span class="line">  &amp;:hover&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fcfcfc</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="（6）修改文章底部标签"><a href="#（6）修改文章底部标签" class="headerlink" title="（6）修改文章底部标签"></a>（6）修改文章底部标签</h4><blockquote>
-<ol>
-<li><p>进入F:\blog\themes\next\layout_macro\post.swig</p>
+<li><p>queryForList():查询结果将结果集封装为list集合</p>
+<ul>
+<li>将每一条记录封装为一个Map集合，再将Map集合装载到List集合中<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test5</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">"select * from emp"</span>;</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; list = template.queryForList(sql);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Map&lt;String, Object&gt; stringObjectMap : list) &#123;</span><br><span class="line">            System.out.println(stringObjectMap);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>修改 tag.path 可将这行的  # 替换成别的</p>
+</ul>
 </li>
+<li><p>query():查询结果，将结果封装为JavaBean对象,emp为自定义的对象有成员变量，getset函数以及tostring方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test6</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">"select * from emp"</span>;</span><br><span class="line">        List&lt;Emp&gt; list = template.query(sql, <span class="keyword">new</span> RowMapper&lt;Emp&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Emp <span class="title">mapRow</span><span class="params">(ResultSet rs, <span class="keyword">int</span> i)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">                Emp emp = <span class="keyword">new</span> Emp();</span><br><span class="line">                <span class="keyword">int</span> id = rs.getInt(<span class="string">"id"</span>);</span><br><span class="line">                String ename = rs.getString(<span class="string">"ename"</span>);</span><br><span class="line">                <span class="keyword">int</span> job_id = rs.getInt(<span class="string">"job_id"</span>);</span><br><span class="line">                <span class="keyword">int</span> mgr = rs.getInt(<span class="string">"mgr"</span>);</span><br><span class="line">                Date joindate = rs.getDate(<span class="string">"joindate"</span>);</span><br><span class="line">                <span class="keyword">double</span> salary = rs.getDouble(<span class="string">"salary"</span>);</span><br><span class="line">                <span class="keyword">double</span> bonus = rs.getDouble(<span class="string">"bonus"</span>);</span><br><span class="line">                <span class="keyword">int</span> dept_id = rs.getInt(<span class="string">"dept_id"</span>);</span><br><span class="line"></span><br><span class="line">                emp.setId(id);</span><br><span class="line">                emp.setEname(ename);</span><br><span class="line">                emp.setJob_id(job_id);</span><br><span class="line">                emp.setMgr(mgr);</span><br><span class="line">                emp.setJoindate(joindate);</span><br><span class="line">                emp.setSalary(salary);</span><br><span class="line">                emp.setBonus(bonus);</span><br><span class="line">                emp.setDept_id(dept_id);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> emp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Emp emp : list) &#123;</span><br><span class="line">            System.out.println(emp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>query的参数：RowMapper</p>
+<ul>
+<li>一般我们使用BeanPropertyRowMapper实现类。可以完成数据到JavaBean的自动封装</li>
+<li>new BeanPropertyRowMapper&lt;类型&gt;(类型.class)，如果类型.class中的参数和数据库匹配，那么就会自动封装。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test6_2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">"select * from emp"</span>;</span><br><span class="line">        List&lt;Emp&gt; list = template.query(sql, <span class="keyword">new</span> BeanPropertyRowMapper&lt;Emp&gt;(Emp.class));</span><br><span class="line">        <span class="keyword">for</span> (Emp emp : list) &#123;</span><br><span class="line">            System.out.println(emp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>queryForObject：查询结果，将结果封装为对象，一般用于聚合函数查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test7</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String sql = <span class="string">"select count(id) from emp"</span>;</span><br><span class="line">    Long total = template.queryForObject(sql, Long.class);</span><br><span class="line">    System.out.println(total);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
-</blockquote>
-</blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href="&#123;&#123; url_for(tag.path) &#125;&#125;" rel="tag"&gt; &lt;i class="fa fa-tag"&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="（7）Valine评论系统"><a href="#（7）Valine评论系统" class="headerlink" title="（7）Valine评论系统"></a>（7）Valine评论系统</h4><blockquote>
-<ol>
-<li>进入主题配置文件 打开 valine</li>
-<li><a href="https://leancloud.cn/" target="_blank" rel="noopener">https://leancloud.cn/</a> 网站配置appid并在配置文件中使用</li>
-</ol>
-</blockquote>
-</blockquote>
-<blockquote>
-<h4 id="（8）搜索，统计功能"><a href="#（8）搜索，统计功能" class="headerlink" title="（8）搜索，统计功能"></a>（8）搜索，统计功能</h4><blockquote>
-<ol>
-<li>都是进入next主题官网 开启第三方服务</li>
-</ol>
-</blockquote>
-</blockquote>
-<h2 id="三、一个小问题"><a href="#三、一个小问题" class="headerlink" title="三、一个小问题"></a>三、一个小问题</h2><blockquote>
-<p>再部署的时候 提示 ERROR Deployer not found: git<br>按照晚上提示安装插件总是报错  npm install hexo-deployer-git –save<br>然后用淘宝NPM镜像的“hexo-deployer-git”试了一下，成功了<br>指令：$ cnpm install hexo-deployer-git –save</p>
-</blockquote>
 
       
     </div>
@@ -551,7 +491,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/博客搭建/" rel="tag"> <i class="fa fa-tag"></i> 博客搭建</a>
+            <a href="/tags/javaWeb/" rel="tag"> <i class="fa fa-tag"></i> javaWeb</a>
+          
+            <a href="/tags/JDBC/" rel="tag"> <i class="fa fa-tag"></i> JDBC</a>
           
         </div>
       
@@ -564,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/github学习/" rel="next" title="github学习">
-                <i class="fa fa-chevron-left"></i> github学习
+              <a href="/2019/10/05/JDBC基本概念与操作/" rel="next" title="JDBC基本概念与操作">
+                <i class="fa fa-chevron-left"></i> JDBC基本概念与操作
               </a>
             
           </div>
@@ -573,10 +515,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/25/算法-动态规划/" rel="prev" title="算法-动态规划">
-                算法-动态规划 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -755,7 +693,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo博客搭建"><span class="nav-number">1.</span> <span class="nav-text">hexo博客搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、博客基本操作"><span class="nav-number">1.1.</span> <span class="nav-text">一、博客基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#博客部署到本地"><span class="nav-number">1.1.1.</span> <span class="nav-text">博客部署到本地</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到git服务器上"><span class="nav-number">1.1.2.</span> <span class="nav-text">部署到git服务器上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next主题安装"><span class="nav-number">1.1.3.</span> <span class="nav-text">next主题安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、next主题设置"><span class="nav-number">1.2.</span> <span class="nav-text">二、next主题设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增加标签页等页面"><span class="nav-number">1.2.1.</span> <span class="nav-text">增加标签页等页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改头像姓名等信息"><span class="nav-number">1.2.2.</span> <span class="nav-text">修改头像姓名等信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建一篇博客"><span class="nav-number">1.2.3.</span> <span class="nav-text">新建一篇博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启用功能"><span class="nav-number">1.2.4.</span> <span class="nav-text">启用功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）启用侧边栏社交链接"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">（1）启用侧边栏社交链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）启用打赏功能"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">（2）启用打赏功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）设置头像样式"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">（3）设置头像样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）设置首页阅读全文"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">（3）设置首页阅读全文</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）添加动态背景"><span class="nav-number">1.2.5.</span> <span class="nav-text">（4）添加动态背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）修改文章内链接样式"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">（5）修改文章内链接样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（6）修改文章底部标签"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">（6）修改文章底部标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（7）Valine评论系统"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">（7）Valine评论系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（8）搜索，统计功能"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">（8）搜索，统计功能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、一个小问题"><span class="nav-number">1.3.</span> <span class="nav-text">三、一个小问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jdbc连接池与Template"><span class="nav-number">1.</span> <span class="nav-text">jdbc连接池与Template</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库连接池"><span class="nav-number">1.1.</span> <span class="nav-text">数据库连接池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c3p0数据库连接池"><span class="nav-number">1.2.</span> <span class="nav-text">c3p0数据库连接池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Druid数据库连接池"><span class="nav-number">1.3.</span> <span class="nav-text">Druid数据库连接池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义Druid数据库连接池工具类JDBCUtils"><span class="nav-number">1.4.</span> <span class="nav-text">定义Druid数据库连接池工具类JDBCUtils</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-JDBC"><span class="nav-number">1.5.</span> <span class="nav-text">Spring JDBC</span></a></li></ol></li></ol></div>
             
 
           </div>

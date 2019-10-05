@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JDBC连接池与Template]]></title>
+    <url>%2F2019%2F10%2F05%2FJDBC%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B8%8ETemplate%2F</url>
+    <content type="text"><![CDATA[jdbc连接池与Template数据库连接池 概念：其实就是一个容器(集合)，存放数据库连接的容器。当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户来访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。 好处：1. 节约资源 2. 用户访问高效 C3P0：数据库连接池技术。Druid：数据库连接池实现技术，由阿里巴巴提供。 c3p0数据库连接池 导入jar包 c3p0-0.9.5.2.jar 2. mchange-commons-java-0.2.12.jar 定义配置文件c3p0-cnfig.xml 在定义配置文件时，也要注意版本问题，可直接放在src目录下 创建数据库连接池对象ComboPooledDataSource() DataSource ds = new ComboPooledDataSource(); 获取连接gitConnection Connection conn = ds.getConnection(); Druid数据库连接池 导入jar包 druid-1.0.9.jar 定义配置文件： 是properties形式的 可以叫任意名称，可以放在任意目录下 加载配置文件。Properties 123InputStream is = DruidDemo.class.getClassLoader().getResourceAsStream("druid.properties");Properties pro = new Properties();pro.load(is); 获取数据库连接池对象：通过工厂来来获取 DruidDataSourceFactory并 1DataSource ds = DruidDataSourceFactory.createDataSource(pro); 获取连接：getConnection 1Connection conn = ds.getConnection(); 定义Druid数据库连接池工具类JDBCUtils 提供静态代码块加载配置文件，初始化连接池对象 获取连接方法：通过数据库连接池获取连接 释放资源 获取连接池的方法 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263public class JDBCUtils &#123; //定义一个成员变量 private static DataSource ds = null;; static &#123; try &#123; //1.加载配置文件 Properties pro = new Properties(); pro.load(JDBCUtils.class.getClassLoader().getResourceAsStream("Druid.properties")); //获取获取数据库连接池对象dataSource ds = DruidDataSourceFactory.createDataSource(pro); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; &#125; /** * 获取连接 */ public static Connection getConnection() throws SQLException &#123; return ds.getConnection(); &#125; /** * 释放资源 */ public static void close(Statement statement, Connection connection) &#123; close(null,statement,connection); &#125; public static void close(ResultSet resultSet, Statement statement, Connection connection)&#123; if (resultSet != null)&#123; try &#123; resultSet.close(); &#125; catch (SQLException e) &#123; e.printStackTrace(); &#125; &#125; if (statement != null)&#123; try &#123; statement.close(); &#125; catch (SQLException e) &#123; e.printStackTrace(); &#125; &#125; if (connection != null)&#123; try &#123; connection.close(); &#125; catch (SQLException e) &#123; e.printStackTrace(); &#125; &#125; &#125; /** * 获取连接池方法 */ public static DataSource getDataSource()&#123; return ds; &#125;&#125; Spring JDBC是Spring框架对jdbc的简单封装，提供了JDBCTemplate对象简化jdbc开发 导入jar包 创建JDBCTemplate对象，依赖于数据源DataSource JDBCTemplate template = new JDBCTemplate（ds）； 调用JDBCTemplate方法操作 update() 方法，执行增删改语句 queryForMap():查询结果将结果集封装为map集合，将列名作为key，将值作为value 将这条记录封装为一个map集合，查询的结果集长度只能是1。 123456public void test4()&#123; String sql = "select * from emp where id = ? or id = ?"; Map&lt;String, Object&gt; map = template.queryForMap(sql, 1001,1002); System.out.println(map); //&#123;id=1001, ename=孙悟空, job_id=4, mgr=1004, joindate=2000-12-17, salary=10000.00, bonus=null, dept_id=20&#125;&#125; queryForList():查询结果将结果集封装为list集合 将每一条记录封装为一个Map集合，再将Map集合装载到List集合中12345678public void test5()&#123; String sql = "select * from emp"; List&lt;Map&lt;String, Object&gt;&gt; list = template.queryForList(sql); for (Map&lt;String, Object&gt; stringObjectMap : list) &#123; System.out.println(stringObjectMap); &#125;&#125; query():查询结果，将结果封装为JavaBean对象,emp为自定义的对象有成员变量，getset函数以及tostring方法。 12345678910111213141516171819202122232425262728293031323334public void test6()&#123; String sql = "select * from emp"; List&lt;Emp&gt; list = template.query(sql, new RowMapper&lt;Emp&gt;() &#123; @Override public Emp mapRow(ResultSet rs, int i) throws SQLException &#123; Emp emp = new Emp(); int id = rs.getInt("id"); String ename = rs.getString("ename"); int job_id = rs.getInt("job_id"); int mgr = rs.getInt("mgr"); Date joindate = rs.getDate("joindate"); double salary = rs.getDouble("salary"); double bonus = rs.getDouble("bonus"); int dept_id = rs.getInt("dept_id"); emp.setId(id); emp.setEname(ename); emp.setJob_id(job_id); emp.setMgr(mgr); emp.setJoindate(joindate); emp.setSalary(salary); emp.setBonus(bonus); emp.setDept_id(dept_id); return emp; &#125; &#125;); for (Emp emp : list) &#123; System.out.println(emp); &#125; &#125; query的参数：RowMapper 一般我们使用BeanPropertyRowMapper实现类。可以完成数据到JavaBean的自动封装 new BeanPropertyRowMapper&lt;类型&gt;(类型.class)，如果类型.class中的参数和数据库匹配，那么就会自动封装。1234567public void test6_2()&#123; String sql = "select * from emp"; List&lt;Emp&gt; list = template.query(sql, new BeanPropertyRowMapper&lt;Emp&gt;(Emp.class)); for (Emp emp : list) &#123; System.out.println(emp); &#125; &#125; queryForObject：查询结果，将结果封装为对象，一般用于聚合函数查询 12345public void test7()&#123; String sql = "select count(id) from emp"; Long total = template.queryForObject(sql, Long.class); System.out.println(total);&#125;]]></content>
+      <categories>
+        <category>javaWeb</category>
+      </categories>
+      <tags>
+        <tag>javaWeb</tag>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JDBC基本概念与操作]]></title>
+    <url>%2F2019%2F10%2F05%2FJDBC%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[jdbc基本概念与操作jdbc：Java DataBase Connectivity Java 数据库连接本质：其实是官方定义的一套操作所有关系型数据库的规则，即接口。各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。 1. 导入驱动jar包2. 注册驱动在注册驱动时，新版jdbc注册驱动的语句要在中间加上cj。 1Class.forName("com.mysql.cj.jdbc.Driver"); 3. 获取数据库连接对象 Connection1Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/workstation?characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;useSSL=false", "root", "123456"); DriverManager：驱动管理对象 注册驱动功能：告诉程序该使用那个数据库驱动jar包 Class.forName(“com.mysql.jdbc.Driver”); 获取数据库连接： static Connection getConnection(String url, String user, String password) url配置：jdbc:mysql://ip地址(域名):端口号/数据库名称 jdbc:mysql://localhost:3306/workstation?characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;useSSL=false Connection：数据库连接对象 可以获取执行sql的对象Statement Statement createStatement() PreparedStatement prepareStatement(String sql) 管理事务 开启事务：setAutoCommit(boolean autoCommit) ：调用该方法设置参数为false，即开启事务 提交事务：commit() 回滚事务：rollback() 在获取数据库连接对象时，应为使用了最新版mysql的jdbc驱动，在看视频时按照原本的配置方法配置url值，不断报下面的错，在百度了半下午以后才找到问题所在，旧版本可以“jdbc:mysql://localhost:3306/db3”但新版本必须配置为上面的内容。 1Exception in thread &quot;main&quot; java.sql.SQLException: The server time zone value is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support. 4. 获取执行sql语句的对象 Statement1Statement statement = connection.createStatement(); Statement: 执行sql的对象 boolean execute(String sql) ：可以执行任意的sql int executeUpdate(String sql) ：执行DML（insert、update、delete）语句、DDL(create，alter、drop)语句。返回值：影响的行数，可以通过这个影响的行数判断DML语句是否执行成功 返回值&gt;0的则执行成功，反之，则失败。 ResultSet executeQuery(String sql) ：执行DQL（select)语句 5. 定义sql并执行sql，接受返回结果12String sql = "update users set Upasswords = '123345567' where number = 2";int i = statement.executeUpdate(sql); 6. 处理结果并释放资源123System.out.println(i);statement.close();connection.close(); 7. ResultSet: 结果集对象,封装查询结果 boolean next(): 游标向下移动一行（默认指向表头行），判断当前行是否是最后一行末尾(是否有数据)，如果是，则返回false，如果不是则返回true getXxx(参数):获取数据 Xxx：代表数据类型 如： int getInt() ，String getString() 参数： int：代表列的编号,从1开始 如： getString(1) String：代表列名称。 如： getDouble(“balance”) 12345678//循环判断游标是否是最后一行末尾。while(rs.next())&#123;、//获取数据int id = rs.getInt(1);//当前行第一列String name = rs.getString("name");//当前行“name”列double balance = rs.getDouble(3);System.out.println(id + "---" + name + "---" + balance);&#125; 8. PreparedStatement：执行sql的对象 SQL注入问题：在拼接sql时，有一些sql的特殊关键字参与字符串的拼接。会造成安全性问题 解决sql注入问题：使用PreparedStatement对象来解决 使用： sql的参数使用？作为占位符。 如：select * from user where username = ? and password = ?; 获取执行sql语句的对象 PreparedStatement Connection.prepareStatement(String sql) 给？赋值：setXxx(参数1,参数2) 执行sql，接受返回结果，不需要传递sql语句123456789//定义SQLString sql = "update users set Upasswords = ? where number = ?";//获取pstmt对象preparedStatement = conn.prepareStatement(sql);//给SQL赋值preparedStatement.setInt(1, 123);preparedStatement.setInt(2, 2);//执行int cont = preparedStatement.executeUpdate();]]></content>
+      <categories>
+        <category>javaWeb</category>
+      </categories>
+      <tags>
+        <tag>javaWeb</tag>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据结构--链表（静态链表）]]></title>
     <url>%2F2019%2F10%2F02%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84--%E9%93%BE%E8%A1%A8%EF%BC%88%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%EF%BC%89%2F</url>
     <content type="text"><![CDATA[数据结构–链表（静态链表） 静态链表中，应为没有指针使用，所以我们用一个结构体数组来存放节点，用cur来代替指针，存放下一个元素在结构体数组中的位置。 在建立链表时，我们把这个结构体数组看成两个链，一个是没有存放内容的备用链，一个是存放了内容的使用链，同样的我们确定一个头结点data不存放数据，cur存放的是下一个可插入元素的节点位置，初始化为1，为备用链的头，确定一个尾节点，data也不存放数据，cur存放的是第一个存放了数据的节点的位置，为使用链的头。 这样定义的好处是：其一，当链表中间有元素被删除时，备用链头cur值存放中间被删节点的位置，这样下次插入就可以直接在此插入。所以删除节点时可以不移动其他元素，下次插入只需要在备用链依次取就好。 其二，用最后一个位置存放使用链的头，是防止当结构体数组中第一个节点被删去，会丢失头节点位置，通过这个保存则可以随意删除。 静态链表中存放的数据彼此之间是非线性不连续的，是通过cur代替指针将其联系起来。 优点：再插入和删除时候，只需要修改游标，不需要移动元素，从而改进了顺序存储结构中插入和删除操作需要移动大量元素的缺点。 缺点：没有解决连续存储分配带来的表长难以确定的问题；失去了顺序存储结构随机存取的特性。下面是具体实现过程 1. 结构体定义123456#define MAXSIZE 7//定义结构typedef struct&#123; int data;//数据域 int cur;//下一个节点的下标&#125;StaticList[MAXSIZE]; 2. 初始化静态链表123456789101112//初始化静态链表,主要任务是让每一个节点cur指向下一个节点void InitList(StaticList l)&#123; for (int i = 0; i &lt; MAXSIZE - 1; i++) &#123; l[i].cur = i + 1; &#125; //备用链表的最后一个空元素的cur指向0，这样才可以再分配节点时判断是否已经存满 l[MAXSIZE - 2].cur = 0; //最后一个节点是使用链的头结点，初始化为0； l[MAXSIZE - 1].cur = 0;&#125; 3. 寻找可用空间1234567891011//在插入元素时，为带插入元素寻找一个空间下标int Malloc(StaticList l)&#123; //l[0].cur代表下一个可以插入的位置 int i = l[0].cur; if (i)&#123;//如果位置是0则不能插入 //位置不是0，则在此位置插入，并且将其下一个位置赋给头 l[0].cur = l[i].cur; &#125; return i;&#125; 4. 删除元素释放空间12345678//删除元素时，将其位置保存，方便下次插入void Free(StaticList l, int k)&#123; //将头中保存的下个可插入节点的位置赋给此待删除节点 l[k].cur = l[0].cur; //将次待删除节点位置赋给头，通过这两部操作将此节点放入了待插入链 l[0].cur = k;&#125; 5. 静态链表中元素个数1234567891011121314//求静态链表中元素个数，不包括头尾节点int ListLength(StaticList L)&#123; //L[MAXSIZE - 1]是已用链的头结点，.cur是已用链第一个节点位置 int i = L[MAXSIZE - 1].cur; int j = 0; while (i) &#123; j++; //不断查找到下一个已用链，最后一个已用链cur值为0 i = L[i].cur; &#125; return j;&#125; 6. 在i位置插入元素12345678910111213141516171819202122232425//静态链表中i位置插入一个元素void lnsertList(StaticList L, int i, int data)&#123; //判断插入点是否合理,要按照顺序插入不能跳跃插入 if (i&lt;1 || i&gt;ListLength(L) + 1) &#123; printf("插入点不合理"); return; &#125; int j = Malloc(L);//分配到插入位置 int k = MAXSIZE - 1;//k表示已用链头结点 if (j) &#123; //循环让k指向待插入位置i的已用链中前一个位置 for (int l = 1; l &lt;= i - 1; l++) &#123; k = L[k].cur; &#125; L[j].data = data; //将新节点与上一个节点连接 L[j].cur = L[k].cur; //将新节点与下一个节点连接 L[k].cur = j; &#125;&#125; 7. 删除第i个元素123456789101112131415161718192021222324//删除第i个元素，将值放入data中void DeleteList(StaticList L, int i, int *data)&#123; if (i &lt; 1 || i &gt;= ListLength(L)) &#123; printf("删除位置不合法"); return; &#125; //k指向已用链头结点 int k = MAXSIZE - 1; //循环让k指向已用链中k待删除节点的上一个节点 for (int l = 1; l &lt;= i - 1; l++) &#123; k = L[k].cur; &#125; //j指向待删除节点 int j = L[k].cur; *data = L[j].data; //将上一个节点与下一个节点相连 L[k].cur = L[j].cur; //将本节点置空加入备用链 Free(L, j);&#125; 8. 输出链表12345678910111213//输出链表void printList(StaticList L)&#123; //k指向已用链头结点 int k = MAXSIZE - 1; //已用链的cur不为0时输出 while (L[k].cur) &#123; k = L[k].cur; printf("%d ", L[k].data); &#125; printf("\n");&#125; 9. 主函数1234567891011121314151617181920212223242526int main(void)&#123; StaticList L; int j = 0; int data; InitList(L); printf("输入元素，以-1结尾\n"); while (1) &#123; scanf("%d", &amp;data); if (data != -1) &#123; j++; lnsertList(L, j, data); &#125; else &#123; break; &#125; &#125; printList(L); DeleteList(L, 2, &amp;data); printf("删除的元素值为 %d\n", data); printList(L); return 0;&#125;]]></content>
@@ -8,8 +32,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -20,8 +44,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -32,8 +56,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -44,19 +68,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>动态规划</tag>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[github学习]]></title>
-    <url>%2F2019%2F09%2F19%2Fgithub%E5%AD%A6%E4%B9%A0%2F</url>
-    <content type="text"><![CDATA[github基本操作 初始化 git init 状态查看 git status 添加到暂存区 git add 提交到本地库 git commit -m 查看历史 git log / git –online / git reflog 版本前进或后退 git reset –hard &lt;索引值&gt; / git reset –hard HEAD~2 比较工作区与暂存区文件差异 git diff [文件名] 将工作区与本地库文件比较 git diff [本地库历史版本（HEAD）] [文件名] 分支管理 创建分支 git branch [分支名] 查看分支 git branch -v 切换分支 git checkout [分支名] 合并分支 git merge [分支名] 解决冲突 git add git commit -m 远程库操作 创建远程库地址别名 git remote add [远程库地址]git remote add origin git@github.com:xiasf/github-note.git 查看别名 git remote -v 推送 git push [远程库地址名] [分支名] 克隆 git clone [远程库地址名] 拉取 git pull [远程库地址名] [远程库分支] 抓取 git fetch [远程库地址名] [远程库分支] 合并 git merge [远程库地址名/远程库分支] 跨团队合作 团队2进入团队1项目目录,点击fork。 团队2 git clone &lt;远程地址&gt;，修改并commit，git push 提交到远程库。 团队2进入页面，点击 pull requests、 new pull requests， Create pull requests 然后发消息给团队1。 团队1点击pull requests，Commits 、files changed 代码审核。 如果没有问题 则点击 merge pull request 并添加-m信息，结束远程库修改。 团队1将远程库拉取到本地 git pull origin master。]]></content>
-      <categories>
-        <category>基础知识学习</category>
-      </categories>
-      <tags>
-        <tag>git学习</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -68,6 +81,17 @@
       </categories>
       <tags>
         <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github学习]]></title>
+    <url>%2F2019%2F09%2F19%2Fgithub%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[github基本操作 初始化 git init 状态查看 git status 添加到暂存区 git add 提交到本地库 git commit -m 查看历史 git log / git –online / git reflog 版本前进或后退 git reset –hard &lt;索引值&gt; / git reset –hard HEAD~2 比较工作区与暂存区文件差异 git diff [文件名] 将工作区与本地库文件比较 git diff [本地库历史版本（HEAD）] [文件名] 分支管理 创建分支 git branch [分支名] 查看分支 git branch -v 切换分支 git checkout [分支名] 合并分支 git merge [分支名] 解决冲突 git add git commit -m 远程库操作 创建远程库地址别名 git remote add [远程库地址]git remote add origin git@github.com:xiasf/github-note.git 查看别名 git remote -v 推送 git push [远程库地址名] [分支名] 克隆 git clone [远程库地址名] 拉取 git pull [远程库地址名] [远程库分支] 抓取 git fetch [远程库地址名] [远程库分支] 合并 git merge [远程库地址名/远程库分支] 跨团队合作 团队2进入团队1项目目录,点击fork。 团队2 git clone &lt;远程地址&gt;，修改并commit，git push 提交到远程库。 团队2进入页面，点击 pull requests、 new pull requests， Create pull requests 然后发消息给团队1。 团队1点击pull requests，Commits 、files changed 代码审核。 如果没有问题 则点击 merge pull request 并添加-m信息，结束远程库修改。 团队1将远程库拉取到本地 git pull origin master。]]></content>
+      <categories>
+        <category>基础知识学习</category>
+      </categories>
+      <tags>
+        <tag>git学习</tag>
       </tags>
   </entry>
 </search>
