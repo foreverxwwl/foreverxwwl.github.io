@@ -89,7 +89,7 @@
 <meta name="description" content="希望能体验从未有过的情感，希望能遇见一些想法不同的人">
 <meta property="og:type" content="website">
 <meta property="og:title" content="昊波波的博客">
-<meta property="og:url" content="http://yoursite.com/categories/JavaWeb/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/javaWeb/index.html">
 <meta property="og:site_name" content="昊波波的博客">
 <meta property="og:description" content="希望能体验从未有过的情感，希望能遇见一些想法不同的人">
 <meta property="og:locale" content="zh-Hans">
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/JavaWeb/">
+  <link rel="canonical" href="http://yoursite.com/categories/javaWeb/">
 
 
 
 
 
-  <title>分类: JavaWeb | 昊波波的博客</title>
+  <title>分类: javaWeb | 昊波波的博客</title>
   
 
 
@@ -283,7 +283,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>JavaWeb<small>分类</small>
+        <h1>javaWeb<small>分类</small>
         </h1>
       </div>
 
@@ -295,17 +295,17 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/10/08/Servlet--response/" itemprop="url">
+            <a class="post-title-link" href="/2019/10/05/JDBC连接池与Template/" itemprop="url">
               
-                <span itemprop="name">Servlet学习(response)</span>
+                <span itemprop="name">JDBC连接池与Template</span>
               
             </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-08T11:09:34+08:00" content="2019-10-08">
-          10-08
+        <time class="post-time" itemprop="dateCreated" datetime="2019-10-05T18:08:55+08:00" content="2019-10-05">
+          10-05
         </time>
       </div>
 
@@ -321,17 +321,17 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/10/08/Servlet--request/" itemprop="url">
+            <a class="post-title-link" href="/2019/10/05/JDBC基本概念与操作/" itemprop="url">
               
-                <span itemprop="name">Servlet学习(request)</span>
+                <span itemprop="name">JDBC基本概念与操作</span>
               
             </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-08T11:09:34+08:00" content="2019-10-08">
-          10-08
+        <time class="post-time" itemprop="dateCreated" datetime="2019-10-05T16:48:24+08:00" content="2019-10-05">
+          10-05
         </time>
       </div>
 
@@ -394,7 +394,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1052,6 +1052,47 @@
 
 </body>
 </html>
+ e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
   
 
 </body>
