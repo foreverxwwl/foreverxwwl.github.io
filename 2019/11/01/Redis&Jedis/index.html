@@ -94,12 +94,12 @@
 <meta property="og:site_name" content="昊波波的博客">
 <meta property="og:description" content="Redis&amp;amp;Jedis基础基础概念redis是一款高性能的NOSQL系列的非关系型数据库 什么是NOSQLNoSQL(NoSQL = Not Only SQL)，意即“不仅仅是SQL”，是一项全新的数据库理念，泛指非关系型的数据库。随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pz3wwll3j.bkt.clouddn.com/2.redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.bmp">
-<meta property="og:updated_time" content="2019-11-01T03:50:05.572Z">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/redis/2.redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.bmp">
+<meta property="og:updated_time" content="2019-11-17T18:18:24.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis&amp;Jedis基础">
 <meta name="twitter:description" content="Redis&amp;amp;Jedis基础基础概念redis是一款高性能的NOSQL系列的非关系型数据库 什么是NOSQLNoSQL(NoSQL = Not Only SQL)，意即“不仅仅是SQL”，是一项全新的数据库理念，泛指非关系型的数据库。随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多">
-<meta name="twitter:image" content="http://pz3wwll3j.bkt.clouddn.com/2.redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.bmp">
+<meta name="twitter:image" content="http://www.qiniu.yiyip.cn/redis/2.redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.bmp">
 
 
 
@@ -455,30 +455,26 @@
 </ol>
 </li>
 </ol>
-<p><img src="http://pz3wwll3j.bkt.clouddn.com/2.redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.bmp" alt="avatar"></p>
+<p><img src="http://www.qiniu.yiyip.cn/redis/2.redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.bmp" alt="avatar"></p>
 <ol>
 <li><p>字符串类型 string</p>
 <ol>
-<li>存储： set key value<br>127.0.0.1:6379&gt; set username zhangsan<br>OK</li>
-<li>获取： get key<br>127.0.0.1:6379&gt; get username<br>“zhangsan”</li>
-<li>删除： del key<br>127.0.0.1:6379&gt; del age<br>(integer) 1</li>
+<li>存储： set key value<br>  127.0.0.1:6379&gt; set username zhangsan<br>  OK</li>
+<li>获取： get key<br>  127.0.0.1:6379&gt; get username<br>  “zhangsan”</li>
+<li>删除： del key<br>  127.0.0.1:6379&gt; del age<br>  (integer) 1</li>
 </ol>
 </li>
 <li><p>哈希类型 hash</p>
 <ol>
-<li><p>存储： hset key field value<br>127.0.0.1:6379&gt; hset myhash username lisi<br>(integer) 1<br>127.0.0.1:6379&gt; hset myhash password 123<br>(integer) 1</p>
+<li><p>存储： hset key field value<br>  127.0.0.1:6379&gt; hset myhash username lisi<br>  (integer) 1<br>  127.0.0.1:6379&gt; hset myhash password 123<br>  (integer) 1</p>
 </li>
 <li><p>获取： </p>
 <ul>
-<li>hget key field: 获取指定的field对应的值</li>
+<li>hget key field: 获取指定的field对应的值<br>127.0.0.1:6379&gt; hget myhash username<br>“lisi”</li>
+<li>hgetall key：获取所有的field和value<br>127.0.0.1:6379&gt; hgetall myhash<br>1) “username”<br>2) “lisi”<br>3) “password”<br>4) “123”</li>
 </ul>
-<p>127.0.0.1:6379&gt; hget myhash username<br>“lisi”</p>
-<ul>
-<li>hgetall key：获取所有的field和value</li>
-</ul>
-<p>127.0.0.1:6379&gt; hgetall myhash<br>1) “username”<br>2) “lisi”<br>3) “password”<br>4) “123”</p>
 </li>
-<li><p>删除： hdel key field<br>127.0.0.1:6379&gt; hdel myhash username<br>(integer) 1</p>
+<li><p>删除： hdel key field<br>  127.0.0.1:6379&gt; hdel myhash username<br>  (integer) 1</p>
 </li>
 </ol>
 </li>
@@ -486,16 +482,13 @@
 <ol>
 <li>添加：<ol>
 <li>lpush key value: 将元素加入列表左表</li>
-<li>rpush key value：将元素加入列表右边</li>
-<li>0.0.1:6379&gt; lpush myList a<br>(integer) 1</li>
-<li>0.0.1:6379&gt; lpush myList b<br>(integer) 2</li>
-<li>0.0.1:6379&gt; rpush myList c<br>(integer) 3</li>
+<li>rpush key value：将元素加入列表右边<br>127.0.0.1:6379&gt; lpush myList a<br>(integer) 1<br>127.0.0.1:6379&gt; lpush myList b<br>(integer) 2<br>127.0.0.1:6379&gt; rpush myList c<br>(integer) 3</li>
 </ol>
 </li>
 <li>获取：<ul>
-<li>lrange key start end ：范围获取</li>
+<li>lrange key start end ：范围获取<br>127.0.0.1:6379&gt; lrange myList 0 -1<br>1) “b”<br>2) “a”<br>3) “c”</li>
 </ul>
-127.0.0.1:6379&gt; lrange myList 0 -1<br>1) “b”<br>2) “a”<br>3) “c”</li>
+</li>
 <li>删除：<ul>
 <li>lpop key： 删除列表最左边的元素，并将元素返回</li>
 <li>rpop key： 删除列表最右边的元素，并将元素返回</li>
@@ -505,19 +498,19 @@
 </li>
 <li><p>集合类型 set ： 不允许重复元素</p>
 <ol>
-<li>存储：sadd key value<br>127.0.0.1:6379&gt; sadd myset a<br>(integer) 1<br>127.0.0.1:6379&gt; sadd myset a<br>(integer) 0</li>
-<li>获取：smembers key:获取set集合中所有元素<br>127.0.0.1:6379&gt; smembers myset<br>1) “a”</li>
-<li>删除：srem key value:删除set集合中的某个元素<br>127.0.0.1:6379&gt; srem myset a<br>(integer) 1</li>
+<li>存储：sadd key value<br>  127.0.0.1:6379&gt; sadd myset a<br>  (integer) 1<br>  127.0.0.1:6379&gt; sadd myset a<br>  (integer) 0</li>
+<li>获取：smembers key:获取set集合中所有元素<br>  127.0.0.1:6379&gt; smembers myset<br>  1) “a”</li>
+<li>删除：srem key value:删除set集合中的某个元素<br>  127.0.0.1:6379&gt; srem myset a<br>  (integer) 1</li>
 </ol>
 </li>
 <li><p>有序集合类型 sortedset：不允许重复元素，且元素有顺序.每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。</p>
 <ol>
-<li><p>存储：zadd key score value<br>127.0.0.1:6379&gt; zadd mysort 60 zhangsan<br>(integer) 1<br>127.0.0.1:6379&gt; zadd mysort 50 lisi<br>(integer) 1<br>127.0.0.1:6379&gt; zadd mysort 80 wangwu<br>(integer) 1</p>
+<li><p>存储：zadd key score value<br>  127.0.0.1:6379&gt; zadd mysort 60 zhangsan<br>  (integer) 1<br>  127.0.0.1:6379&gt; zadd mysort 50 lisi<br>  (integer) 1<br>  127.0.0.1:6379&gt; zadd mysort 80 wangwu<br>  (integer) 1</p>
 </li>
-<li><p>获取：zrange key start end [withscores]<br>127.0.0.1:6379&gt; zrange mysort 0 -1<br>1) “lisi”<br>2) “zhangsan”<br>3) “wangwu”</p>
+<li><p>获取：zrange key start end [withscores]<br>  127.0.0.1:6379&gt; zrange mysort 0 -1<br>  1) “lisi”<br>  2) “zhangsan”<br>  3) “wangwu”</p>
 <p>127.0.0.1:6379&gt; zrange mysort 0 -1 withscores<br>1) “zhangsan”<br>2) “60”<br>3) “wangwu”<br>4) “80”<br>5) “lisi”<br>6) “500”</p>
 </li>
-<li><p>删除：zrem key value<br>127.0.0.1:6379&gt; zrem mysort lisi<br>(integer) 1</p>
+<li><p>删除：zrem key value<br>  127.0.0.1:6379&gt; zrem mysort lisi<br>  (integer) 1</p>
 </li>
 </ol>
 </li>
