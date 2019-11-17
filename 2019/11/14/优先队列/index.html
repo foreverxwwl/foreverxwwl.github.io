@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JavaWeb,Servlet,">
+  <meta name="keywords" content="数据结构,算法,">
 
 
 
@@ -86,18 +86,25 @@
 
 
 
-<meta name="description" content="Servlet学习(request)1. 概念 servlet 是一个接口，定义了java类被浏览器访问到（tomcat）的规则  要定义一个类实现Servlet接口，覆写方法 2. 简单实现 创建javawbe项目  定义一个类，实现Servlet接口  实现接口中的抽象方法 12345678910111213141516171819202122232425262728public class">
-<meta name="keywords" content="JavaWeb,Servlet">
+<meta name="description" content="数据结构–优先队列什么是优队列 队列的特点是先进先出，即先入队的元素首先弹出 优先队列不再遵循先入先出的原则，而是分为两种情况： 最大优先队列，无论入队顺序，当前最大的元素优先出队。 最小优先队列，无论入队顺序，当前最小的元素优先出队。  要满足以上需求，利用线性数据结构并非不能实现，但是时间复杂度较高，最坏时间复杂度O（n），并不是最理想的方式。 实现方法我们可以用最大堆来实现最大优先队列，每一">
+<meta name="keywords" content="数据结构,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet学习(request)">
-<meta property="og:url" content="http://yoursite.com/2019/10/08/Servlet--request/index.html">
+<meta property="og:title" content="数据结构--优先队列">
+<meta property="og:url" content="http://yoursite.com/2019/11/14/优先队列/index.html">
 <meta property="og:site_name" content="昊波波的博客">
-<meta property="og:description" content="Servlet学习(request)1. 概念 servlet 是一个接口，定义了java类被浏览器访问到（tomcat）的规则  要定义一个类实现Servlet接口，覆写方法 2. 简单实现 创建javawbe项目  定义一个类，实现Servlet接口  实现接口中的抽象方法 12345678910111213141516171819202122232425262728public class">
+<meta property="og:description" content="数据结构–优先队列什么是优队列 队列的特点是先进先出，即先入队的元素首先弹出 优先队列不再遵循先入先出的原则，而是分为两种情况： 最大优先队列，无论入队顺序，当前最大的元素优先出队。 最小优先队列，无论入队顺序，当前最小的元素优先出队。  要满足以上需求，利用线性数据结构并非不能实现，但是时间复杂度较高，最坏时间复杂度O（n），并不是最理想的方式。 实现方法我们可以用最大堆来实现最大优先队列，每一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-10T02:53:50.315Z">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/heapQueue/4.jpg">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/heapQueue/5.jpg">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/heapQueue/6.jpg">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/heapQueue/7.jpg">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/heapQueue/8.jpg">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/heapQueue/9.jpg">
+<meta property="og:updated_time" content="2019-11-17T18:25:26.705Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet学习(request)">
-<meta name="twitter:description" content="Servlet学习(request)1. 概念 servlet 是一个接口，定义了java类被浏览器访问到（tomcat）的规则  要定义一个类实现Servlet接口，覆写方法 2. 简单实现 创建javawbe项目  定义一个类，实现Servlet接口  实现接口中的抽象方法 12345678910111213141516171819202122232425262728public class">
+<meta name="twitter:title" content="数据结构--优先队列">
+<meta name="twitter:description" content="数据结构–优先队列什么是优队列 队列的特点是先进先出，即先入队的元素首先弹出 优先队列不再遵循先入先出的原则，而是分为两种情况： 最大优先队列，无论入队顺序，当前最大的元素优先出队。 最小优先队列，无论入队顺序，当前最小的元素优先出队。  要满足以上需求，利用线性数据结构并非不能实现，但是时间复杂度较高，最坏时间复杂度O（n），并不是最理想的方式。 实现方法我们可以用最大堆来实现最大优先队列，每一">
+<meta name="twitter:image" content="http://www.qiniu.yiyip.cn/heapQueue/4.jpg">
 
 
 
@@ -127,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/08/Servlet--request/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/14/优先队列/">
 
 
 
 
 
-  <title>Servlet学习(request) | 昊波波的博客</title>
+  <title>数据结构--优先队列 | 昊波波的博客</title>
   
 
 
@@ -292,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/Servlet--request/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/优先队列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="昊波波">
@@ -309,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Servlet学习(request)</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构--优先队列</h1>
         
 
         <div class="post-meta">
@@ -321,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T11:09:34+08:00">
-                2019-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T22:16:59+08:00">
+                2019-11-14
               </time>
             
 
@@ -344,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaWeb</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -364,8 +371,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/08/Servlet--request/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/08/Servlet--request/" itemprop="commentCount"></span>
+                <a href="/2019/11/14/优先队列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/14/优先队列/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -398,176 +405,35 @@
       
 
       
-        <h1 id="Servlet学习-request"><a href="#Servlet学习-request" class="headerlink" title="Servlet学习(request)"></a>Servlet学习(request)</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><ol>
-<li><p>servlet 是一个接口，定义了java类被浏览器访问到（tomcat）的规则</p>
-</li>
-<li><p>要定义一个类实现Servlet接口，覆写方法</p>
-<h2 id="2-简单实现"><a href="#2-简单实现" class="headerlink" title="2. 简单实现"></a>2. 简单实现</h2></li>
-<li><p>创建javawbe项目</p>
-</li>
-<li><p>定义一个类，实现Servlet接口</p>
-</li>
-<li><p>实现接口中的抽象方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstServlet</span> <span class="keyword">implements</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig servletConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//提供服务的方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello Servlet"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置Servlet</p>
-<blockquote>
-<p>在web目录下的 web.xml中</p>
-</blockquote>
-</li>
+        <h1 id="数据结构–优先队列"><a href="#数据结构–优先队列" class="headerlink" title="数据结构–优先队列"></a>数据结构–优先队列</h1><h2 id="什么是优队列"><a href="#什么是优队列" class="headerlink" title="什么是优队列"></a>什么是优队列</h2><ol>
+<li>队列的特点是先进先出，即先入队的元素首先弹出</li>
+<li>优先队列不再遵循先入先出的原则，而是分为两种情况：<br> 最大优先队列，无论入队顺序，当前最大的元素优先出队。<br> 最小优先队列，无论入队顺序，当前最小的元素优先出队。<br><img src="http://www.qiniu.yiyip.cn/heapQueue/4.jpg" alt="avatar"></li>
 </ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置Servlet --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demol1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.servlet.FirstServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demol1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/demol1<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>支持注解配置，可以不需要web.xml</p>
-<ol>
-<li>定义一个类，实现servlet</li>
-<li>复写方法</li>
-<li>在Servlet文件配置(Servletdome1)<br>@WebServlet(“/demo1”)</li>
+<p>要满足以上需求，利用线性数据结构并非不能实现，但是时间复杂度较高，最坏时间复杂度O（n），并不是最理想的方式。</p>
+<h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><p>我们可以用最大堆来实现最大优先队列，每一次入队操作就是堆的插入操作，每一次出队操作就是删除堆顶节点。</p>
+<h3 id="入队操作"><a href="#入队操作" class="headerlink" title="入队操作"></a>入队操作</h3><ol>
+<li>插入新节点5</li>
 </ol>
-</blockquote>
-<h2 id="3-Servlet方法，生命周期"><a href="#3-Servlet方法，生命周期" class="headerlink" title="3. Servlet方法，生命周期"></a>3. Servlet方法，生命周期</h2><ol>
-<li>被创建：执行init方法，一次<blockquote>
-<p>默认情况下第一次访问时被创建<br>可以配置Servlet创建时机，在web.xml中</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        1.第一次访问时创建 参数为负数（默认）--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        2.在服务器启动时创建  参数为正数--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<blockquote>
-<p>Servlet 的init方法只执行一次，说明一个servlet在内存中只存在一个对象，<br>多个用户访问时就会存在线程安全问题<br>解决：尽量不要在Servlet中定义成员变量，不要对其修改值</p>
-</blockquote>
+<p><img src="http://www.qiniu.yiyip.cn/heapQueue/5.jpg" alt="avatar"></p>
 <ol start="2">
-<li>提供服务：执行service方法，可以多次</li>
-<li>被销毁：服务器关闭时执行 destroy方法，只执行一次</li>
+<li>新节点5上浮到合适位置</li>
 </ol>
-<h2 id="4-servlet体系结构"><a href="#4-servlet体系结构" class="headerlink" title="4. servlet体系结构"></a>4. servlet体系结构</h2><p>Servlet –接口<br>   |<br>GenericServlet  –抽象类<br>   |<br>HttpServlet –抽象类</p>
-<ol>
-<li>GenericServlet（ServletDemo2）<br>将Servlet接口中的方法做了空实现，只将service（）方法作为抽象，不用强制复写其他方法。</li>
-<li>HttpServlet（ServletDemo3）<br>对http协议的分装和描述。内部可以判断请求方式是git还是post<br>定义了doGit，doPost方法。</li>
+<p><img src="http://www.qiniu.yiyip.cn/heapQueue/6.jpg" alt="avatar"></p>
+<h3 id="出队操作"><a href="#出队操作" class="headerlink" title="出队操作"></a>出队操作</h3><ol>
+<li>把原堆顶节点10“出队”</li>
 </ol>
-<h2 id="5-Servlet相关配置"><a href="#5-Servlet相关配置" class="headerlink" title="5. Servlet相关配置"></a>5. Servlet相关配置</h2><ol>
-<li>urlpartten:Servlet 访问路径（ServletDemo4）<ol>
-<li>一个servlet可以定义多个访问路径：@WebServlet({“/d1”,”/d2”,”/d3”})</li>
-<li>路径定义规则：<ul>
-<li>/xxx</li>
-<li>/xx/xx  可以写多层路径，目录结构。也可以 ”/*“</li>
-<li>*.do   可以任意.do  demo3.do </li>
-</ul>
-</li>
+<p><img src="http://www.qiniu.yiyip.cn/heapQueue/7.jpg" alt="avatar"></p>
+<ol start="2">
+<li>最后一个节点1替换到堆顶位置</li>
 </ol>
-</li>
+<p><img src="http://www.qiniu.yiyip.cn/heapQueue/8.jpg" alt="avatar"></p>
+<ol start="3">
+<li>节点1下沉，节点9成为新堆顶</li>
 </ol>
-<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1. 概念"></a>1. 概念</h2><p>Hyper Text Transfer Protocol 超文本传输协议</p>
-<ul>
-<li>传输协议定义了客户端和服务端通信时发送数据的格式<h2 id="2-特点："><a href="#2-特点：" class="headerlink" title="2. 特点："></a>2. 特点：</h2></li>
-</ul>
-<ol>
-<li>基于TCP/IP的高级协议</li>
-<li>默认端口号80</li>
-<li>基于请求响应模型的：一次请求对应一次响应</li>
-<li>无状态的：每次请求时间相互独立，不能通信数据<h2 id="3-历史版本"><a href="#3-历史版本" class="headerlink" title="3. 历史版本"></a>3. 历史版本</h2></li>
-<li>1.0版本：每次请求响应都建立新的连接</li>
-<li>1.1版本：每次请求复用连接 <h2 id="4-请求消息数据格式"><a href="#4-请求消息数据格式" class="headerlink" title="4. 请求消息数据格式"></a>4. 请求消息数据格式</h2></li>
-<li>请求行 字符串格式<ul>
-<li>请求方式 请求url 请求协议/版本</li>
-<li>GET /hello.html HTTP/1.1</li>
-</ul>
-</li>
-<li>请求头<ul>
-<li>请求头名称:请求头值</li>
-<li>User-Agent: 浏览器告诉服务器，使用的浏览器版本信息，可以在服务器端获取头信息解决兼容问题。</li>
-<li>Accept:可以响应格式</li>
-<li>Referer:告诉服务器，当前请求从哪里来。可以防止倒链，也可以做统计工作。</li>
-</ul>
-</li>
-<li>请求空行<ul>
-<li>空行 分隔请求头和请求体</li>
-</ul>
-</li>
-<li>请求体<ul>
-<li>username = lihaobo</li>
-<li>封装POST请求消息的请参数的</li>
-</ul>
-</li>
-</ol>
-<p>整体字符串格式：<br>GET /hello.html HTTP/1.1<br>Host: localhost:8080<br>User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8<br>Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2<br>Accept-Encoding: gzip, deflate<br>Connection: keep-alive<br>Cookie: JSESSIONID=25666E7EBC25C248EA50AF9412E95EBB<br>Upgrade-Insecure-Requests: 1<br>If-Modified-Since: Thu, 03 Oct 2019 15:24:18 GMT<br>If-None-Match: W/“243-1570116258304”<br>Cache-Control: max-age=0</p>
-<p>username = lihaobo</p>
-<h2 id="5-请求方式"><a href="#5-请求方式" class="headerlink" title="5. 请求方式"></a>5. 请求方式</h2><p>Get：</p>
-<ol>
-<li><p>请求参数在请求行中，url中</p>
-</li>
-<li><p>请求的url长度有限制</p>
-</li>
-<li><p>不太安全</p>
-</li>
-</ol>
-<p>post：</p>
-<ol start="4">
-<li><p>请求参数在请求体中</p>
-</li>
-<li><p>url长度无限制</p>
-</li>
-<li><p>相对安全</p>
-</li>
-</ol>
-<h2 id="6-请求响应原理"><a href="#6-请求响应原理" class="headerlink" title="6. 请求响应原理"></a>6. 请求响应原理</h2><ol>
-<li>tomcat服务器会更具请求中url路径创建对应的ServletDemo对象。</li>
-<li>tomcat会创建request和response对象，request对象中封装请求消息数据。</li>
-<li>tomcat将request和response两个对象传递给service方法并且调用service方法。</li>
-<li>我们可以操纵request对象获取请求数据消息，通过request对象设置响应消息数据。</li>
-<li>服务器给浏览器作出响应之前会从response获取响应消息。</li>
-<li>request和response是有服务器创建的</li>
-</ol>
-<h2 id="7-request继承体系"><a href="#7-request继承体系" class="headerlink" title="7. request继承体系"></a>7. request继承体系</h2><p>ServletRequest –接口<br>    | 继承<br>HttpServletRequest –接口<br>    | 实现<br>org.apache.catalina.connector.RequestFacade 类（tomcat）</p>
-<h2 id="8-获取请求数据"><a href="#8-获取请求数据" class="headerlink" title="8. 获取请求数据"></a>8. 获取请求数据</h2><h3 id="1-获取请求行数据"><a href="#1-获取请求行数据" class="headerlink" title="1. 获取请求行数据"></a>1. 获取请求行数据</h3><p> GET /hello.html HTTP/1.1</p>
-<ol>
-<li>获取请求方式 ： Get<br> String getMethod()    </li>
-<li>获取虚拟目录：/<br> String getContextPath()</li>
-<li>获取Servlet路径：/demo2<br> String getServletPath()</li>
-<li>获取 get方式的请求参数<br> String getQueryString()</li>
-<li>获取请求URL：<br> String getRequestURI()  /demo2<br> StringBuffer getRequestURL() HTTP://localhost/demo2<br> UIL：统一资源定位符 HTTP://localhost/demo2<br> URI：统一资源标识符  /demo2</li>
-<li>获取协议及版本 HTTP/1.1<br> String getProtocol()</li>
-<li>获取客户机的ip地址<br> String getRemoteAddr()<h3 id="2-获取请求头数据"><a href="#2-获取请求头数据" class="headerlink" title="2. 获取请求头数据"></a>2. 获取请求头数据</h3></li>
-</ol>
-<p>String getHeader(String name)通过请求头的名称获取值<br>Enumeration  &lt;  String&gt;  getHeaderNames() 获取请求头名称</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取所有请求头</span></span><br><span class="line">Enumeration&lt;String&gt; headerNames =  request.getHeaderNames() ;</span><br><span class="line"><span class="comment">//遍历</span></span><br><span class="line"><span class="keyword">while</span>(headerNames.hasMoreElements())&#123;</span><br><span class="line">	String name = headerNames.nextElement();</span><br><span class="line">	<span class="comment">//根据名称访问请求头的值</span></span><br><span class="line">	String valus = request.getHeader(name);</span><br><span class="line">	System.out.println(name + <span class="string">"--"</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://www.qiniu.yiyip.cn/heapQueue/9.jpg" alt="avatar"></p>
+<p>如此，二叉堆节点上浮下沉时间为longn，则队列操作时间复杂度为longn</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PriorityQueue</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] array;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PriorityQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//初始大小为32位</span></span><br><span class="line">        array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">32</span>];</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 上浮调整</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">upAdjust</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//用于表示当前子节点</span></span><br><span class="line">        <span class="keyword">int</span> childIndex = array.length - <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//用于表示当前子节点的父节点</span></span><br><span class="line">        <span class="keyword">int</span> parentIndex = (childIndex - <span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">        <span class="comment">//将最初始要上浮的叶子节点保存，用于最后赋值</span></span><br><span class="line">        <span class="keyword">int</span> temp = array[childIndex];</span><br><span class="line">        <span class="comment">//上浮</span></span><br><span class="line">        <span class="keyword">while</span> (childIndex &gt; <span class="number">0</span> &amp;&amp; temp &lt; array[parentIndex])&#123;</span><br><span class="line">            <span class="comment">//无需交换 直接赋值</span></span><br><span class="line">            array[childIndex] = array[parentIndex];</span><br><span class="line">            childIndex = parentIndex;</span><br><span class="line">            parentIndex = (childIndex - <span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//此节点最终位置</span></span><br><span class="line">        array[childIndex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 下沉调整</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">downAdjust</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> parentIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> length = size;</span><br><span class="line">        <span class="comment">//temp保存父节点值，用于最后赋值</span></span><br><span class="line">        <span class="keyword">int</span> temp = array[parentIndex];</span><br><span class="line">        <span class="keyword">int</span> childIndex = <span class="number">2</span> * parentIndex + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (childIndex &lt; length)&#123;</span><br><span class="line">            <span class="comment">//如果有右孩子节点 且右孩子节点比左孩子小，则定位到右孩子</span></span><br><span class="line">            <span class="keyword">if</span> (childIndex + <span class="number">1</span> &lt; length &amp;&amp; array[childIndex + <span class="number">1</span>] &lt; array[childIndex])&#123;</span><br><span class="line">                childIndex++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果父节点小于任何一个孩子的值，直接跳出</span></span><br><span class="line">            <span class="keyword">if</span> (temp &lt;= array[childIndex]) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//下沉</span></span><br><span class="line">            array[parentIndex] = array[childIndex];</span><br><span class="line">            parentIndex = childIndex;</span><br><span class="line">            childIndex = parentIndex * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        array[parentIndex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 数组扩容</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">reSize</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> newSize = <span class="keyword">this</span>.size * <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">this</span>.array = Arrays.copyOf(<span class="keyword">this</span>.array, newSize);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 入队操作</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key 入队元素</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">enQueue</span><span class="params">(<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (size &gt; array.length)&#123;</span><br><span class="line">            reSize();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//在队尾插入元素</span></span><br><span class="line">        array[size++] = key;</span><br><span class="line">        <span class="comment">//上浮到相应位置</span></span><br><span class="line">        upAdjust();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 出队</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 出队元素</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">deQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (size &lt; <span class="number">0</span>)</span><br><span class="line">            System.out.println(<span class="string">"没有元素"</span>);</span><br><span class="line">        <span class="comment">//获取堆顶元素出队</span></span><br><span class="line">        <span class="keyword">int</span> key = array[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//将堆低元素放入堆顶</span></span><br><span class="line">        array[<span class="number">0</span>] = array[--size];</span><br><span class="line">        downAdjust();</span><br><span class="line">        <span class="keyword">return</span> key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        PriorityQueue priorityQueue = <span class="keyword">new</span> PriorityQueue();</span><br><span class="line">        <span class="keyword">int</span> l = scanner.nextInt();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; i++)&#123;</span><br><span class="line">            priorityQueue.enQueue(scanner.nextInt());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//出队</span></span><br><span class="line">        System.out.println(priorityQueue.deQueue());</span><br><span class="line">        System.out.println(priorityQueue.deQueue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-获取请求体数据"><a href="#3-获取请求体数据" class="headerlink" title="3. 获取请求体数据"></a>3. 获取请求体数据</h3><p>只有POST请求方式才有请求体</p>
-<ol>
-<li>获取流对象<br> BufferdReader gitReader(): 获取字符输入流<br> SerletInputStream getInputStream(): 获取字节输入流，可操作性所有类型数据。</li>
-<li>从流数据中取数据 </li>
-</ol>
-<h3 id="4-其他功能（重要）"><a href="#4-其他功能（重要）" class="headerlink" title="4. 其他功能（重要）"></a>4. 其他功能（重要）</h3><ol>
-<li><p>获取请求参数（通用方式） （ServletDemo5）</p>
-<ol>
-<li>String getParameter(String name) 根据参数名称获取参数值<br>例如：username = lihaob 传递username就可返回 lihaob</li>
-<li>String getParametervalues(String name) 更具请求参数名获取参数值的数组<br>例如：hobby=xx&amp;hobby=game,则可以将这两个值封装为数组</li>
-<li>Enumeration&lt; String &gt; getParameterNames() :获取所有请求的参数名</li>
-<li>Map&lt; String, String[]&gt; getParameterMap(): 获取所有参数的map集合 </li>
-<li>解决中文乱码问题<br>get方式：已经解决了乱码问题<br>post方式：在获取参数前要设置编码  req.setCharacterEncoding(“utf-8”);</li>
-</ol>
-</li>
-<li><p>请求转发(ServletDemo6,7)</p>
-<ol>
-<li>通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)</li>
-<li>使用RequestDispatcher对象进行转发：forward(ServletRequest req, ServletResponse resp)</li>
-<li>特点：<br> 1.1  浏览器地址栏路径不变化<br> 1.2  只能转发到服务器内部资源中<br> 1.3  只是发送了一个请求，访问了多个资源</li>
-</ol>
-</li>
-<li><p>共享数据</p>
-<ol>
-<li>域对象：一个有作用范围的对象，可以在范围内共享数据。</li>
-<li>request域：一次请求的范围，刚才的转发就是一次请求，一般用于请求转发的多个资源中共享数据。</li>
-<li>方法：<br> void setAttribute(String name， Object obj);存储数据<br> object getAttribute(String name); 通过建获取值<br> void removeAttribute(String name);通过建移除对</li>
-</ol>
-</li>
-<li><p>获取servletContext：</p>
-<ol>
-<li>servletContext getservletContext();</li>
-</ol>
-</li>
-</ol>
 
       
     </div>
@@ -585,9 +451,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaWeb/" rel="tag"> <i class="fa fa-tag"></i> JavaWeb</a>
+            <a href="/tags/数据结构/" rel="tag"> <i class="fa fa-tag"></i> 数据结构</a>
           
-            <a href="/tags/Servlet/" rel="tag"> <i class="fa fa-tag"></i> Servlet</a>
+            <a href="/tags/算法/" rel="tag"> <i class="fa fa-tag"></i> 算法</a>
           
         </div>
       
@@ -600,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/05/JDBC连接池与Template/" rel="next" title="JDBC连接池与Template">
-                <i class="fa fa-chevron-left"></i> JDBC连接池与Template
+              <a href="/2019/11/01/Redis&Jedis/" rel="next" title="Redis&Jedis基础">
+                <i class="fa fa-chevron-left"></i> Redis&Jedis基础
               </a>
             
           </div>
@@ -610,8 +476,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/08/Servlet--response/" rel="prev" title="Servlet学习(response)">
-                Servlet学习(response) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/14/二叉堆/" rel="prev" title="数据结构--二叉堆">
+                数据结构--二叉堆 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -791,7 +657,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet学习-request"><span class="nav-number">1.</span> <span class="nav-text">Servlet学习(request)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概念"><span class="nav-number">1.1.</span> <span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-简单实现"><span class="nav-number">1.2.</span> <span class="nav-text">2. 简单实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Servlet方法，生命周期"><span class="nav-number">1.3.</span> <span class="nav-text">3. Servlet方法，生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-servlet体系结构"><span class="nav-number">1.4.</span> <span class="nav-text">4. servlet体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Servlet相关配置"><span class="nav-number">1.5.</span> <span class="nav-text">5. Servlet相关配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">2.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概念-1"><span class="nav-number">2.1.</span> <span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-特点："><span class="nav-number">2.2.</span> <span class="nav-text">2. 特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-历史版本"><span class="nav-number">2.3.</span> <span class="nav-text">3. 历史版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-请求消息数据格式"><span class="nav-number">2.4.</span> <span class="nav-text">4. 请求消息数据格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-请求方式"><span class="nav-number">2.5.</span> <span class="nav-text">5. 请求方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-请求响应原理"><span class="nav-number">2.6.</span> <span class="nav-text">6. 请求响应原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-request继承体系"><span class="nav-number">2.7.</span> <span class="nav-text">7. request继承体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-获取请求数据"><span class="nav-number">2.8.</span> <span class="nav-text">8. 获取请求数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-获取请求行数据"><span class="nav-number">2.8.1.</span> <span class="nav-text">1. 获取请求行数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-获取请求头数据"><span class="nav-number">2.8.2.</span> <span class="nav-text">2. 获取请求头数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-获取请求体数据"><span class="nav-number">2.8.3.</span> <span class="nav-text">3. 获取请求体数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-其他功能（重要）"><span class="nav-number">2.8.4.</span> <span class="nav-text">4. 其他功能（重要）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构–优先队列"><span class="nav-number">1.</span> <span class="nav-text">数据结构–优先队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是优队列"><span class="nav-number">1.1.</span> <span class="nav-text">什么是优队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现方法"><span class="nav-number">1.2.</span> <span class="nav-text">实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#入队操作"><span class="nav-number">1.2.1.</span> <span class="nav-text">入队操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出队操作"><span class="nav-number">1.2.2.</span> <span class="nav-text">出队操作</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
