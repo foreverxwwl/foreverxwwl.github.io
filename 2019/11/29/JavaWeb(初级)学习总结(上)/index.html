@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="昊波波的博客">
 <meta property="og:description" content="初级阶段JavaWeb的学习已经持续了一个多月，第一次接触服务端的代码编程，不同的思想以及实现方式，加上各种各样的bug使得一开始的学习变得极为困难。现在要结束javaWeb学习时，对近一个阶段的学习做一个总结。 一、一般JavaWeb项目的目录结构使用maven管理的JavaWeb项目，目录分为  src  项目源码  main   主代码  java   java代码resources   配">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T15:44:21.602Z">
+<meta property="og:updated_time" content="2019-12-01T17:08:15.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaWeb(初级)学习总结(上篇)">
 <meta name="twitter:description" content="初级阶段JavaWeb的学习已经持续了一个多月，第一次接触服务端的代码编程，不同的思想以及实现方式，加上各种各样的bug使得一开始的学习变得极为困难。现在要结束javaWeb学习时，对近一个阶段的学习做一个总结。 一、一般JavaWeb项目的目录结构使用maven管理的JavaWeb项目，目录分为  src  项目源码  main   主代码  java   java代码resources   配">
@@ -415,8 +415,6 @@
 <h1 id="二、java服务端代码的结构以及问题解决模式"><a href="#二、java服务端代码的结构以及问题解决模式" class="headerlink" title="二、java服务端代码的结构以及问题解决模式"></a>二、java服务端代码的结构以及问题解决模式</h1><p>java服务端代码一般有web，service，dao，domain，util，web下又有servlet，filter等。以下是详细内容。</p>
 <h2 id="1-servlet"><a href="#1-servlet" class="headerlink" title="1. servlet"></a>1. servlet</h2><p>web中放的一般是servlet,filter和listener。其中servlet可实现后台逻辑的编写，继承自HttpServlet可以直接处理页面的请求，并响应。获取页面数据，并且将数据存入session中。</p>
 <h3 id="注册功能解决模式"><a href="#注册功能解决模式" class="headerlink" title="注册功能解决模式"></a>注册功能解决模式</h3><p>创建返回前端数据的javaBean(resultInfo)内容包括：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> flag;<span class="comment">//后端返回结果正常为true，发生异常返回false</span></span><br><span class="line"><span class="keyword">private</span> Object data;<span class="comment">//后端返回结果数据对象</span></span><br><span class="line"><span class="keyword">private</span> String errorMsg;<span class="comment">//发生异常的错误消息</span></span><br></pre></td></tr></table></figure>
 
 <p>创建封装用户信息的javaBean(User)内容包括：</p>
@@ -429,10 +427,10 @@
 <li>将页面获取的验证码和session中的比较，如果错误则跳转错误页面并将错误信息存入返回前端的数据对象(ResultInfo)中。</li>
 <li>调用service查询，判断返回结果，封装resultInfo对象</li>
 <li>将resultInfo对象序列化为json</li>
-<li>将json数据写会客户端<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将info对象序列化为json</span></span><br><span class="line">ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">String json = mapper.writeValueAsString(info);</span><br><span class="line"><span class="comment">//将json数据写回客户端</span></span><br><span class="line"><span class="comment">//设置content-type</span></span><br><span class="line">response.setContentType(<span class="string">"application/json;charset=utf-8"</span>);</span><br><span class="line">response.getWriter().write(json);</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>将json数据写会客户端</li>
 </ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将info对象序列化为json</span></span><br><span class="line">ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">String json = mapper.writeValueAsString(info);</span><br><span class="line"><span class="comment">//将json数据写回客户端</span></span><br><span class="line"><span class="comment">//设置content-type</span></span><br><span class="line">response.setContentType(<span class="string">"application/json;charset=utf-8"</span>);</span><br><span class="line">response.getWriter().write(json);</span><br></pre></td></tr></table></figure>
+
 <h2 id="2-filter和listener"><a href="#2-filter和listener" class="headerlink" title="2. filter和listener"></a>2. filter和listener</h2><p>filter可以一次性解决页面编码问题，不用在每个servlet中都处理一次页面的编码问题。filter还可以解决页面过滤问题，例如用户没有登录时不能访问其他页面。</p>
 <h3 id="解决页面编码问题"><a href="#解决页面编码问题" class="headerlink" title="解决页面编码问题"></a>解决页面编码问题</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//页面编码问题</span></span><br><span class="line"><span class="meta">@WebFilter</span>(<span class="string">"/*"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CharchaterFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest req, ServletResponse resp, FilterChain chain)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//将父接口转为子接口</span></span><br><span class="line">        HttpServletRequest request = (HttpServletRequest) req;</span><br><span class="line">        HttpServletResponse response = (HttpServletResponse) resp;</span><br><span class="line">        <span class="comment">//获取请求方法</span></span><br><span class="line">        String method = request.getMethod();</span><br><span class="line">        <span class="comment">//解决post请求中文数据乱码问题</span></span><br><span class="line">        <span class="keyword">if</span>(method.equalsIgnoreCase(<span class="string">"post"</span>))&#123;</span><br><span class="line">            request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//处理响应乱码</span></span><br><span class="line">        response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">        chain.doFilter(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -493,6 +491,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/02/JavaWeb(初级)学习总结 (下)/" rel="prev" title="JavaWeb(初级)学习总结(下篇)">
+                JavaWeb(初级)学习总结(下篇) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -600,7 +602,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

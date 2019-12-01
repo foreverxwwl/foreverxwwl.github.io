@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaWeb,学习总结,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="上面从整体上说了JavaWeb的项目结构以及实现方式。这一篇主要通过几个实例，记录一下JavaWeb编程中的一些技巧及思想。 BaseServlet抽取在初步的Servlet编写中，通常一个业务逻辑会编写一个servlet，但是这样编写不利于查看，管理和重用，而且在前端访问过程中难以管理。为了解决这个问题，我们便采用一个BaseServlet来继承自HttpServlet，通过这个servlet来">
+<meta name="keywords" content="JavaWeb,学习总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb(初级)学习总结(下篇)">
+<meta property="og:url" content="http://yoursite.com/2019/12/02/JavaWeb(初级)学习总结 (下)/index.html">
+<meta property="og:site_name" content="昊波波的博客">
+<meta property="og:description" content="上面从整体上说了JavaWeb的项目结构以及实现方式。这一篇主要通过几个实例，记录一下JavaWeb编程中的一些技巧及思想。 BaseServlet抽取在初步的Servlet编写中，通常一个业务逻辑会编写一个servlet，但是这样编写不利于查看，管理和重用，而且在前端访问过程中难以管理。为了解决这个问题，我们便采用一个BaseServlet来继承自HttpServlet，通过这个servlet来">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn//travel%E6%BF%80%E6%B4%BB1.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn//travel%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn//travel%E7%BC%93%E5%AD%98.png">
+<meta property="og:updated_time" content="2019-12-01T17:07:03.838Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaWeb(初级)学习总结(下篇)">
+<meta name="twitter:description" content="上面从整体上说了JavaWeb的项目结构以及实现方式。这一篇主要通过几个实例，记录一下JavaWeb编程中的一些技巧及思想。 BaseServlet抽取在初步的Servlet编写中，通常一个业务逻辑会编写一个servlet，但是这样编写不利于查看，管理和重用，而且在前端访问过程中难以管理。为了解决这个问题，我们便采用一个BaseServlet来继承自HttpServlet，通过这个servlet来">
+<meta name="twitter:image" content="http://www.qiniu.yiyip.cn//travel%E6%BF%80%E6%B4%BB1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/02/JavaWeb(初级)学习总结 (下)/">
+
+
+
+
+
+  <title>JavaWeb(初级)学习总结(下篇) | 昊波波的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">昊波波的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学习中的点点滴滴</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/02/JavaWeb(初级)学习总结 (下)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="昊波波">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="昊波波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaWeb(初级)学习总结(下篇)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-02T01:07:35+08:00">
+                2019-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaWeb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+              
+            </span>
+          
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/02/JavaWeb(初级)学习总结 (下)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/02/JavaWeb(初级)学习总结 (下)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上面从整体上说了JavaWeb的项目结构以及实现方式。这一篇主要通过几个实例，记录一下JavaWeb编程中的一些技巧及思想。</p>
+<h1 id="BaseServlet抽取"><a href="#BaseServlet抽取" class="headerlink" title="BaseServlet抽取"></a>BaseServlet抽取</h1><p>在初步的Servlet编写中，通常一个业务逻辑会编写一个servlet，但是这样编写不利于查看，管理和重用，而且在前端访问过程中难以管理。<br>为了解决这个问题，我们便采用一个BaseServlet来继承自HttpServlet，通过这个servlet来统一接收页面请求，并获取请求uri，通过请求路径将其分发给其他的servlet，其他servlet便继承自BaseServlet。下面的例子都是使用BaseServlet以后的实现方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//完成方法分发</span></span><br><span class="line">        <span class="comment">//1.获取请求路径</span></span><br><span class="line">        String uri = req.getRequestURI(); <span class="comment">//   /travel/user/add</span></span><br><span class="line">        <span class="comment">//System.out.println("请求uri:"+uri);//  /travel/user/add</span></span><br><span class="line">        <span class="comment">//2.获取方法名称</span></span><br><span class="line">        String methodName = uri.substring(uri.lastIndexOf(<span class="string">'/'</span>) + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//System.out.println("方法名称："+methodName);</span></span><br><span class="line">        <span class="comment">//3.获取方法对象Method</span></span><br><span class="line">        <span class="comment">//谁调用我？我代表谁</span></span><br><span class="line">        <span class="comment">//System.out.println(this);//UserServlet的对象cn.itcast.travel.web.servlet.UserServlet@4903d97e</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//获取方法</span></span><br><span class="line">            Method method = <span class="keyword">this</span>.getClass().getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);</span><br><span class="line">            <span class="comment">//4.执行方法</span></span><br><span class="line">            method.invoke(<span class="keyword">this</span>,req,resp);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 直接将传入的对象序列化为json，并且写回客户端</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeValue</span><span class="params">(Object obj,HttpServletResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        response.setContentType(<span class="string">"application/json;charset=utf-8"</span>);</span><br><span class="line">        mapper.writeValue(response.getOutputStream(),obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将传入的对象序列化为json，返回</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">writeValueAsString</span><span class="params">(Object obj)</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line">        ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        <span class="keyword">return</span> mapper.writeValueAsString(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="发邮件激活问题"><a href="#发邮件激活问题" class="headerlink" title="发邮件激活问题"></a>发邮件激活问题</h1><ol>
+<li>在用户注册时，就会有一个唯一的激活码随之生成，设置激活状态为“N”，并且发送邮件给用户，用户点击后进入激活的Servlet。</li>
+<li>进入激活的Servlet后获取刚才生成的激活码，并调用Service通过激活码查询用户，将查询到的用户的激活状态置为“Y”。<br><img src="http://www.qiniu.yiyip.cn//travel%E6%BF%80%E6%B4%BB1.png" alt="err"><br>以下是具体实现<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">active</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1.获取激活码</span></span><br><span class="line">        String code = request.getParameter(<span class="string">"code"</span>);</span><br><span class="line">        <span class="keyword">if</span>(code != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//2.调用service完成激活</span></span><br><span class="line">            <span class="comment">//UserService service = new UserServiceImpl();</span></span><br><span class="line">            <span class="keyword">boolean</span> flag = service.active(code);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//3.判断标记</span></span><br><span class="line">            String msg = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                <span class="comment">//激活成功</span></span><br><span class="line">                msg = <span class="string">"激活成功，请&lt;a href='login.html'&gt;登录&lt;/a&gt;"</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//激活失败</span></span><br><span class="line">                msg = <span class="string">"激活失败，请联系管理员!"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">            response.getWriter().write(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Service层"><a href="#Service层" class="headerlink" title="Service层"></a>Service层</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注册用户</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user 注册用户信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 是否注册成功</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">regist</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//通过用户名查询用户</span></span><br><span class="line">        User byUsername = userDao.findByUsername(user.getUsername());</span><br><span class="line">        <span class="comment">//如果用户已存在</span></span><br><span class="line">        <span class="keyword">if</span> (byUsername != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//返回失败</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//保存用户信息</span></span><br><span class="line">        <span class="comment">//1.设置激活码对应唯一用户</span></span><br><span class="line">        user.setCode(UuidUtil.getUuid());</span><br><span class="line">        <span class="comment">//2.设置激活状态</span></span><br><span class="line">        user.setStatus(<span class="string">"N"</span>);</span><br><span class="line">        userDao.save(user);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//发送激活邮件</span></span><br><span class="line">        String content=<span class="string">"&lt;a href='http://localhost/travel/user/active?code="</span>+user.getCode()+<span class="string">"'&gt;点击激活【黑马旅游网】&lt;/a&gt;"</span>;</span><br><span class="line"></span><br><span class="line">        MailUtils.sendMail(user.getEmail(),content,<span class="string">"激活邮件"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 激活用户</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> code 激活码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 激活状态</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">active</span><span class="params">(String code)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//通过激活码查询用户</span></span><br><span class="line">        User user = userDao.findBycode(code);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        userDao.active(user);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过激活码查找用户</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> code 激活码</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 找到的用户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">findBycode</span><span class="params">(String code)</span> </span>&#123;</span><br><span class="line">    User user = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String sql = <span class="string">"select * from tab_user where code = ?"</span>;</span><br><span class="line">        user = template.queryForObject(sql, <span class="keyword">new</span> BeanPropertyRowMapper&lt;User&gt;(User.class), code);</span><br><span class="line">    &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改用户激活状态</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> user 待修改用户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">active</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">    String sql = <span class="string">"update tab_user set status = 'Y' where code=?"</span>;</span><br><span class="line">    template.update(sql,user.getCode());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="分页显示功能"><a href="#分页显示功能" class="headerlink" title="分页显示功能"></a>分页显示功能</h1><ol>
+<li>从客户端获取到当前页码、每页显示条数、以及当前页面分类</li>
+<li>处理获取到的参数，将其转为适当类型，没有输入则将获取到的字符串“null”变为null。并调用Service</li>
+<li>在Service中通过页面分类id调dao查出总记录数</li>
+<li>通过当前页码数以及每页显示条数算出本页起始记录数 = (currentPage - 1) * pageSize</li>
+<li>调用dao查到本页要展示的记录信息</li>
+<li>计算总页数=totalCount % pageSize == 0? totalCount / pageSize :(totalCount / pageSize) + 1</li>
+<li>封装分页的JavaBean类PageBean并返回</li>
+</ol>
+<p><img src="http://www.qiniu.yiyip.cn//travel%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2.png" alt="err"></p>
+<h2 id="PageBean"><a href="#PageBean" class="headerlink" title="PageBean"></a>PageBean</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PageBean</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> totalCount;<span class="comment">//总记录数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> totalPage;<span class="comment">//总页数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> currentPage;<span class="comment">//当前页码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pageSize;<span class="comment">//每页显示条数</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;T&gt; list;<span class="comment">//每页显示的数据集合</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTotalCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> totalCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTotalCount</span><span class="params">(<span class="keyword">int</span> totalCount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.totalCount = totalCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTotalPage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> totalPage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTotalPage</span><span class="params">(<span class="keyword">int</span> totalPage)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.totalPage = totalPage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCurrentPage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> currentPage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCurrentPage</span><span class="params">(<span class="keyword">int</span> currentPage)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.currentPage = currentPage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPageSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pageSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPageSize</span><span class="params">(<span class="keyword">int</span> pageSize)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.pageSize = pageSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;T&gt; <span class="title">getList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setList</span><span class="params">(List&lt;T&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.list = list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pageQuery</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1.接受参数</span></span><br><span class="line">        String currentPageStr = request.getParameter(<span class="string">"currentPage"</span>);</span><br><span class="line">        String pageSizeStr = request.getParameter(<span class="string">"pageSize"</span>);</span><br><span class="line">        String cidstr = request.getParameter(<span class="string">"cid"</span>);</span><br><span class="line">        String rname = request.getParameter(<span class="string">"rname"</span>);</span><br><span class="line">        <span class="comment">//解决git请求中文乱码问题</span></span><br><span class="line">        rname = <span class="keyword">new</span> String(rname.getBytes(<span class="string">"iso-8859-1"</span>), <span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"null"</span>.equals(rname))&#123;</span><br><span class="line">            rname = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2.处理参数</span></span><br><span class="line">        <span class="keyword">int</span> cid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (cidstr != <span class="keyword">null</span> &amp;&amp; cidstr.length() &gt; <span class="number">0</span> &amp;&amp; !<span class="string">"null"</span>.equals(cidstr))&#123;</span><br><span class="line">            cid = Integer.parseInt(cidstr);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> currentPage = <span class="number">0</span>;<span class="comment">//当前页码默认为第一页</span></span><br><span class="line">        <span class="keyword">if</span> (currentPageStr != <span class="keyword">null</span> &amp;&amp; currentPageStr.length() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            currentPage = Integer.parseInt(currentPageStr);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            currentPage = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//页面大小、默认为5</span></span><br><span class="line">        <span class="keyword">int</span> pageSize = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (pageSizeStr != <span class="keyword">null</span> &amp;&amp; pageSizeStr.length() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            pageSize = Integer.parseInt(pageSizeStr);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            pageSize = <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//3.调动service查询</span></span><br><span class="line">        PageBean&lt;Route&gt; pb = routeService.pageQuery(cid, currentPage, pageSize, rname);</span><br><span class="line">        <span class="comment">//4.序列化为Json返回</span></span><br><span class="line">        writeValue(pb, response);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="service"><a href="#service" class="headerlink" title="service"></a>service</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> PageBean&lt;Route&gt; <span class="title">pageQuery</span><span class="params">(<span class="keyword">int</span> cid, <span class="keyword">int</span> currentPage, <span class="keyword">int</span> pageSize, String rname)</span> </span>&#123;</span><br><span class="line">        PageBean&lt;Route&gt; pb = <span class="keyword">new</span> PageBean&lt;Route&gt;();</span><br><span class="line">        <span class="comment">//1.封装pageBean</span></span><br><span class="line">        <span class="comment">//设置页码</span></span><br><span class="line">        pb.setCurrentPage(currentPage);</span><br><span class="line">        <span class="comment">//设置每页显示条数</span></span><br><span class="line">        pb.setPageSize(pageSize);</span><br><span class="line">        <span class="comment">//设置总记录数</span></span><br><span class="line">        <span class="keyword">int</span> totalCount = routeDao.findTotalCount(cid, rname);</span><br><span class="line">        pb.setTotalCount(totalCount);</span><br><span class="line">        <span class="comment">//设置当前显示的数据集合</span></span><br><span class="line">        <span class="keyword">int</span> start = (currentPage - <span class="number">1</span>) * pageSize;<span class="comment">//开始的记录数</span></span><br><span class="line">        List&lt;Route&gt; list = routeDao.findByPage(cid, start, pageSize, rname);</span><br><span class="line">        pb.setList(list);</span><br><span class="line">        <span class="comment">//设置总页数</span></span><br><span class="line">        <span class="keyword">int</span> totalPage = totalCount % pageSize == <span class="number">0</span>? totalCount / pageSize :(totalCount / pageSize) + <span class="number">1</span>;</span><br><span class="line">        pb.setTotalPage(totalPage);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pb;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询cid总记录数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cid</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findTotalCount</span><span class="params">(<span class="keyword">int</span> cid, String rname)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//String sql = "select count(*) from tab_route where cid = ?";</span></span><br><span class="line">        <span class="comment">//1.定义sql模板</span></span><br><span class="line">        String sql = <span class="string">"select count(*) from tab_route where 1=1 "</span>;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder(sql);</span><br><span class="line"></span><br><span class="line">        List params = <span class="keyword">new</span> ArrayList();<span class="comment">//条件们</span></span><br><span class="line">        <span class="comment">//2.判断参数是否有值</span></span><br><span class="line">        <span class="keyword">if</span>(cid != <span class="number">0</span>)&#123;</span><br><span class="line">            sb.append( <span class="string">" and cid = ? "</span>);</span><br><span class="line"></span><br><span class="line">            params.add(cid);<span class="comment">//添加？对应的值</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(rname != <span class="keyword">null</span> &amp;&amp; rname.length() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            sb.append(<span class="string">" and rname like ? "</span>);</span><br><span class="line"></span><br><span class="line">            params.add(<span class="string">"%"</span>+rname+<span class="string">"%"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        sql = sb.toString();</span><br><span class="line">        <span class="keyword">return</span> template.queryForObject(sql, Integer.class, params.toArray());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据cid，start，pageSize查询当前的页数集合</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cid</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> start</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pageSize</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Route&gt; <span class="title">findByPage</span><span class="params">(<span class="keyword">int</span> cid, <span class="keyword">int</span> start, <span class="keyword">int</span> pageSize, String rname)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//String sql = "select * from tab_route where cid = ? limit ? , ?";</span></span><br><span class="line">        String sql = <span class="string">" select * from tab_route where 1 = 1 "</span>;</span><br><span class="line">        <span class="comment">//1.定义sql模板</span></span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder(sql);</span><br><span class="line"></span><br><span class="line">        List params = <span class="keyword">new</span> ArrayList();<span class="comment">//条件们</span></span><br><span class="line">        <span class="comment">//2.判断参数是否有值</span></span><br><span class="line">        <span class="keyword">if</span>(cid != <span class="number">0</span>)&#123;</span><br><span class="line">            sb.append( <span class="string">" and cid = ? "</span>);</span><br><span class="line"></span><br><span class="line">            params.add(cid);<span class="comment">//添加？对应的值</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(rname != <span class="keyword">null</span> &amp;&amp; rname.length() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            sb.append(<span class="string">" and rname like ? "</span>);</span><br><span class="line"></span><br><span class="line">            params.add(<span class="string">"%"</span>+rname+<span class="string">"%"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(<span class="string">" limit ? , ? "</span>);<span class="comment">//分页条件</span></span><br><span class="line"></span><br><span class="line">        sql = sb.toString();</span><br><span class="line"></span><br><span class="line">        params.add(start);</span><br><span class="line">        params.add(pageSize);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> template.query(sql,<span class="keyword">new</span> BeanPropertyRowMapper&lt;Route&gt;(Route.class),params.toArray());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h1><p>对于一些要多次加载，且一次加载后不会有变动的数据，我们通常使用redis优化。例如分类的数据在每一次页面加载后都会重新请求数据库来加载，对数据库的压力比较大，而且分类的数据不会经常产生变化，所以可以使用redis来缓存这个数据。<br><img src="http://www.qiniu.yiyip.cn//travel%E7%BC%93%E5%AD%98.png" alt="err"></p>
+<h2 id="service-1"><a href="#service-1" class="headerlink" title="service"></a>service</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询所有,使用Redis缓存优化</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Category&gt; <span class="title">findAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.查询Redis数据库</span></span><br><span class="line">        <span class="comment">//获取jedis数据库</span></span><br><span class="line">        Jedis jedis = JedisUtil.getJedis();</span><br><span class="line">        <span class="comment">//可使用sortedset排序查询</span></span><br><span class="line">        <span class="comment">//Set&lt;String&gt; categorys = jedis.zrange("category", 0, -1);</span></span><br><span class="line">        <span class="comment">//1.3查询sortedset中的分数(cid)和值(cname)</span></span><br><span class="line">        Set&lt;Tuple&gt; categorys = jedis.zrangeWithScores(<span class="string">"category"</span>, <span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">        List&lt;Category&gt; cs = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (categorys.size() == <span class="number">0</span> || categorys == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//2.如果没有查到，那么查询数据库</span></span><br><span class="line">            cs = categoryDao.findAll();</span><br><span class="line">            <span class="comment">//将查询结果保存</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cs.size(); i++) &#123;</span><br><span class="line">                jedis.zadd(<span class="string">"category"</span>, cs.get(i).getCid(), cs.get(i).getCname());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//3.如果查到了，那么将查到的Set集合categorys存入List集合cs</span></span><br><span class="line">            cs = <span class="keyword">new</span> ArrayList&lt;Category&gt;();</span><br><span class="line">            <span class="keyword">for</span> (Tuple tuple : categorys) &#123;</span><br><span class="line">                <span class="comment">//封装一个分类集合</span></span><br><span class="line">                Category category = <span class="keyword">new</span> Category();</span><br><span class="line">                category.setCname(tuple.getElement());</span><br><span class="line">                category.setCid((<span class="keyword">int</span>)tuple.getScore());</span><br><span class="line">                <span class="comment">//将集合放入cs中</span></span><br><span class="line">                cs.add(category);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cs;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaWeb/" rel="tag"> <i class="fa fa-tag"></i> JavaWeb</a>
+          
+            <a href="/tags/学习总结/" rel="tag"> <i class="fa fa-tag"></i> 学习总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/29/JavaWeb(初级)学习总结(上)/" rel="next" title="JavaWeb(初级)学习总结(上篇)">
+                <i class="fa fa-chevron-left"></i> JavaWeb(初级)学习总结(上篇)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="昊波波">
+            
+              <p class="site-author-name" itemprop="name">昊波波</p>
+              <p class="site-description motion-element" itemprop="description">希望能体验从未有过的情感，希望能遇见一些想法不同的人</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/foreverxwwl" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:455702707@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BaseServlet抽取"><span class="nav-number">1.</span> <span class="nav-text">BaseServlet抽取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发邮件激活问题"><span class="nav-number">2.</span> <span class="nav-text">发邮件激活问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet"><span class="nav-number">2.1.</span> <span class="nav-text">Servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service层"><span class="nav-number">2.2.</span> <span class="nav-text">Service层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao层"><span class="nav-number">2.3.</span> <span class="nav-text">Dao层</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分页显示功能"><span class="nav-number">3.</span> <span class="nav-text">分页显示功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PageBean"><span class="nav-number">3.1.</span> <span class="nav-text">PageBean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet"><span class="nav-number">3.2.</span> <span class="nav-text">servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-number">3.3.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dao"><span class="nav-number">3.4.</span> <span class="nav-text">dao</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存优化"><span class="nav-number">4.</span> <span class="nav-text">缓存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#service-1"><span class="nav-number">4.1.</span> <span class="nav-text">service</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=558261233&auto=1&height=66"></iframe>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-[object Object]"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昊波波</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">symbols_count_time.count_total：</span>
+    
+	<span title="Site words total count">
+     字 </span>
+    <!--<span title="symbols_count_time.count_total"></span>-->
+  
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数 <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量 <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'f1AecbFu1rzghgiOyiy3HCja-gzGzoHsz',
+        appKey: '2sRTSS9926O2qduIJ532XEOp',
+        placeholder: '快来评论吧',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
