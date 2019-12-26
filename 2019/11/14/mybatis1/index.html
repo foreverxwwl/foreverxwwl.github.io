@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="昊波波的博客">
 <meta property="og:description" content="mybatis环境搭建 新建一个空的maven工程 配置相应的pom文件（其中包含mybatis，mysql等）   12345678910111213141516171819202122232425262728293031323334&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;project xmlns=&quot;http://maven.apache">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-18T13:29:45.320Z">
+<meta property="og:updated_time" content="2019-12-25T17:15:18.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis学习">
 <meta name="twitter:description" content="mybatis环境搭建 新建一个空的maven工程 配置相应的pom文件（其中包含mybatis，mysql等）   12345678910111213141516171819202122232425262728293031323334&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;project xmlns=&quot;http://maven.apache">
@@ -459,6 +459,35 @@
 <p>id 标签：用于指定主键字段， result 标签：用于指定非主键字段 ，column 属性：用于指定数据库列名 ，property 属性：用于指定实体类属性名称 </p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置查询所有操作 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findAll"</span> <span class="attr">resultMap</span>=<span class="string">"userMap"</span>&gt;</span>  </span><br><span class="line">    select * from user </span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<h1 id="properties标签的使用"><a href="#properties标签的使用" class="headerlink" title="properties标签的使用"></a>properties标签的使用</h1><p>在数据库连接配置文件中（SqlMapConfig.xml）使用properties标签可以配置数据库连接信息。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 配置连接数据库的4个基本信息 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"com.mysql.cj.jdbc.Driver"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/myBatis?serverTimezone=UTC"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"123456"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在原本配置连接信息的地方，我们就将其改为${}引用的形式</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置连接数据库的4个基本信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$&#123;driver&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;url&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;root&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;password&#125;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但我们一般将此配置放在config文件外面的一个单独的.properties文件<br>在引用时，properties标签中的resource属性： 用于指定配置文件的位置，是按照类路径的写法来写，并且必须存在于类路径下。<strong>resource=”jdbcConfig.proper”</strong><br>或者使用url属性，但是url属性应为不灵活所以不经常使用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driver=com.mysql.cj.jdbc.Driver</span><br><span class="line">url=jdbc:mysql://localhost:3306/myBatis?serverTimezone=UTC</span><br><span class="line">username=root</span><br><span class="line">password=123456</span><br></pre></td></tr></table></figure>
+
+<h1 id="typeAliases标签和package标签的使用"><a href="#typeAliases标签和package标签的使用" class="headerlink" title="typeAliases标签和package标签的使用"></a>typeAliases标签和package标签的使用</h1><p>在编写UserDao.xml时经常会用到实体类作为参数或者返回值，但是每次都要写全限定类名，会很麻烦，所以我们可以在SQLMapConfig.xml中使用&lt; typeAliases&gt;标签来起一个别名，或者用package标签来指定包路径。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        typeAlias用于配置别名。type属性指定的是实体类全限定类名。alias属性指定别名，当指定了别名就再区分大小写--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">type</span>=<span class="string">"com.domain.User"</span> <span class="attr">alias</span>=<span class="string">"user"</span>&gt;</span><span class="tag">&lt;/<span class="name">typeAlias</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者用package标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 用于指定要配置别名的包，当指定之后，该包下的实体类都会注册别名，并且类名就是别名，不再区分大小写--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.domain"</span>&gt;</span><span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如此编写后在xml中的全限定类名可写为</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--&lt;select id="findAll" resultType="com.domain.User"&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findAll"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">        select * from user;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>SQLMapConfig.xml中配置map映射UserDao.xml也可以用package修改</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    &lt;mapper resource="com/dao/UserDao.xml"/&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- package标签是用于指定dao接口所在的包,当指定了之后就不需要在写mapper以及resource或者class了 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.dao"</span>&gt;</span><span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="连接池的使用"><a href="#连接池的使用" class="headerlink" title="连接池的使用"></a>连接池的使用</h1><h2 id="连接池的分类"><a href="#连接池的分类" class="headerlink" title="连接池的分类"></a>连接池的分类</h2><p>在Mybatis中数据源dataSource分为三类，分别是：<br>UNPOOLED   不使用连接池的数据源，<br>POOLED         使用连接池的数据源，<br>JNDI                 使用JNDI实现的数据源。<br>相应，MyBatis内部有两个实现了UnpooledDataSource，PooledDataSource的类继承自java.sql.DataSource接口。</p>
+<ol>
+<li>这两个类都实现了DataSource接口，并且PooledDataSource有一个UnpooledDataSource的引用，当PooleDataSource要创建需要创建java.sql.Connection实例对象时，<strong>还是通过UnpooledDataSource来创建</strong>，PooledDataSource只是提供一种<strong>缓存连接池机制</strong>。</li>
+<li>连接方式<br>通过源码分析，发现在连接时，首先在<strong>空闲连接池集合</strong>中查看有没有空闲的连接，如果没有则判断<strong>活动连接池集合</strong>中还有没有地方，如果有则创建一个连接在活动连接池中。如果还是没有，则将连接池中最老的一个连接，将其更新后使用。<h2 id="连接池的配置"><a href="#连接池的配置" class="headerlink" title="连接池的配置"></a>连接池的配置</h2>在SqlMapConfig.xml中配置连接池。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    &lt;mapper resource="com/dao/UserDao.xml"/&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- package标签是用于指定dao接口所在的包,当指定了之后就不需要在写mapper以及resource或者class了 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.dao"</span>&gt;</span><span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>MyBatis 在初始化时，根据<datasource>的 type 属性来创建相应类型的的数据源 DataSource，即：<br>type=”POOLED”：MyBatis 会创建 PooledDataSource 实例<br>type=”UNPOOLED” ： MyBatis 会创建 UnpooledDataSource 实例<br>type=”JNDI”：MyBatis 会从 JNDI 服务上查找 DataSource 实例，然后返回使用 </datasource></p>
 
       
     </div>
@@ -489,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/14/优先队列/" rel="next" title="数据结构--优先队列">
-                <i class="fa fa-chevron-left"></i> 数据结构--优先队列
+              <a href="/2019/11/01/Redis&Jedis/" rel="next" title="Redis&Jedis基础">
+                <i class="fa fa-chevron-left"></i> Redis&Jedis基础
               </a>
             
           </div>
@@ -499,8 +528,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/14/二叉堆/" rel="prev" title="数据结构--二叉堆">
-                数据结构--二叉堆 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/14/优先队列/" rel="prev" title="数据结构--优先队列">
+                数据结构--优先队列 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -680,7 +709,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mybatis环境搭建"><span class="nav-number">1.</span> <span class="nav-text">mybatis环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#传递pojo包装对象"><span class="nav-number">2.</span> <span class="nav-text">传递pojo包装对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改实体类"><span class="nav-number">3.</span> <span class="nav-text">修改实体类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mybatis环境搭建"><span class="nav-number">1.</span> <span class="nav-text">mybatis环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#传递pojo包装对象"><span class="nav-number">2.</span> <span class="nav-text">传递pojo包装对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改实体类"><span class="nav-number">3.</span> <span class="nav-text">修改实体类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#properties标签的使用"><span class="nav-number">4.</span> <span class="nav-text">properties标签的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeAliases标签和package标签的使用"><span class="nav-number">5.</span> <span class="nav-text">typeAliases标签和package标签的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接池的使用"><span class="nav-number">6.</span> <span class="nav-text">连接池的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连接池的分类"><span class="nav-number">6.1.</span> <span class="nav-text">连接池的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接池的配置"><span class="nav-number">6.2.</span> <span class="nav-text">连接池的配置</span></a></li></ol></li></ol></div>
             
 
           </div>
