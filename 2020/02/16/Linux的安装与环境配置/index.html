@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="spring,">
+  <meta name="keywords" content="Linux,">
 
 
 
@@ -86,18 +86,21 @@
 
 
 
-<meta name="description" content="为什么要进行事务控制事务的概述  事务指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。事务在数据库的增删改操作中最为常见。事务具有ACID的特性，即原子性、一致性、隔离性、持久性。通过JDBC首先来了解一下事务：JDBC中的事务事务的操作主要由四大模块，即事务的开启、事务的提交、事务的回滚和释放连接。 进行事物控制的原因我们来看看下面的service代码 12345678">
-<meta name="keywords" content="spring">
+<meta name="description" content="centos的网络配置配置固定的ip地址1.首先进入eth0的网络配置文件,使用vim编辑器打开 1vim  /etc/sysconfig/network-scripts/ifcfg-eth0  其中需要配置的是以下几个点  BOOTPROTO=static 表示将ip设置为静态ip DEFROUTE=yes  表示自启动网络服务 IPADDR=192.168.3.129  表示本服务器的ip地址">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring的事物控制学习总结">
-<meta property="og:url" content="http://yoursite.com/2020/02/13/spring的事物控制/index.html">
+<meta property="og:title" content="Linux的安装与环境配置">
+<meta property="og:url" content="http://yoursite.com/2020/02/16/Linux的安装与环境配置/index.html">
 <meta property="og:site_name" content="昊波波的博客">
-<meta property="og:description" content="为什么要进行事务控制事务的概述  事务指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。事务在数据库的增删改操作中最为常见。事务具有ACID的特性，即原子性、一致性、隔离性、持久性。通过JDBC首先来了解一下事务：JDBC中的事务事务的操作主要由四大模块，即事务的开启、事务的提交、事务的回滚和释放连接。 进行事物控制的原因我们来看看下面的service代码 12345678">
+<meta property="og:description" content="centos的网络配置配置固定的ip地址1.首先进入eth0的网络配置文件,使用vim编辑器打开 1vim  /etc/sysconfig/network-scripts/ifcfg-eth0  其中需要配置的是以下几个点  BOOTPROTO=static 表示将ip设置为静态ip DEFROUTE=yes  表示自启动网络服务 IPADDR=192.168.3.129  表示本服务器的ip地址">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-13T13:54:51.812Z">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux/linuxeth0.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux/linuxeth01.png">
+<meta property="og:updated_time" content="2020-02-16T16:12:21.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring的事物控制学习总结">
-<meta name="twitter:description" content="为什么要进行事务控制事务的概述  事务指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。事务在数据库的增删改操作中最为常见。事务具有ACID的特性，即原子性、一致性、隔离性、持久性。通过JDBC首先来了解一下事务：JDBC中的事务事务的操作主要由四大模块，即事务的开启、事务的提交、事务的回滚和释放连接。 进行事物控制的原因我们来看看下面的service代码 12345678">
+<meta name="twitter:title" content="Linux的安装与环境配置">
+<meta name="twitter:description" content="centos的网络配置配置固定的ip地址1.首先进入eth0的网络配置文件,使用vim编辑器打开 1vim  /etc/sysconfig/network-scripts/ifcfg-eth0  其中需要配置的是以下几个点  BOOTPROTO=static 表示将ip设置为静态ip DEFROUTE=yes  表示自启动网络服务 IPADDR=192.168.3.129  表示本服务器的ip地址">
+<meta name="twitter:image" content="http://www.qiniu.yiyip.cn/linux/linuxeth0.png">
 
 
 
@@ -127,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/13/spring的事物控制/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/16/Linux的安装与环境配置/">
 
 
 
 
 
-  <title>spring的事物控制学习总结 | 昊波波的博客</title>
+  <title>Linux的安装与环境配置 | 昊波波的博客</title>
   
 
 
@@ -292,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/13/spring的事物控制/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/Linux的安装与环境配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="昊波波">
@@ -309,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring的事物控制学习总结</h1>
+          <h1 class="post-title" itemprop="name headline">Linux的安装与环境配置</h1>
         
 
         <div class="post-meta">
@@ -321,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-13T19:11:34+08:00">
-                2020-02-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T23:00:14+08:00">
+                2020-02-16
               </time>
             
 
@@ -344,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/spring/" itemprop="url" rel="index">
-                    <span itemprop="name">spring</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -364,8 +367,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/02/13/spring的事物控制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/13/spring的事物控制/" itemprop="commentCount"></span>
+                <a href="/2020/02/16/Linux的安装与环境配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/16/Linux的安装与环境配置/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -398,27 +401,21 @@
       
 
       
-        <h1 id="为什么要进行事务控制"><a href="#为什么要进行事务控制" class="headerlink" title="为什么要进行事务控制"></a>为什么要进行事务控制</h1><h2 id="事务的概述"><a href="#事务的概述" class="headerlink" title="事务的概述"></a>事务的概述</h2><p>  事务指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。事务在数据库的增删改操作中最为常见。事务具有ACID的特性，即原子性、一致性、隔离性、持久性。通过JDBC首先来了解一下事务：<br>JDBC中的事务<br>事务的操作主要由四大模块，即事务的开启、事务的提交、事务的回滚和释放连接。</p>
-<h2 id="进行事物控制的原因"><a href="#进行事物控制的原因" class="headerlink" title="进行事物控制的原因"></a>进行事物控制的原因</h2><p>我们来看看下面的service代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transfer</span><span class="params">(String name1, String name2, Integer money)</span> </span>&#123;</span><br><span class="line">        Account account1 = accountDao.findAccountByName(name1);</span><br><span class="line">        Account account2 = accountDao.findAccountByName(name2);</span><br><span class="line">        account1.setMoney(account1.getMoney() - money);</span><br><span class="line">        account2.setMoney(account2.getMoney() + money);</span><br><span class="line">        accountDao.updateAccount(account1);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>/<span class="number">0</span>;<span class="comment">//制造异常</span></span><br><span class="line">        accountDao.updateAccount(account2);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="centos的网络配置"><a href="#centos的网络配置" class="headerlink" title="centos的网络配置"></a>centos的网络配置</h1><h2 id="配置固定的ip地址"><a href="#配置固定的ip地址" class="headerlink" title="配置固定的ip地址"></a>配置固定的ip地址</h2><p><strong>1.首先进入eth0的网络配置文件</strong>,使用vim编辑器打开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim  /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure>
 
-<p>当进行转账操作时，我们修改了账户1的信息以后，一旦这里有一场中断后，程序结束，此时账户1的信息已经修改但是账户2的没有变化，就会出现错误。</p>
-<h1 id="通过aop实现事物控制"><a href="#通过aop实现事物控制" class="headerlink" title="通过aop实现事物控制"></a>通过aop实现事物控制</h1><p>前面学习了aop，我们也可以通过aop编写一个切面实现事物控制。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span><span class="comment">//表示当前类是一个切面类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ConnectionUtils connectionUtils;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setConnectionUtils</span><span class="params">(ConnectionUtils connectionUtils)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.connectionUtils = connectionUtils;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut</span>(<span class="string">"execution(* com.service.impl.*.*(..))"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pt1</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 开启事务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Before</span>(<span class="string">"pt1()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beginTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//手动提交</span></span><br><span class="line">            System.out.println(<span class="string">"开启了事务"</span>);</span><br><span class="line">            connectionUtils.getThreadConnection().setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 提交事务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AfterReturning</span>(<span class="string">"pt1()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">commit</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"提交了事务"</span>);</span><br><span class="line">            connectionUtils.getThreadConnection().commit();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 回滚事务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AfterThrowing</span>(<span class="string">"pt1()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rollback</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"回滚了事务"</span>);</span><br><span class="line">            connectionUtils.getThreadConnection().rollback();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 释放连接</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@After</span>(<span class="string">"pt1()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"释放了事务"</span>);</span><br><span class="line">            connectionUtils.getThreadConnection().close();<span class="comment">//还回连接池中</span></span><br><span class="line">            connectionUtils.removeConnection();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="spring中的事物控制"><a href="#spring中的事物控制" class="headerlink" title="spring中的事物控制"></a>spring中的事物控制</h1><h2 id="Transactional注解"><a href="#Transactional注解" class="headerlink" title="Transactional注解"></a>Transactional注解</h2><p>我们可以通过@Transactional 注解来实现事物控制<br>|参数名称| 功能描述|<br>|——|——|<br>|readOnly|该属性用于设置当前事务是否为只读事务，设置为true表示只读，false则表示可读写，默认值为false。例如：@Transactional(readOnly=true)|<br>|rollbackFor|该属性用于设置需要进行回滚的异常类数组，当方法中抛出指定异常数组中的异常时，则进行事务回滚。例如：指定单一异常类：@Transactional(rollbackFor=RuntimeException.class)指定多个异常类：@Transactional(rollbackFor={RuntimeException.class, Exception.class})|<br>|rollbackForClassName|该属性用于设置需要进行回滚的异常类名称数组，当方法中抛出指定异常名称数组中的异常时，则进行事务回滚。例如：指定单一异常类名称：@Transactional(rollbackForClassName=”RuntimeException”)指定多个异常类名称：@Transactional(rollbackForClassName={“RuntimeException”,”Exception”})|<br>|noRollbackFor|该属性用于设置不需要进行回滚的异常类数组，当方法中抛出指定异常数组中的异常时，不进行事务回滚。例如：指定单一异常类：@Transactional(noRollbackFor=RuntimeException.class)指定多个异常类：@Transactional(noRollbackFor={RuntimeException.class, Exception.class})|<br>|noRollbackForClassName|该属性用于设置不需要进行回滚的异常类名称数组，当方法中抛出指定异常名称数组中的异常时，不进行事务回滚。例如：指定单一异常类名称：@Transactional(noRollbackForClassName=”RuntimeException”)指定多个异常类名称：@Transactional(noRollbackForClassName={“RuntimeException”,”Exception”})|<br>|propagation|该属性用于设置事务的传播行为。例如：@Transactional(propagation=Propagation.NOT_SUPPORTED,readOnly=true)|<br>|isolation|该属性用于设置底层数据库的事务隔离级别，事务隔离级别用于处理多事务并发的情况，通常使用数据库的默认隔离级别即可，基本不需要进行设置|<br>|timeout|该属性用于设置事务的超时秒数，默认值为-1表示永不超时|</p>
-<h2 id="spring的事物传播属性"><a href="#spring的事物传播属性" class="headerlink" title="spring的事物传播属性"></a>spring的事物传播属性</h2><p><strong>PROPAGATION_REQUIRED</strong>–支持当前事务，如果当前没有事务，就新建一个事务。（默认）<br><strong>PROPAGATION_SUPPORTS</strong>–支持当前事务，如果当前没有事务，就以非事务方式执行。<br><strong>PROPAGATION_MANDATORY</strong>–支持当前事务，如果当前没有事务，就抛出异常。<br><strong>PROPAGATION_REQUIRES_NEW</strong>–新建事务，如果当前存在事务，把当前事务挂起。<br><strong>PROPAGATION_NOT_SUPPORTED</strong>–以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。<br><strong>PROPAGATION_NEVER</strong>–以非事务方式执行，如果当前存在事务，则抛出异常。<br><strong>PROPAGATION_NESTED</strong>–如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则进行与PROPAGATION_REQUIRED类似的操作。</p>
-<h3 id="对其中几个进行说明"><a href="#对其中几个进行说明" class="headerlink" title="对其中几个进行说明"></a>对其中几个进行说明</h3><p>假设有ServiceA.MethodA()，在其内部调用ServiceB.MethodB()<br><strong>PROPAGATION_REQUIRED</strong><br>Spring默认使用PROPAGATION_REQUIRED传播属性，当ServiceA.MethodA()运行时，开启一个事务，此时ServiceB.MethodB()方法发现已经存在一个事务，就不会再开启事务，因此不管哪一个方法报错，都会回调。<br><strong>PROPAGATION_REQUIRES_NEW</strong><br>新建事务，如果当前存在事务，把当前事务挂起。当ServiceA.MethodA()运行时，开启一个事务A。当运行ServiceB.MethodB()时，把事务A挂起，然后开启事务B。就算事务A发生回滚，事务B依然能正常提交。总结起来就是：<strong>外部事务不会影响内部事务的提交和回滚。</strong><br><strong>PROPAGATION_NESTED</strong><br>如果当前存在事务，则在嵌套事务内执行。关于嵌套需要首先了解检查点的概念：当在事务中设置检查点后，如果发生回滚，会回滚到设置检查点的位置，而不是回滚整个事务。嵌套事务就使用了检查点Savepoint。当ServiceA.MethodA()运行时，开启一个事务A。当运行ServiceB.MethodB()时，开启一个子事务B，它将取得一个 savepoint. 如果这个事务B失败, 将回滚到此 savepoint，而不会影响整个事务。总结一句话就是<strong>内部事务不会影响外部事务的提交和回滚。</strong></p>
-<h2 id="spring事物隔离级别"><a href="#spring事物隔离级别" class="headerlink" title="spring事物隔离级别"></a>spring事物隔离级别</h2><ol>
-<li>ISOLATION_DEFAULT： 这是一个 PlatfromTransactionManager  默认的隔离级别，使用数据库默认的事务隔离级别.</li>
-<li>ISOLATION_READ_UNCOMMITTED：读未提交。这是事务最低的隔离级别，这种隔离级别会产生脏读，不可重复读和幻像读。</li>
-<li>ISOLATION_READ_COMMITTED：读已提交，ORACLE默认隔离级别，有幻读以及不可重复读风险。</li>
-<li>ISOLATION_REPEATABLE_READ： 可重复读，解决不可重复读的隔离级别，但还是有幻读风险。</li>
-<li>ISOLATION_SERIALIZABLE  串行化，最高的事务隔离级别，不管多少事务，挨个运行完一个事务的所有子事务之后才可以执行另外一个事务里面的所有子事务，解决脏读、不可重复读和幻读。</li>
+<p><img src="http://www.qiniu.yiyip.cn/linux/linuxeth0.png" alt="err"><br>其中需要配置的是以下几个点</p>
+<ol>
+<li>BOOTPROTO=static 表示将ip设置为静态ip</li>
+<li>DEFROUTE=yes  表示自启动网络服务</li>
+<li>IPADDR=192.168.3.129  表示本服务器的ip地址，别的服务器通过个ip连接次服务器</li>
+<li>GATEWAY=192.168.3.2  网关：这个配置需要和vim虚拟网路适配器中的网关相同</li>
+<li>DNS1=114.114.114.114   dns1就配置这哥固定的值</li>
+<li>HWADDR=00:0c:29:3c:6c:35  真实物理地址  这个在克隆一个新的服务器时会用到</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>(<span class="string">"accountService"</span>)</span><br><span class="line"><span class="meta">@Transactional</span>(propagation = Propagation.SUPPORTS,readOnly = <span class="keyword">true</span>)<span class="comment">//只读型事务的配置</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountServiceImpl</span> <span class="keyword">implements</span> <span class="title">AccountService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Account <span class="title">findAccountById</span><span class="params">(Integer accountId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> accountDao.findAccountById(accountId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//此方法需要的是读写型事务配置</span></span><br><span class="line">    <span class="meta">@Transactional</span>(propagation = Propagation.REQUIRED,readOnly = <span class="keyword">false</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transfer</span><span class="params">(String sourceName, String targetName, Float money)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"transfer"</span>);</span><br><span class="line">        Account source = accountDao.findAccountByName(sourceName);</span><br><span class="line">        Account target = accountDao.findAccountByName(targetName);</span><br><span class="line">        source.setMoney(source.getMoney() - money);</span><br><span class="line">        target.setMoney(target.getMoney() + money);</span><br><span class="line">        accountDao.updateAccount(source);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>/<span class="number">0</span>;</span><br><span class="line">        accountDao.updateAccount(target);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.修改结束后退出保存</strong>。<br>reboot重启系统，service network restart 重启网络服务<br><strong>3.最后测试配置是否成功</strong><br>ifconfig查看ip<br><img src="http://www.qiniu.yiyip.cn/linux/linuxeth01.png" alt="err"><br>ping百度和ping  windows的ip看能否ping通</p>
+<p>## </p>
 
-<pre><code></code></pre>
       
     </div>
     
@@ -435,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spring/" rel="tag"> <i class="fa fa-tag"></i> spring</a>
+            <a href="/tags/Linux/" rel="tag"> <i class="fa fa-tag"></i> Linux</a>
           
         </div>
       
@@ -448,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/09/SpringMVC知识点/" rel="next" title="SpringMVC的知识点">
-                <i class="fa fa-chevron-left"></i> SpringMVC的知识点
+              <a href="/2020/02/13/spring的事物控制/" rel="next" title="spring的事物控制学习总结">
+                <i class="fa fa-chevron-left"></i> spring的事物控制学习总结
               </a>
             
           </div>
@@ -457,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/16/Linux的安装与环境配置/" rel="prev" title="Linux的安装与环境配置">
-                Linux的安装与环境配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -639,7 +632,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要进行事务控制"><span class="nav-number">1.</span> <span class="nav-text">为什么要进行事务控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的概述"><span class="nav-number">1.1.</span> <span class="nav-text">事务的概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进行事物控制的原因"><span class="nav-number">1.2.</span> <span class="nav-text">进行事物控制的原因</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过aop实现事物控制"><span class="nav-number">2.</span> <span class="nav-text">通过aop实现事物控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring中的事物控制"><span class="nav-number">3.</span> <span class="nav-text">spring中的事物控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Transactional注解"><span class="nav-number">3.1.</span> <span class="nav-text">Transactional注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring的事物传播属性"><span class="nav-number">3.2.</span> <span class="nav-text">spring的事物传播属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对其中几个进行说明"><span class="nav-number">3.2.1.</span> <span class="nav-text">对其中几个进行说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring事物隔离级别"><span class="nav-number">3.3.</span> <span class="nav-text">spring事物隔离级别</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#centos的网络配置"><span class="nav-number">1.</span> <span class="nav-text">centos的网络配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置固定的ip地址"><span class="nav-number">1.1.</span> <span class="nav-text">配置固定的ip地址</span></a></li></ol></li></ol></div>
             
 
           </div>
