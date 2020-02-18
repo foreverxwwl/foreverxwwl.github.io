@@ -102,13 +102,13 @@
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux/linuxeth01.png">
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth06.png">
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth07.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxsth09.png">
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth08.png">
-<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth09.png">
-<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth010.png">
-<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth011.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxsth010.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxsth011.png">
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth012.png">
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth013.png">
-<meta property="og:updated_time" content="2020-02-18T08:59:57.797Z">
+<meta property="og:updated_time" content="2020-02-18T09:41:44.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux的安装与环境配置">
 <meta name="twitter:description" content="centos的网络配置这里蛀牙是配置centos的静态ip虚拟机设置为固定IP，不管主机在什么网络环境下，是断网环境，还是连接任何网段访问外网的环境下，虚拟机的IP都固定不变，而且使用终端连接，始终不变，正常连接；下面就是一个配置过程，本例中配置的固定ip为192.168.3.129 配置vm的NAT模式具体参数 首先在vm虚拟接中 点击编辑-&amp;gt;虚拟网络编辑器-&amp;gt;更改设置 选择VMne">
@@ -455,21 +455,21 @@
 </ol>
 </blockquote>
 <h1 id="克隆虚拟机用作hadoop集群"><a href="#克隆虚拟机用作hadoop集群" class="headerlink" title="克隆虚拟机用作hadoop集群"></a>克隆虚拟机用作hadoop集群</h1><h2 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h2><ol>
-<li>选择要克隆的虚拟机，点击克隆<br><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth08.png" alt="err"></li>
-<li>点击下一步到这时选择创建完整克隆<br><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth09.png" alt="err"></li>
+<li>选择要克隆的虚拟机，点击克隆<br><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxsth09.png" alt="err"></li>
+<li>点击下一步到这时选择创建完整克隆<br><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth08.png" alt="err"></li>
 <li>修改名字和位置等待即可<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2></li>
 <li>开机以后修改配置，使用root账号进入</li>
 <li>首先修改ip地址,打开终端<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/udev/rles.d/70-persistent-net.rules</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth010.png" alt="err"></p>
+<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxsth010.png" alt="err"></p>
 <ol start="3">
 <li>配置网络ip<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth011.png" alt="err"></p>
+<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxsth011.png" alt="err"></p>
 <ol start="4">
 <li>配置主机名和映射 方法参照上一节的配置静态ip<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network</span><br></pre></td></tr></table></figure>
 
