@@ -100,7 +100,15 @@
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth05.png">
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux/linuxeth0.png">
 <meta property="og:image" content="http://www.qiniu.yiyip.cn/linux/linuxeth01.png">
-<meta property="og:updated_time" content="2020-02-17T16:25:00.699Z">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth06.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth07.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth08.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth09.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth010.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth011.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth012.png">
+<meta property="og:image" content="http://www.qiniu.yiyip.cn/linux%2Flinuxeth013.png">
+<meta property="og:updated_time" content="2020-02-18T08:59:57.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux的安装与环境配置">
 <meta name="twitter:description" content="centos的网络配置这里蛀牙是配置centos的静态ip虚拟机设置为固定IP，不管主机在什么网络环境下，是断网环境，还是连接任何网段访问外网的环境下，虚拟机的IP都固定不变，而且使用终端连接，始终不变，正常连接；下面就是一个配置过程，本例中配置的固定ip为192.168.3.129 配置vm的NAT模式具体参数 首先在vm虚拟接中 点击编辑-&amp;gt;虚拟网络编辑器-&amp;gt;更改设置 选择VMne">
@@ -427,11 +435,11 @@
 <p><strong>2.修改结束后退出保存</strong>。<br>reboot重启系统，service network restart 重启网络服务<br><strong>3.最后测试配置是否成功</strong><br>ifconfig查看ip<br><img src="http://www.qiniu.yiyip.cn/linux/linuxeth01.png" alt="err"><br>ping百度和ping  windows的ip看能否ping通</p>
 <h2 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h2><ol>
 <li>查看当前主机名 hostname</li>
-<li>修改主机的映射文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network</span><br></pre></td></tr></table></figure>
+<li>修改主机名<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-<p>打开以后写入新的主机名  HOSTNAME=hadoop02</p>
+<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth06.png" alt="err"><br>打开以后写入新的主机名  HOSTNAME=hadoop02</p>
 <ol start="3">
 <li>修改映射文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
 
@@ -439,14 +447,40 @@
 </ol>
 <p>增加ip和主机的映射</p>
 <blockquote>
-<p>192.168.3.129 hadoop02</p>
-</blockquote>
+<p>192.168.3.129 hadoop02<br><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth07.png" alt="err"></p>
 <ol start="4">
 <li>完成以后重启设备</li>
-<li>如果希望windows也可以通过主机名连接，则可以进入<blockquote>
-<p>C:\windows\System32\dirvers\etc\hosts目录添加映射<br>192.168.3.129 hadoop02</p>
+<li>如果希望windows也可以通过主机名连接，则可以进入<br>C:\windows\System32\dirvers\etc\hosts  目录添加映射</li>
+<li>168.3.129 hadoop02</li>
+</ol>
 </blockquote>
+<h1 id="克隆虚拟机用作hadoop集群"><a href="#克隆虚拟机用作hadoop集群" class="headerlink" title="克隆虚拟机用作hadoop集群"></a>克隆虚拟机用作hadoop集群</h1><h2 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h2><ol>
+<li>选择要克隆的虚拟机，点击克隆<br><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth08.png" alt="err"></li>
+<li>点击下一步到这时选择创建完整克隆<br><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth09.png" alt="err"></li>
+<li>修改名字和位置等待即可<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2></li>
+<li>开机以后修改配置，使用root账号进入</li>
+<li>首先修改ip地址,打开终端<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/udev/rles.d/70-persistent-net.rules</span><br></pre></td></tr></table></figure>
+
 </li>
+</ol>
+<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth010.png" alt="err"></p>
+<ol start="3">
+<li>配置网络ip<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth011.png" alt="err"></p>
+<ol start="4">
+<li>配置主机名和映射 方法参照上一节的配置静态ip<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth012.png" alt="err"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.qiniu.yiyip.cn/linux%2Flinuxeth013.png" alt="err"></p>
+<ol start="5">
+<li>配置完毕 重启系统。</li>
 </ol>
 
       
@@ -665,7 +699,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#centos的网络配置"><span class="nav-number">1.</span> <span class="nav-text">centos的网络配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置vm的NAT模式具体参数"><span class="nav-number">1.1.</span> <span class="nav-text">配置vm的NAT模式具体参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置固定的ip地址"><span class="nav-number">1.2.</span> <span class="nav-text">配置固定的ip地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改主机名"><span class="nav-number">1.3.</span> <span class="nav-text">修改主机名</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#centos的网络配置"><span class="nav-number">1.</span> <span class="nav-text">centos的网络配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置vm的NAT模式具体参数"><span class="nav-number">1.1.</span> <span class="nav-text">配置vm的NAT模式具体参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置固定的ip地址"><span class="nav-number">1.2.</span> <span class="nav-text">配置固定的ip地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改主机名"><span class="nav-number">1.3.</span> <span class="nav-text">修改主机名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#克隆虚拟机用作hadoop集群"><span class="nav-number">2.</span> <span class="nav-text">克隆虚拟机用作hadoop集群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆虚拟机"><span class="nav-number">2.1.</span> <span class="nav-text">克隆虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改配置"><span class="nav-number">2.2.</span> <span class="nav-text">修改配置</span></a></li></ol></li></ol></div>
             
 
           </div>

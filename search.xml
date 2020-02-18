@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux的安装与环境配置]]></title>
     <url>%2F2020%2F02%2F16%2FLinux%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[centos的网络配置这里蛀牙是配置centos的静态ip虚拟机设置为固定IP，不管主机在什么网络环境下，是断网环境，还是连接任何网段访问外网的环境下，虚拟机的IP都固定不变，而且使用终端连接，始终不变，正常连接；下面就是一个配置过程，本例中配置的固定ip为192.168.3.129 配置vm的NAT模式具体参数 首先在vm虚拟接中 点击编辑-&gt;虚拟网络编辑器-&gt;更改设置 选择VMnet8，照图中修改其中的子网ip设置时，前两段都为192.168 第三段 要和固定ip的第三段相同，第四段直接设为0； 在NAT设置中设置网关ip网关ip设置可参照第二步，其中第四段直接设为2（记住这个网关，在centOS中会用到） 配置笔记本主机具体VMnet8本地地址参数：第6步中的IP地址随意设置，但是要保证不能跟你要设置虚拟机的固定IP一样配置固定的ip地址 1.首先进入eth0的网络配置文件,使用vim编辑器打开 1vim /etc/sysconfig/network-scripts/ifcfg-eth0 其中需要配置的是以下几个点 BOOTPROTO=static 表示将ip设置为静态ip DEFROUTE=yes 表示自启动网络服务 IPADDR=192.168.3.129 表示本服务器的ip地址，别的服务器通过个ip连接次服务器 GATEWAY=192.168.3.2 网关：这个配置需要和vim虚拟网路适配器中的网关相同 DNS1=114.114.114.114 dns1就配置这哥固定的值 HWADDR=00:0c:29:3c:6c:35 真实物理地址 这个在克隆一个新的服务器时会用到 2.修改结束后退出保存。reboot重启系统，service network restart 重启网络服务3.最后测试配置是否成功ifconfig查看ipping百度和ping windows的ip看能否ping通 修改主机名 查看当前主机名 hostname 修改主机的映射文件1vim /etc/sysconfig/network 打开以后写入新的主机名 HOSTNAME=hadoop02 修改映射文件1vim /etc/hosts 增加ip和主机的映射 192.168.3.129 hadoop02 完成以后重启设备 如果希望windows也可以通过主机名连接，则可以进入 C:\windows\System32\dirvers\etc\hosts目录添加映射192.168.3.129 hadoop02]]></content>
+    <content type="text"><![CDATA[centos的网络配置这里蛀牙是配置centos的静态ip虚拟机设置为固定IP，不管主机在什么网络环境下，是断网环境，还是连接任何网段访问外网的环境下，虚拟机的IP都固定不变，而且使用终端连接，始终不变，正常连接；下面就是一个配置过程，本例中配置的固定ip为192.168.3.129 配置vm的NAT模式具体参数 首先在vm虚拟接中 点击编辑-&gt;虚拟网络编辑器-&gt;更改设置 选择VMnet8，照图中修改其中的子网ip设置时，前两段都为192.168 第三段 要和固定ip的第三段相同，第四段直接设为0； 在NAT设置中设置网关ip网关ip设置可参照第二步，其中第四段直接设为2（记住这个网关，在centOS中会用到） 配置笔记本主机具体VMnet8本地地址参数：第6步中的IP地址随意设置，但是要保证不能跟你要设置虚拟机的固定IP一样配置固定的ip地址 1.首先进入eth0的网络配置文件,使用vim编辑器打开 1vim /etc/sysconfig/network-scripts/ifcfg-eth0 其中需要配置的是以下几个点 BOOTPROTO=static 表示将ip设置为静态ip DEFROUTE=yes 表示自启动网络服务 IPADDR=192.168.3.129 表示本服务器的ip地址，别的服务器通过个ip连接次服务器 GATEWAY=192.168.3.2 网关：这个配置需要和vim虚拟网路适配器中的网关相同 DNS1=114.114.114.114 dns1就配置这哥固定的值 HWADDR=00:0c:29:3c:6c:35 真实物理地址 这个在克隆一个新的服务器时会用到 2.修改结束后退出保存。reboot重启系统，service network restart 重启网络服务3.最后测试配置是否成功ifconfig查看ipping百度和ping windows的ip看能否ping通 修改主机名 查看当前主机名 hostname 修改主机名1vim /etc/sysconfig/network 打开以后写入新的主机名 HOSTNAME=hadoop02 修改映射文件1vim /etc/hosts 增加ip和主机的映射 192.168.3.129 hadoop02 完成以后重启设备 如果希望windows也可以通过主机名连接，则可以进入C:\windows\System32\dirvers\etc\hosts 目录添加映射 168.3.129 hadoop02 克隆虚拟机用作hadoop集群克隆虚拟机 选择要克隆的虚拟机，点击克隆 点击下一步到这时选择创建完整克隆 修改名字和位置等待即可修改配置 开机以后修改配置，使用root账号进入 首先修改ip地址,打开终端1vim /etc/udev/rles.d/70-persistent-net.rules 配置网络ip1vim /etc/sysconfig/network-scripts/ifcfg-eth0 配置主机名和映射 方法参照上一节的配置静态ip1vim /etc/sysconfig/network 1vim /etc/hosts 配置完毕 重启系统。]]></content>
       <categories>
         <category>linux</category>
       </categories>
@@ -328,17 +328,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[hexo博客搭建]]></title>
-    <url>%2F2019%2F09%2F19%2Fhexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%2F</url>
-    <content type="text"><![CDATA[hexo博客搭建一、博客基本操作 博客部署到本地 hexo clean 清楚缓存hexo g 生成静态网页hexo s 本地启动预览查看 http://localhost:4000 部署到git服务器上 hexo deploy https://foreverxwwl.github.io/ next主题安装 git clone https://github.com/iissnan/hexo-theme-next themes/next 进入配置文件_config.yml 找到 theme 设置为 theme: next 二、next主题设置 增加标签页等页面 进入next主题的配置文件 _config.yml 找到menu: 将要添加的页面注释删掉 在blog页面 hexo n page tags 增加标签tags页面 hexo n page categories 增加分类categories页面 修改头像姓名等信息 主要参考文档在主题的_config文件中修改 头像 avatar: 修改地址主题 scheme: 设置大的标题、姓名在全局的_config.yml中的 title: 新建一篇博客 hexo n hexo博客搭建 用markdowm编写博客 启用功能 （1）启用侧边栏社交链接 进入主题的_config.yml文件 将social: 一栏的注释取消 （2）启用打赏功能 进入主题的_config.yml文件 将reward项目注释删除 comment：加上用语 也可在后面添加图片 （3）设置头像样式 进入目录 \blog\themes\next\source\css_common\components\sidebar 修改sidebar-author.styl文件中的样式 12345678910111213&gt; &gt; .site-author-image &#123;&gt; &gt; display: block;&gt; &gt; margin: 0 auto;&gt; &gt; padding: $site-author-image-padding;&gt; &gt; max-width: $site-author-image-width;&gt; &gt; height: $site-author-image-height;&gt; &gt; border: $site-author-image-border-width solid $site-author-image-border-color;&gt; &gt; border-radius: 50%;&gt; &gt; transition: 3s all;&gt; &gt; &#125;&gt; &gt; .site-author-image:hover&#123;&gt; &gt; transform: rotate(360deg);&gt; &gt; &#125; （3）设置首页阅读全文 在主题配置文件中找到auto_excerpt:选项 将false 改为true 并设置可看长度 也可在博客编辑时在相应位置添加;此代码以下的点击查看 （4）添加动态背景 在主题配置文件找到canvas 默认都是关闭的 将需要的设置为true （5）修改文章内链接样式 进入F:\blog\themes\next\source\css_common\components\post\post.sty 在尾部添加样式 123456789.post-body p a&#123; color: #345; border-bottom: none; font-size: 13px;/*字体大小*/ font-weight: 500; /*字体粗细*/ &amp;:hover&#123; color: #fcfcfc; &#125;&#125; （6）修改文章底部标签 进入F:\blog\themes\next\layout_macro\post.swig 修改 tag.path 可将这行的 # 替换成别的 1&lt;a href="&#123;&#123; url_for(tag.path) &#125;&#125;" rel="tag"&gt; &lt;i class="fa fa-tag"&gt;&lt;/i&gt; （7）Valine评论系统 进入主题配置文件 打开 valine https://leancloud.cn/ 网站配置appid并在配置文件中使用 （8）搜索，统计功能 都是进入next主题官网 开启第三方服务 三、一个小问题 再部署的时候 提示 ERROR Deployer not found: git按照晚上提示安装插件总是报错 npm install hexo-deployer-git –save然后用淘宝NPM镜像的“hexo-deployer-git”试了一下，成功了指令：$ cnpm install hexo-deployer-git –save]]></content>
-      <categories>
-        <category>基础知识学习</category>
-      </categories>
-      <tags>
-        <tag>博客搭建</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[github学习]]></title>
     <url>%2F2019%2F09%2F19%2Fgithub%E5%AD%A6%E4%B9%A0%2F</url>
     <content type="text"><![CDATA[github基本操作 初始化 git init 状态查看 git status 添加到暂存区 git add 提交到本地库 git commit -m 查看历史 git log / git –online / git reflog 版本前进或后退 git reset –hard &lt;索引值&gt; / git reset –hard HEAD~2 比较工作区与暂存区文件差异 git diff [文件名] 将工作区与本地库文件比较 git diff [本地库历史版本（HEAD）] [文件名] 分支管理 创建分支 git branch [分支名] 查看分支 git branch -v 切换分支 git checkout [分支名] 合并分支 git merge [分支名] 解决冲突 git add git commit -m 远程库操作 创建远程库地址别名 git remote add [远程库地址]git remote add origin git@github.com:xiasf/github-note.git 查看别名 git remote -v 推送 git push [远程库地址名] [分支名] 克隆 git clone [远程库地址名] 拉取 git pull [远程库地址名] [远程库分支] 抓取 git fetch [远程库地址名] [远程库分支] 合并 git merge [远程库地址名/远程库分支] 跨团队合作 团队2进入团队1项目目录,点击fork。 团队2 git clone &lt;远程地址&gt;，修改并commit，git push 提交到远程库。 团队2进入页面，点击 pull requests、 new pull requests， Create pull requests 然后发消息给团队1。 团队1点击pull requests，Commits 、files changed 代码审核。 如果没有问题 则点击 merge pull request 并添加-m信息，结束远程库修改。 团队1将远程库拉取到本地 git pull origin master。]]></content>
@@ -347,6 +336,17 @@
       </categories>
       <tags>
         <tag>git学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo博客搭建]]></title>
+    <url>%2F2019%2F09%2F19%2Fhexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[hexo博客搭建一、博客基本操作 博客部署到本地 hexo clean 清楚缓存hexo g 生成静态网页hexo s 本地启动预览查看 http://localhost:4000 部署到git服务器上 hexo deploy https://foreverxwwl.github.io/ next主题安装 git clone https://github.com/iissnan/hexo-theme-next themes/next 进入配置文件_config.yml 找到 theme 设置为 theme: next 二、next主题设置 增加标签页等页面 进入next主题的配置文件 _config.yml 找到menu: 将要添加的页面注释删掉 在blog页面 hexo n page tags 增加标签tags页面 hexo n page categories 增加分类categories页面 修改头像姓名等信息 主要参考文档在主题的_config文件中修改 头像 avatar: 修改地址主题 scheme: 设置大的标题、姓名在全局的_config.yml中的 title: 新建一篇博客 hexo n hexo博客搭建 用markdowm编写博客 启用功能 （1）启用侧边栏社交链接 进入主题的_config.yml文件 将social: 一栏的注释取消 （2）启用打赏功能 进入主题的_config.yml文件 将reward项目注释删除 comment：加上用语 也可在后面添加图片 （3）设置头像样式 进入目录 \blog\themes\next\source\css_common\components\sidebar 修改sidebar-author.styl文件中的样式 12345678910111213&gt; &gt; .site-author-image &#123;&gt; &gt; display: block;&gt; &gt; margin: 0 auto;&gt; &gt; padding: $site-author-image-padding;&gt; &gt; max-width: $site-author-image-width;&gt; &gt; height: $site-author-image-height;&gt; &gt; border: $site-author-image-border-width solid $site-author-image-border-color;&gt; &gt; border-radius: 50%;&gt; &gt; transition: 3s all;&gt; &gt; &#125;&gt; &gt; .site-author-image:hover&#123;&gt; &gt; transform: rotate(360deg);&gt; &gt; &#125; （3）设置首页阅读全文 在主题配置文件中找到auto_excerpt:选项 将false 改为true 并设置可看长度 也可在博客编辑时在相应位置添加;此代码以下的点击查看 （4）添加动态背景 在主题配置文件找到canvas 默认都是关闭的 将需要的设置为true （5）修改文章内链接样式 进入F:\blog\themes\next\source\css_common\components\post\post.sty 在尾部添加样式 123456789.post-body p a&#123; color: #345; border-bottom: none; font-size: 13px;/*字体大小*/ font-weight: 500; /*字体粗细*/ &amp;:hover&#123; color: #fcfcfc; &#125;&#125; （6）修改文章底部标签 进入F:\blog\themes\next\layout_macro\post.swig 修改 tag.path 可将这行的 # 替换成别的 1&lt;a href="&#123;&#123; url_for(tag.path) &#125;&#125;" rel="tag"&gt; &lt;i class="fa fa-tag"&gt;&lt;/i&gt; （7）Valine评论系统 进入主题配置文件 打开 valine https://leancloud.cn/ 网站配置appid并在配置文件中使用 （8）搜索，统计功能 都是进入next主题官网 开启第三方服务 三、一个小问题 再部署的时候 提示 ERROR Deployer not found: git按照晚上提示安装插件总是报错 npm install hexo-deployer-git –save然后用淘宝NPM镜像的“hexo-deployer-git”试了一下，成功了指令：$ cnpm install hexo-deployer-git –save]]></content>
+      <categories>
+        <category>基础知识学习</category>
+      </categories>
+      <tags>
+        <tag>博客搭建</tag>
       </tags>
   </entry>
   <entry>
