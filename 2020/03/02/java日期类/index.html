@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="昊波波的博客">
 <meta property="og:description" content="新的时间表示方法LocalDateTime从java8开始，JDK中就增加了一系列表示日期和时间的新类，最典型的就是LocalDateTime。完全替代之前的Date类。下面就感受一下用法。 1. 获取当前的时间123456789101112131415161718192021LocalDateTime rightNow = LocalDateTime.now();System.out.print">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-02T16:34:06.474Z">
+<meta property="og:updated_time" content="2020-03-29T11:24:55.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="新的时间表示方法LocalDateTime">
 <meta name="twitter:description" content="新的时间表示方法LocalDateTime从java8开始，JDK中就增加了一系列表示日期和时间的新类，最典型的就是LocalDateTime。完全替代之前的Date类。下面就感受一下用法。 1. 获取当前的时间123456789101112131415161718192021LocalDateTime rightNow = LocalDateTime.now();System.out.print">
@@ -413,6 +413,12 @@
 
 <p>格式化日期的类DateTimeForatter也是线程安全的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @implSpec</span></span><br><span class="line"><span class="comment"> * This class is immutable and thread-safe.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">DateTimeFormatter</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-其他常用方法"><a href="#6-其他常用方法" class="headerlink" title="6. 其他常用方法"></a>6. 其他常用方法</h2><h3 id="LocalDateTime转时间戳"><a href="#LocalDateTime转时间戳" class="headerlink" title="LocalDateTime转时间戳"></a>LocalDateTime转时间戳</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime localDateTime = LocalDateTime.now();</span><br><span class="line">longtimestamp = localDateTime.toInstant(ZoneOffset.ofHours(<span class="number">8</span>)).toEpochMilli();</span><br></pre></td></tr></table></figure>
+
+<h3 id="时间戳转LocalDateTime-LocalDate"><a href="#时间戳转LocalDateTime-LocalDate" class="headerlink" title="时间戳转LocalDateTime(LocalDate)"></a>时间戳转LocalDateTime(LocalDate)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">longtimestamp = System.currentTimeMillis();</span><br><span class="line">LocalDate localDate = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(<span class="number">8</span>)).toLocalDate();</span><br><span class="line">LocalDateTime localDateTime = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(<span class="number">8</span>)).toLocalDateTime();</span><br></pre></td></tr></table></figure>
+
+<h3 id="LocalDateTime与String互转"><a href="#LocalDateTime与String互转" class="headerlink" title="LocalDateTime与String互转"></a>LocalDateTime与String互转</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//时间转字符串格式化</span></span><br><span class="line"> DateTimeFormatter formatter = DateTimeFormatter.ofPattern(<span class="string">"yyyyMMddHHmmssSSS"</span>);</span><br><span class="line"> String dateTime = LocalDateTime.now(ZoneOffset.of(<span class="string">"+8"</span>)).format(formatter);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//字符串转时间</span></span><br><span class="line">String dateTimeStr = <span class="string">"2018-07-28 14:11:15"</span>;</span><br><span class="line">DateTimeFormatter df = DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr, df);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -451,6 +457,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/16/正则表达式/" rel="prev" title="正则表达式">
+                正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -558,7 +568,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -569,7 +579,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -580,7 +590,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -629,7 +639,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新的时间表示方法LocalDateTime"><span class="nav-number">1.</span> <span class="nav-text">新的时间表示方法LocalDateTime</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-获取当前的时间"><span class="nav-number">1.1.</span> <span class="nav-text">1. 获取当前的时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-构造一个指定年月日的时间"><span class="nav-number">1.2.</span> <span class="nav-text">2. 构造一个指定年月日的时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改日期"><span class="nav-number">1.3.</span> <span class="nav-text">3. 修改日期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-格式化日期"><span class="nav-number">1.4.</span> <span class="nav-text">4. 格式化日期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-线程安全问题"><span class="nav-number">1.5.</span> <span class="nav-text">5. 线程安全问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新的时间表示方法LocalDateTime"><span class="nav-number">1.</span> <span class="nav-text">新的时间表示方法LocalDateTime</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-获取当前的时间"><span class="nav-number">1.1.</span> <span class="nav-text">1. 获取当前的时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-构造一个指定年月日的时间"><span class="nav-number">1.2.</span> <span class="nav-text">2. 构造一个指定年月日的时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改日期"><span class="nav-number">1.3.</span> <span class="nav-text">3. 修改日期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-格式化日期"><span class="nav-number">1.4.</span> <span class="nav-text">4. 格式化日期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-线程安全问题"><span class="nav-number">1.5.</span> <span class="nav-text">5. 线程安全问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-其他常用方法"><span class="nav-number">1.6.</span> <span class="nav-text">6. 其他常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LocalDateTime转时间戳"><span class="nav-number">1.6.1.</span> <span class="nav-text">LocalDateTime转时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间戳转LocalDateTime-LocalDate"><span class="nav-number">1.6.2.</span> <span class="nav-text">时间戳转LocalDateTime(LocalDate)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LocalDateTime与String互转"><span class="nav-number">1.6.3.</span> <span class="nav-text">LocalDateTime与String互转</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
