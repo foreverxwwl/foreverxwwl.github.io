@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="java基础,">
+  <meta name="keywords" content="问题解决,springMVC,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="反射反射是框架设计的灵魂。它就是将类的各个组成部分（成员变量，构造函数，成员函数）封装为其他对象。优点：  可以在程序运行过程中，操作这些对象。（在new之前） 可以解耦，提高程序的可扩展性  java代码在计算机中经历的三个阶段。  类编写好后进行javac编译，生成字节码.class文件 通过类加载器，classLoader将字节码文件加载进内存 在内存中有一个class类对象来封装这些cla">
-<meta name="keywords" content="java基础">
+<meta name="description" content="在使用springMVC与前端HTML页面交互时，使用的是JSON数据。前端通过ajax请求后，我们在服务端对数据增删改查后要通过JSON格式返回到前端。此时就需要配置json便于我们封装。 使用@ResponseBoday和fastJson包1. 导包以及配置导入fastjson依赖 123456789101112131415&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;">
+<meta name="keywords" content="问题解决,springMVC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java的反射与注解">
-<meta property="og:url" content="http://yoursite.com/2019/01/13/反射与注解/index.html">
+<meta property="og:title" content="springMVC开发中json的使用">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/springMVC开发中json的使用/index.html">
 <meta property="og:site_name" content="昊波波的博客">
-<meta property="og:description" content="反射反射是框架设计的灵魂。它就是将类的各个组成部分（成员变量，构造函数，成员函数）封装为其他对象。优点：  可以在程序运行过程中，操作这些对象。（在new之前） 可以解耦，提高程序的可扩展性  java代码在计算机中经历的三个阶段。  类编写好后进行javac编译，生成字节码.class文件 通过类加载器，classLoader将字节码文件加载进内存 在内存中有一个class类对象来封装这些cla">
+<meta property="og:description" content="在使用springMVC与前端HTML页面交互时，使用的是JSON数据。前端通过ajax请求后，我们在服务端对数据增删改查后要通过JSON格式返回到前端。此时就需要配置json便于我们封装。 使用@ResponseBoday和fastJson包1. 导包以及配置导入fastjson依赖 123456789101112131415&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-15T08:19:25.593Z">
+<meta property="og:updated_time" content="2020-04-02T09:24:05.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java的反射与注解">
-<meta name="twitter:description" content="反射反射是框架设计的灵魂。它就是将类的各个组成部分（成员变量，构造函数，成员函数）封装为其他对象。优点：  可以在程序运行过程中，操作这些对象。（在new之前） 可以解耦，提高程序的可扩展性  java代码在计算机中经历的三个阶段。  类编写好后进行javac编译，生成字节码.class文件 通过类加载器，classLoader将字节码文件加载进内存 在内存中有一个class类对象来封装这些cla">
+<meta name="twitter:title" content="springMVC开发中json的使用">
+<meta name="twitter:description" content="在使用springMVC与前端HTML页面交互时，使用的是JSON数据。前端通过ajax请求后，我们在服务端对数据增删改查后要通过JSON格式返回到前端。此时就需要配置json便于我们封装。 使用@ResponseBoday和fastJson包1. 导包以及配置导入fastjson依赖 123456789101112131415&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/13/反射与注解/">
+  <link rel="canonical" href="http://yoursite.com/2020/04/02/springMVC开发中json的使用/">
 
 
 
 
 
-  <title>java的反射与注解 | 昊波波的博客</title>
+  <title>springMVC开发中json的使用 | 昊波波的博客</title>
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/反射与注解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/springMVC开发中json的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="昊波波">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java的反射与注解</h1>
+          <h1 class="post-title" itemprop="name headline">springMVC开发中json的使用</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-13T22:16:59+08:00">
-                2019-01-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-02T14:18:30+08:00">
+                2020-04-02
               </time>
             
 
@@ -344,8 +344,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">java基础</span>
+                  <a href="/categories/springMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">springMVC</span>
                   </a>
                 </span>
 
@@ -364,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/13/反射与注解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/13/反射与注解/" itemprop="commentCount"></span>
+                <a href="/2020/04/02/springMVC开发中json的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/02/springMVC开发中json的使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -398,169 +398,46 @@
       
 
       
-        <h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p>反射是框架设计的灵魂。它就是将类的各个组成部分（成员变量，构造函数，成员函数）封装为其他对象。<br>优点：</p>
-<ol>
-<li>可以在程序运行过程中，操作这些对象。（在new之前）</li>
-<li>可以解耦，提高程序的可扩展性</li>
-</ol>
-<p>java代码在计算机中经历的三个阶段。</p>
-<ol>
-<li>类编写好后进行javac编译，生成字节码.class文件</li>
-<li>通过类加载器，classLoader将字节码文件加载进内存</li>
-<li>在内存中有一个class类对象来封装这些class文件。<ul>
-<li>成员变量 Field[ ]对象数组 </li>
-<li>构造方法 Constructor[ ]对象数组</li>
-<li>成员方法 Method[ ]对象数组</li>
-</ul>
-</li>
-<li>在运行阶段创建对象</li>
-</ol>
-<h2 id="获取class对象方式"><a href="#获取class对象方式" class="headerlink" title="获取class对象方式"></a>获取class对象方式</h2><ol>
-<li><p>Class.forName(“全类名”)：将字节码文件加载进内存，返回Class对象</p>
-<ul>
-<li>多用于配置文件，将类名定义在配置文件中。读取文件，加载类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class name1 = Class.forName(<span class="string">"domain.Person"</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>类名.class：通过类名的属性class获取</p>
-<ul>
-<li>多用于参数的传递<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class name2 = Person.class;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>对象.getClass()：getClass()方法在Object类中定义着</p>
-<ul>
-<li>多用于对象的获取字节码的方式<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person person = <span class="keyword">new</span> Person();</span><br><span class="line">Class name3 = person.getClass();</span><br></pre></td></tr></table></figure>
+        <p>在使用springMVC与前端HTML页面交互时，使用的是JSON数据。前端通过ajax请求后，我们在服务端对数据增删改查后要通过JSON格式返回到前端。此时就需要配置json便于我们封装。</p>
+<h2 id="使用-ResponseBoday和fastJson包"><a href="#使用-ResponseBoday和fastJson包" class="headerlink" title="使用@ResponseBoday和fastJson包"></a>使用@ResponseBoday和fastJson包</h2><h3 id="1-导包以及配置"><a href="#1-导包以及配置" class="headerlink" title="1. 导包以及配置"></a>1. 导包以及配置</h3><p>导入fastjson依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.jackson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-mapper-asl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.jackson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-core-asl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.37<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-</li>
-</ol>
-<p>同一个字节码文件(*.class)在一次程序运行过程中，只会被加载一次，不论通过哪一种方式获取的Class对象都是同一个。这三种方法获取的class对象，所代表的都是同一个Person对象所以用==比较三者是true</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//1. Class.forName("全类名")：将字节码文件加载进内存，返回Class对象</span></span><br><span class="line">        Class name1 = Class.forName(<span class="string">"domain.Person"</span>);</span><br><span class="line">        System.out.println(name1);</span><br><span class="line">        <span class="comment">//2. 类名.class：通过类名的属性class获取</span></span><br><span class="line">        Class name2 = Person.class;</span><br><span class="line">        System.out.println(name2);</span><br><span class="line">        <span class="comment">//3.对象.getClass()：getClass()方法在Object类中定义着。</span></span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        Class name3 = person.getClass();</span><br><span class="line">        System.out.println(name3);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//比较三个对象</span></span><br><span class="line">        System.out.println(name1 == name2);</span><br><span class="line">        System.out.println(name1 == name3);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>SpringMVC配置文件中添加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 开启对SpringMVC注解的支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:message-converters</span> <span class="attr">register-defaults</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 开启@ResponseBody对SpringMVC注解的支持 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.http.converter.StringHttpMessageConverter"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"supportedMediaTypes"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">value</span>&gt;</span>application/json;charset=UTF-8<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--配置@ResponseBody由fastjson解析--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"fastJsonHttpMessageConverter"</span> <span class="attr">class</span>=<span class="string">"com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">mvc:message-converters</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="class对象的方法使用"><a href="#class对象的方法使用" class="headerlink" title="class对象的方法使用"></a>class对象的方法使用</h2><p>Class对象功能：</p>
-<ol>
-<li>获取成员变量们<ul>
-<li>Field[] getFields()</li>
-<li>Field getField(String name)</li>
-<li>Field[] getDeclaredFields()</li>
-<li>Field getDeclaredField(String name)</li>
-</ul>
+<h3 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2. 使用方法"></a>2. 使用方法</h3><h4 id="2-1-ResponseBody注解的两个用途"><a href="#2-1-ResponseBody注解的两个用途" class="headerlink" title="2.1. @ResponseBody注解的两个用途"></a>2.1. @ResponseBody注解的两个用途</h4><ul>
+<li>@ResponseBody： 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区（用于返回json数据给页面）</li>
+<li>@RequestBody : 该注解用于读取Request请求的body部分数据，使用系统默认配置的HttpMessageConverter进行解析，然后把相应的数据绑定到要返回的对象上；再把HttpMessageConverter返回的对象数据绑定到 controller中方法的参数上（用于接收前台的数据）<table>
+<thead>
+<tr>
+<th>后端</th>
+<th>前端</th>
+<th>返回的数据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对象/bean/实体类</td>
+<td>json</td>
+<td>{“id”: 0,”username”: “”,”age”: 0}</td>
+</tr>
+<tr>
+<td>List&lt;实体类&gt;</td>
+<td>json</td>
+<td>[{“id”:1,”username”:”2”,”age”:1},{“id”:2,”username”:”3”,”age”:2}]</td>
+</tr>
+<tr>
+<td>Map&lt;String,实体类&gt;</td>
+<td>json</td>
+<td>{“success”:true,”detail”:[ ] }</td>
+</tr>
+</tbody></table>
 </li>
-<li>获取构造方法们<ul>
-<li>Constructor&lt;?&gt;[] getConstructors()</li>
-<li>Constructor<t> getConstructor(类&lt;?&gt;… parameterTypes)</t></li>
-<li>Constructor&lt; T&gt; getDeclaredConstructor(类&lt;?&gt;… parameterTypes)</li>
-<li>Constructor&lt;?&gt;[] getDeclaredConstructors()</li>
 </ul>
-</li>
-<li>获取成员方法们：<ul>
-<li>Method[] getMethods()</li>
-<li>Method getMethod(String name, 类&lt;?&gt;… parameterTypes)</li>
-<li>Method[] getDeclaredMethods()</li>
-<li>Method getDeclaredMethod(String name, 类&lt;?&gt;… parameterTypes)</li>
-</ul>
-</li>
-<li>获取类名<ul>
-<li>String getName(）</li>
-</ul>
-</li>
-</ol>
-<h3 id="获取成员变量们"><a href="#获取成员变量们" class="headerlink" title="获取成员变量们"></a>获取成员变量们</h3><p>获取成员变量首先要获取class对象，通过兑现获取成员变量<br>获取成员变量以后，用途有三</p>
-<ol>
-<li>设置值<ul>
-<li>void set(Object obj, Object value)  </li>
-</ul>
-</li>
-<li>获取值<ul>
-<li>get(Object obj) </li>
-</ul>
-</li>
-<li>忽略访问权限修饰符的安全检查<ul>
-<li>setAccessible(true):暴力反射<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取class对象</span></span><br><span class="line">        Class personClass = Person.class;</span><br><span class="line">        <span class="comment">//获取成员变量 只能获取public的成员变量</span></span><br><span class="line">        Field[] fields = personClass.getFields();</span><br><span class="line">        <span class="keyword">for</span> (Field filed :</span><br><span class="line">                fields) &#123;</span><br><span class="line">            System.out.println(filed);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        <span class="comment">//设置成员变量id的值</span></span><br><span class="line">        Field id = personClass.getField(<span class="string">"id"</span>);</span><br><span class="line">        id.set(person, <span class="number">12341</span>);</span><br><span class="line">        <span class="comment">//获取id的值</span></span><br><span class="line">        Object value = id.get(person);</span><br><span class="line">        System.out.println(value);</span><br><span class="line">        System.out.println(<span class="string">"-------------------------------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Field[] getDeclaredFields()获取所有成员变量 不考虑修饰符</span></span><br><span class="line">        Field[] declaredFields = personClass.getDeclaredFields();</span><br><span class="line">        <span class="keyword">for</span> (Field declaredField :</span><br><span class="line">                declaredFields) &#123;</span><br><span class="line">            System.out.println(declaredField);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(method=RequestMethod.POST,value=<span class="string">"/bean2json"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">bean2json</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method=RequestMethod.POST,value=<span class="string">"/listbean2json"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">listbean2json</span><span class="params">(Bean bean)</span></span>&#123;</span><br><span class="line">        List&lt;User&gt; listuser=bean.getListuser();</span><br><span class="line">        <span class="keyword">return</span> listuser;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method=RequestMethod.POST,value=<span class="string">"/mapbean2json"</span>)</span><br><span class="line"> <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">mapbean2json</span><span class="params">(Bean bean)</span></span>&#123;</span><br><span class="line">        List&lt;User&gt; listuser=bean.getListuser();</span><br><span class="line">        Map&lt;String, Object&gt; mapuser=<span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">        mapuser.put(<span class="string">"success"</span>,<span class="keyword">true</span>);</span><br><span class="line">        mapuser.put(<span class="string">"detail"</span>,listuser);</span><br><span class="line">        <span class="keyword">return</span> mapuser;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//表单提交</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(method=RequestMethod.POST,value=<span class="string">"/json2json"</span>)</span><br><span class="line"> <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">bean2json</span><span class="params">(@RequestBody Map&lt;String, String&gt; map)</span></span>&#123;</span><br><span class="line">        String username=<span class="string">""</span>;</span><br><span class="line">        <span class="keyword">int</span> age=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(<span class="string">"username"</span>))&#123;</span><br><span class="line">            username=map.get(<span class="string">"username"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(<span class="string">"age"</span>))&#123;</span><br><span class="line">            age=Integer.parseInt(map.get(<span class="string">"age"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        User user=<span class="keyword">new</span> User(<span class="number">1</span>,username,age);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="获取构造方法"><a href="#获取构造方法" class="headerlink" title="获取构造方法"></a>获取构造方法</h3><p>获取构造方法的用途是创建对象</p>
-<ol>
-<li>创建对象：<ul>
-<li>T newInstance(Object… initargs) </li>
-</ul>
-</li>
-<li>如果使用空参数构造方法创建对象，操作可以简化：<ul>
-<li>Class对象的newInstance方法</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取class类对象</span></span><br><span class="line">        Class personClass = Person.class;</span><br><span class="line">        <span class="comment">//通过class类对象获取构造方法</span></span><br><span class="line">        Constructor personClassConstructor = personClass.getConstructor(String.class, <span class="keyword">int</span>.class);</span><br><span class="line">        System.out.println(personClassConstructor);</span><br><span class="line">        <span class="comment">//Constructor对象主要功能是创建对象</span></span><br><span class="line">        Object person = personClassConstructor.newInstance(<span class="string">"张三"</span>,<span class="number">23</span>);</span><br><span class="line">        System.out.println(person);</span><br><span class="line">        System.out.println(<span class="string">"---------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取无参构造方法</span></span><br><span class="line">        Constructor constructor = personClass.getConstructor();</span><br><span class="line">        Object person1 = constructor.newInstance();</span><br><span class="line">        System.out.println(person1);</span><br><span class="line">        Object person2 = constructor.newInstance();</span><br><span class="line">        System.out.println(person2);</span><br><span class="line">        <span class="comment">//如果使用无参构造，则可以直接使用class对象的方法</span></span><br><span class="line">        Object person3 = personClass.newInstance();</span><br><span class="line">        System.out.println(person3);</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-fastjson的使用"><a href="#2-2-fastjson的使用" class="headerlink" title="2.2. fastjson的使用"></a>2.2. fastjson的使用</h4><p>fastjson.jar是阿里爸爸开发的一款专门用于Java开发的包，可以方便的实现json对象与JavaBean对象的转换，实现JavaBean对象与json字符串的转换，实现json对象与json字符串的转换。<br>在fastjson中是这么做的<br>JSONObject obj=JSON.parseObject(jsonStr);//将json字符串转换为json对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJson</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		List&lt;Student&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		Student student=<span class="keyword">new</span> Student(<span class="string">"bob"</span>,<span class="number">24</span>);</span><br><span class="line">		Student student12=<span class="keyword">new</span> Student(<span class="string">"lily"</span>, <span class="number">23</span>);</span><br><span class="line">		list.add(student);</span><br><span class="line">		list.add(student12);</span><br><span class="line">		System.out.println(<span class="string">"*******javaBean  to jsonString*******"</span>);</span><br><span class="line">		String str1=JSON.toJSONString(student);</span><br><span class="line">		System.out.println(str1);</span><br><span class="line">		System.out.println(JSON.toJSONString(list));</span><br><span class="line">		System.out.println();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"******jsonString to javaBean*******"</span>);</span><br><span class="line">		<span class="comment">//Student stu1=JSON.parseObject(str1,new TypeReference&lt;Student&gt;()&#123;&#125;);</span></span><br><span class="line">		Student stu1=JSON.parseObject(str1,Student.class);</span><br><span class="line">		System.out.println(stu1);</span><br><span class="line">		System.out.println();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"******javaBean to jsonObject******"</span>);</span><br><span class="line">		JSONObject jsonObject1=(JSONObject)JSON.toJSON(student);</span><br><span class="line">		System.out.println(jsonObject1.getString(<span class="string">"name"</span>));</span><br><span class="line">		System.out.println();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"******jsonObject to javaBean******"</span>);</span><br><span class="line">		Student student2=JSON.toJavaObject(jsonObject1, Student.class);</span><br><span class="line">		System.out.println(student2);</span><br><span class="line">		System.out.println();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"*******javaBean to jsonArray******"</span>);</span><br><span class="line">		List&lt;Student&gt; stulist=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">			stulist.add(<span class="keyword">new</span> Student(<span class="string">"student"</span>+i, i));</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		JSONArray jsonArrays=(JSONArray)JSON.toJSON(stulist);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;jsonArrays.size();i++)&#123;</span><br><span class="line">		System.out.println(jsonArrays.getJSONObject(i));</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"*****jsonArry to javalist******"</span>);</span><br><span class="line">		List&lt;Student&gt; myList=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;jsonArrays.size();i++)&#123;</span><br><span class="line">			</span><br><span class="line">		Student student3=JSON.toJavaObject(jsonArrays.getJSONObject(i), Student.class);</span><br><span class="line">			myList.add(student3);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(Student stu:myList)&#123;</span><br><span class="line">			System.out.println(stu);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	        System.out.println();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"*****jsonObject to jsonString*****"</span>);</span><br><span class="line">		String str4=JSON.toJSONString(jsonObject1);</span><br><span class="line">		System.out.println(str4);</span><br><span class="line">		System.out.println();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"*******jsonString to jsonObject*****"</span>);</span><br><span class="line">		JSONObject jso1=JSON.parseObject(str1);</span><br><span class="line">		System.out.println(jso1.getString(<span class="string">"name"</span>));</span><br><span class="line">		System.out.println();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"*****jsonString to jsonArray*****"</span>);</span><br><span class="line">		JSONArray jArray=JSON.parseArray(JSON.toJSONString(stulist));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;jArray.size();i++)&#123;</span><br><span class="line">		System.out.println(jArray.getJSONObject(i));</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="获取方法对象以及类名"><a href="#获取方法对象以及类名" class="headerlink" title="获取方法对象以及类名"></a>获取方法对象以及类名</h3><p>获取方法对象的目的</p>
-<ol>
-<li>执行方法：<ul>
-<li>Object invoke(Object obj, Object… args)  </li>
-</ul>
-</li>
-<li>获取方法名称：<ul>
-<li>String getName:获取方法名<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取class类对象</span></span><br><span class="line">        Class personClass = Person.class;</span><br><span class="line">        <span class="comment">//获取方法（传入方法名）</span></span><br><span class="line">        Method eat = personClass.getMethod(<span class="string">"eat"</span>);</span><br><span class="line">        <span class="comment">//执行方法（执行方法需要传入一个对象，执行该对象的方法）</span></span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        eat.invoke(person);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取有参方法(要传入参数的class文件)</span></span><br><span class="line">        Method eat1 = personClass.getMethod(<span class="string">"eat"</span>, String.class);</span><br><span class="line">        eat1.invoke(person, <span class="string">"苹果"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"-----------------"</span>);</span><br><span class="line">        <span class="comment">//获取所有public方法</span></span><br><span class="line">        Method[] methods = personClass.getMethods();</span><br><span class="line">        <span class="keyword">for</span> (Method method :</span><br><span class="line">                methods) &#123;</span><br><span class="line">            System.out.println(method);</span><br><span class="line">            System.out.println(method.getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        获取类名</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        String className = personClass.getName();</span><br><span class="line">        System.out.println(className);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ol>
-<h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><ol>
-<li><p>定义：注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。</p>
-<blockquote>
-<p>JDK1.5之后的新特性<br>说明程序的<br>使用注解：@注解名称</p>
-</blockquote>
-</li>
-<li><p>作用分类：</p>
-<ul>
-<li>编写文档：通过代码里标识的注解生成文档【生成文档doc文档】</li>
-<li>代码分析：通过代码里标识的注解对代码进行分析【使用反射】</li>
-<li>编译检查：通过代码里标识的注解让编译器能够实现基本的编译检查【Override】<h2 id="JDK中预定义的一些注解"><a href="#JDK中预定义的一些注解" class="headerlink" title="JDK中预定义的一些注解"></a>JDK中预定义的一些注解</h2>@Override    ：检测被该注解标注的方法是否是继承自父类(接口)的<br>@Deprecated：该注解标注的内容，表示已过时<br>@SuppressWarnings：压制警告, 一般传递参数all  @SuppressWarnings(“all”)</li>
-</ul>
-</li>
-</ol>
-<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><ol>
-<li><p>格式：<br>元注解<br>public @interface 注解名称{<br>属性列表;<br>}</p>
-</li>
-<li><p>本质：注解本质上就是一个接口，该接口默认继承Annotation接口<br>public interface MyAnno extends java.lang.annotation.Annotation {}</p>
-</li>
-<li><p>属性：接口中的抽象方法：</p>
-<ul>
-<li>属性的返回值类型有下列取值<blockquote>
-<p>基本数据类型<br>String<br>枚举<br>注解<br>以上类型的数组</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>定义了属性，在使用时需要给属性赋值</p>
-<ul>
-<li>如果定义属性时，使用default关键字给属性默认初始化值，则使用注解时，可以不进行属性的赋值。</li>
-<li>如果只有一个属性需要赋值，并且属性的名称是value，则value可以省略，直接定义值即可。</li>
-<li>数组赋值时，值使用{}包裹。如果数组中只有一个值，则{}可以省略<h2 id="元注解：用于描述注解的注解"><a href="#元注解：用于描述注解的注解" class="headerlink" title="元注解：用于描述注解的注解"></a>元注解：用于描述注解的注解</h2></li>
-</ul>
-</li>
-<li><p>@Target：描述注解能够作用的位置</p>
-<ul>
-<li>ElementType取值：</li>
-<li>TYPE：可以作用于类上</li>
-<li>METHOD：可以作用于方法上</li>
-<li>FIELD：可以作用于成员变量上</li>
-</ul>
-</li>
-<li><p>@Retention：描述注解被保留的阶段</p>
-</li>
-<li><p>@Retention(RetentionPolicy.RUNTIME)：当前被描述的注解，会保留到class字节码文件中，并被JVM读取到</p>
-</li>
-<li><p>@Documented：描述注解是否被抽取到api文档中</p>
-</li>
-<li><p>@Inherited：描述注解是否被子类继承</p>
-</li>
-</ol>
 
       
     </div>
@@ -578,7 +455,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java基础/" rel="tag"> <i class="fa fa-tag"></i> java基础</a>
+            <a href="/tags/问题解决/" rel="tag"> <i class="fa fa-tag"></i> 问题解决</a>
+          
+            <a href="/tags/springMVC/" rel="tag"> <i class="fa fa-tag"></i> springMVC</a>
           
         </div>
       
@@ -591,15 +470,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/03/16/正则表达式/" rel="next" title="正则表达式">
+                <i class="fa fa-chevron-left"></i> 正则表达式
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/19/hexo博客搭建/" rel="prev" title="hexo博客搭建">
-                hexo博客搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -778,7 +657,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反射"><span class="nav-number">1.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取class对象方式"><span class="nav-number">1.1.</span> <span class="nav-text">获取class对象方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class对象的方法使用"><span class="nav-number">1.2.</span> <span class="nav-text">class对象的方法使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取成员变量们"><span class="nav-number">1.2.1.</span> <span class="nav-text">获取成员变量们</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取构造方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">获取构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取方法对象以及类名"><span class="nav-number">1.2.3.</span> <span class="nav-text">获取方法对象以及类名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注解"><span class="nav-number">2.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK中预定义的一些注解"><span class="nav-number">2.1.</span> <span class="nav-text">JDK中预定义的一些注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义注解"><span class="nav-number">2.2.</span> <span class="nav-text">自定义注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元注解：用于描述注解的注解"><span class="nav-number">2.3.</span> <span class="nav-text">元注解：用于描述注解的注解</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-ResponseBoday和fastJson包"><span class="nav-number">1.</span> <span class="nav-text">使用@ResponseBoday和fastJson包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-导包以及配置"><span class="nav-number">1.1.</span> <span class="nav-text">1. 导包以及配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用方法"><span class="nav-number">1.2.</span> <span class="nav-text">2. 使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-ResponseBody注解的两个用途"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1. @ResponseBody注解的两个用途</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-fastjson的使用"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2. fastjson的使用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
