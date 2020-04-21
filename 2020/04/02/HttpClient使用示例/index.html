@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="昊波波的博客">
 <meta property="og:description" content="在日常web编程中，我们经常要使用第三方接口。这时就需要通过HTTP协议来访问网络资源。虽然在 JDK 的 java net包中已经提供了访问 HTTP 协议的基本功能，但是对于大部分应用程序来说，JDK 库本身提供的功能还不够丰富和灵活。HttpClient 是 Apache Jakarta Common 下的子项目，用来提供高效的、最新的、功能丰富的支持 HTTP 协议的客户端编程工具包，并且">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-02T13:44:44.962Z">
+<meta property="og:updated_time" content="2020-04-07T15:32:21.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HttpClient使用示例">
 <meta name="twitter:description" content="在日常web编程中，我们经常要使用第三方接口。这时就需要通过HTTP协议来访问网络资源。虽然在 JDK 的 java net包中已经提供了访问 HTTP 协议的基本功能，但是对于大部分应用程序来说，JDK 库本身提供的功能还不够丰富和灵活。HttpClient 是 Apache Jakarta Common 下的子项目，用来提供高效的、最新的、功能丰富的支持 HTTP 协议的客户端编程工具包，并且">
@@ -418,7 +418,7 @@
 
 <h3 id="微信请求openId示例"><a href="#微信请求openId示例" class="headerlink" title="微信请求openId示例"></a>微信请求openId示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> JSONObject <span class="title">getWxUserOpenid</span><span class="params">(String code, String appId, String appSecret)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 获得Http客户端(可以理解为:你得先有一个浏览器;注意:实际上HttpClient与浏览器是不一样的)</span></span><br><span class="line">        CloseableHttpClient httpClient = HttpClientBuilder.create().build();</span><br><span class="line">        <span class="comment">//拼接url</span></span><br><span class="line">        StringBuilder url = <span class="keyword">new</span> StringBuilder(<span class="string">"https://api.weixin.qq.com/sns/jscode2session?"</span>);</span><br><span class="line">        url.append(<span class="string">"appid="</span>);<span class="comment">//appid设置</span></span><br><span class="line">        url.append(appId);</span><br><span class="line">        url.append(<span class="string">"&amp;secret="</span>);<span class="comment">//secret设置</span></span><br><span class="line">        url.append(appSecret);</span><br><span class="line">        url.append(<span class="string">"&amp;js_code="</span>);<span class="comment">//code设置</span></span><br><span class="line">        url.append(code);</span><br><span class="line">        url.append(<span class="string">"&amp;grant_type=authorization_code"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建post请求</span></span><br><span class="line">        HttpPost httpPost = <span class="keyword">new</span> HttpPost(String.valueOf(url));</span><br><span class="line">        JSONObject obj = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 设置ContentType(注:如果只是传普通参数的话,ContentType不一定非要用application/json)</span></span><br><span class="line">        httpPost.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/json;charset=utf8"</span>);</span><br><span class="line">        <span class="comment">//响应模型</span></span><br><span class="line">        CloseableHttpResponse response = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//由客户端发起请求</span></span><br><span class="line">            response = httpClient.execute(httpPost);</span><br><span class="line">            <span class="comment">//从响应模型中获取实体</span></span><br><span class="line">            HttpEntity responseEntity = response.getEntity();</span><br><span class="line">            <span class="keyword">if</span> (responseEntity != <span class="keyword">null</span>)&#123;</span><br><span class="line">                String content = EntityUtils.toString(responseEntity);</span><br><span class="line">                System.out.println(content);</span><br><span class="line">                obj= JSON.parseObject(content);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientProtocolException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 释放资源</span></span><br><span class="line">                <span class="keyword">if</span> (httpClient != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    httpClient.close();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (response != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    response.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-
+<h2 id="一个小问题报错"><a href="#一个小问题报错" class="headerlink" title="一个小问题报错"></a>一个小问题报错</h2>
       
     </div>
     
@@ -458,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/04/02/Untitled/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/04/14/tomcat学习/" rel="prev" title="tomcat学习">
+                tomcat学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -568,7 +568,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -579,7 +579,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -590,7 +590,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -639,7 +639,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpClient的主要功能"><span class="nav-number">1.</span> <span class="nav-text">HttpClient的主要功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用示例"><span class="nav-number">3.</span> <span class="nav-text">使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET无参"><span class="nav-number">3.1.</span> <span class="nav-text">GET无参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET有参"><span class="nav-number">3.2.</span> <span class="nav-text">GET有参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post无参"><span class="nav-number">3.3.</span> <span class="nav-text">post无参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post有参"><span class="nav-number">3.4.</span> <span class="nav-text">post有参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信请求openId示例"><span class="nav-number">3.5.</span> <span class="nav-text">微信请求openId示例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpClient的主要功能"><span class="nav-number">1.</span> <span class="nav-text">HttpClient的主要功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用示例"><span class="nav-number">3.</span> <span class="nav-text">使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET无参"><span class="nav-number">3.1.</span> <span class="nav-text">GET无参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET有参"><span class="nav-number">3.2.</span> <span class="nav-text">GET有参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post无参"><span class="nav-number">3.3.</span> <span class="nav-text">post无参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post有参"><span class="nav-number">3.4.</span> <span class="nav-text">post有参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信请求openId示例"><span class="nav-number">3.5.</span> <span class="nav-text">微信请求openId示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个小问题报错"><span class="nav-number">4.</span> <span class="nav-text">一个小问题报错</span></a></li></ol></div>
             
 
           </div>
