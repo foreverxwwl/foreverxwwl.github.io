@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[sql学习]]></title>
-    <url>%2F2020%2F04%2F15%2Fsql%E5%AD%A6%E4%B9%A0%2F</url>
-    <content type="text"><![CDATA[导入MySql文件创建数据库 进入输入账号密码进入数据库 “show databases;”就能看到自己创建的数据库。 输入“use 数据库名”，开始使用这个数据库。 开始导入sql文件，输入“source sql文件的路径” show tables”，你就会看到你导入的表了]]></content>
+    <title></title>
+    <url>%2F2020%2F04%2F22%2Flinux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[一、文件夹、文件命令1. 新建文件夹mkdir 选项 路径/文件名mkdir -p test/test 在当前文件夹下创建test文件夹，在其中再创建test文件夹 12345678[root@VM_0_14_centos opt]# stat module File: `module&apos; Size: 4096 Blocks: 8 IO Block: 4096 directoryDevice: fc01h/64513d Inode: 49155 Links: 5Access: (0755/drwxr-xr-x) Uid: ( 0/ root) Gid: ( 0/ root)Access: 2020-04-09 21:31:38.000000000 +0800Modify: 2020-04-09 21:51:28.000000000 +0800Change: 2020-04-09 21:51:28.000000000 +0800 2. 删除操作rm -f aa.txt 强制删除aa.txtrm -rf fileDir 强制删除fileDir文件夹和里边的所有文件 3. 复制操作cp 选项 路径/文件名 1234567891011121314-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。-d：复制时保留链接。这里所说的链接相当于Windows系统中的快捷方式。-f：覆盖已经存在的目标文件而不给出提示。-i：与-f选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答&quot;y&quot;时目标文件将被覆盖。-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。-l：不复制文件，只是生成链接文件。#将../html/index.html 复制到当前目录cp ../html/index.html #将../html/ 目录下的文件及子目录复制到当前的tt目录下，如果tt不存在，会自动创建cp -r ../html/ tt/ #将文件file复制到目录/usr/men/tmp下，并改名为file1cp file /usr/men/tmp/file1 4. 移动操作mv /zx/soft/* 复制/zx/soft目录中的所有文件到当前目录mv a.txt ./test/a.txt 复制当前目录a.txt到当前的test目录下mv /zx/soft/ /tmp/soft 复制文件夹到/tmp/下，必须保证tmp是存在的文件夹 5. 解压操作tar -zxvf tomcate-7.0.tar.gz -C /opt/module把当前目录下tomcate-7.0.tar.gz解压到/opt/module文件夹下。 二、进程控制ps命令——查看静态的进程统计信息（Processes Statistic） 123456a：显示当前终端下的所有进程信息，包括其他用户的进程。u：使用以用户为主的格式输出进程信息。x：显示当前用户在所有终端下的进程。-e：显示系统内的所有进程信息。-l：使用长（long）格式显示进程信息。-f：使用完整的（full）格式显示进程信息。 结合管道操作和grep命令进行过滤，用于查询某一个进程的信息例如查看tomcat的进程 123[root@VM_0_14_centos bin]# ps -ef|grep tomcatroot 16365 0.0 0.0 103312 876 pts/0 S+ 01:18 0:00 grep tomcatroot 27657 0.2 9.6 2545264 184908 ? Sl Apr13 0:25 /opt/module/jdk1.8.0_144/bin/java 三、查看端口占用netstat -tln 用来查看linux的端口使用情况netstat -a 查看所有的服务端口（LISTEN，ESTABLISHED） 四、环境变量vim /etc/profile 环境变量所在文件 source /etc/profile 五、防火墙配置1. centos6配置service iptables status 查看防火墙状态service iptables stop 停止防火墙service iptables start 启动防火墙service iptables restart 重启防火墙 2. centos7配置防火墙基本配置systemctl status firewalld 查看防火墙状态systemstl stop firewalld 停止防火墙,停止重启后会恢复原来状态systemstl disable firewalld 停止防火墙,停止重启后不会恢复原来状态systemctl start firewalld 启动防火墙，重启后会恢复原来状态systemctl enable firewalld 启动防火墙，重启后不会恢复原来状态 防火墙端口配置firewall-cmd --list-ports查看防火墙开放的端口firewall-cmd --zone=public --add-port=3306/tcp --permanent开放3306端口firewall-cmd --zone=public --remove-port=5672/tcp --permanent关闭5672端口firewall-cmd --reload配置生效 六、vim编辑器:set nu 显示行数 搜索 搜索已经安装的包名 rpm -qa |grep ‘包名‘ -qa代表query，a代表all ， grep(global search rgular expression(RE) and print out the line):是一种强大的文本搜索工具 。 例如搜索已经安装的mysql rpm -qa |grep -i mysql 按照文件名搜索文件 find / -name ’文件名‘ find / -name mysql 搜索名称为mysql的文件]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[MySql安装配置遇到的问题]]></title>
+    <url>%2F2020%2F04%2F15%2FMySql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[一、导入MySql文件创建数据库 进入输入账号密码进入数据库 “show databases;”就能看到自己创建的数据库。 输入“use 数据库名”，开始使用这个数据库。 开始导入sql文件，输入“source sql文件的路径” show tables”，你就会看到你导入的表了 二、修改MySql密码策略 查看mysql初始的密码策略SHOW VARIABLES LIKE &#39;validate_password%&#39;; 首先需要设置密码的验证强度等级，设置 validate_password_policy 的全局参数为 LOW 即可，这样就只验证密码长度。set global validate_password_policy=LOW; 当前密码长度为 8 ，如果不介意的话就不用修改了，按照通用的来讲，设置为 6 位的密码，设置 validate_password_length 的全局参数为 6 即可。set global validate_password_length=6; 现在可以为 mysql 设置简单密码了，只要满足六位的长度即可，输入修改语句 “ ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘123456’; ” 可以看到修改成功ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39;; 关于 mysql 密码策略相关参数； validate_password_length 固定密码的总长度； validate_password_dictionary_file 指定密码验证的文件路径； validate_password_mixed_case_count 整个密码中至少要包含大/小写字母的总个数； validate_password_number_count 整个密码中至少要包含阿拉伯数字的个数； validate_password_policy 指定密码的强度验证等级，默认为 MEDIUM；关于 validate_password_policy 的取值：0/LOW：只验证长度；1/MEDIUM：验证长度、数字、大小写、特殊字符；2/STRONG：验证长度、数字、大小写、特殊字符、字典文件； validate_password_special_char_count 整个密码中至少要包含特殊字符的个数； 三、centos7中mysql的安装与配置1. 卸载原有mysql 查看mysql安装 1rpm -qa |grep -i mysql 开始卸载 123yum remove mysql-community-common-5.7.20-1.el7.x86_64yum remove mysql-community-client-5.7.20-1.el7.x86_64yum remove mysql57-community-release-el7-11.noarch 查找相关mysql目录，并删除 12find / -name mysqlrm -rf 删除/etc/my.cnf 1rm -rf /etc/my.cnf 删除/var/log/mysqld.log（如果不删除这个文件，会导致新安装的mysql无法生存新密码，导致无法登陆） 1rm -rf /var/log/mysqld.log 2. 官网下载安装包并解压[https://dev.MySQL.com/downloads/file/?id=469456](https://dev.mysql.com/downloads/file/?id=469456) 1tar -xvf mysql-5.7.18-1.el7.x86_64.rpm-bundle.tar 3. 按照顺序安装，会有一定依赖关系12345rpm -ivh mysql-community-common-5.7.18-1.el7.x86_64.rpmrpm -ivh mysql-community-libs-5.7.18-1.el7.x86_64.rpmrpm -ivh mysql-community-client-5.7.18-1.el7.x86_64.rpmrpm -ivh mysql-community-server-5.7.18-1.el7.x86_64.rpmrpm -ivh mysql-community-devel-5.7.18-1.el7.x86_64.rpm 4. 启动数据库并查看状态12systemctl start mysqldsystemctl status mysqld 5. 登录并修改配置123cat /var/log/mysqld.log | grep password #第一次登录要使用自动生成的密码mysql -u root -p #登录ALTER USER 'root'@'localhost' IDENTIFIED BY '123456'; # 修改密码，修改密码之后才可使用 6.远程登录配置远程登录要开放端口以及设置root用户允许远程访问 123systemctl status firewalld # 查看防火墙端口状态firewall-cmd --zone=public --add-port=3306/tcp -permanent #开放3306端口firewall-cmd --reload # 重启防火墙 12use mysql; # 使用mysql数据库grant all privileges on *.* to root@"%" identified by 'root' with grant option; # 表示root用户授权给所有网段 如果远程连接报错1045，有可能是用户表中密码字段没有设置成功，要将其他网段密码与localhost密码一致注意在新版mysql中，password字段已经改为 authentication_string 123456789101112use mysql;Database changedselect host,user,authentication_string from user;+--------------+------+-------------------------------------------+| host | user | authentication_string |+--------------+------+-------------------------------------------+| localhost | root | *A731AEBFB621E354CD41BAF207D884A609E81F5E || 192.168.1.1 | root | *A731AEBFB621E354CD41BAF207D884A609E81F5E || % | root | *A731AEBFB621E354CD41BAF207D884A609E81F5E |+--------------+------+-------------------------------------------+3 rows in set (0.00 sec) 检查下对应的密码是否与名为localhost的密码一致，如果不一致，需要做如下修改： 1update user set authentication_string="*A731AEBFB621E354CD41BAF207D884A609E81F5E" where host="%";]]></content>
       <categories>
         <category>MySql</category>
       </categories>
       <tags>
+        <tag>问题解决</tag>
         <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaWeb报错解决]]></title>
+    <url>%2F2020%2F04%2F15%2FjavaWeb%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%2F</url>
+    <content type="text"><![CDATA[Tomcat启动服务报错：Unknown version string [3.1]. Default version will be used主要是版本兼容问题，Tomcat、jdk、web.xml 对应关系：（版本往下兼容） 123web.xml——version3.0——JDK6.0——Tomcat7.0web.xml——version3.1——JDK7.0——Tomcat8.0,Tomcat8.5web.xml——version4.0——JDK8.0——Tomcat9.0 如果版本不对应，更换就好。web.xml需要更换头。例如：web.xml 3.0 的头 12345678&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"&gt; &lt;/web-app&gt; mybaits查询报错CacheException: Error serializing object. Cause: java.io.NotSerializableException错误的提示信息翻译后的意思是mybatis缓存异常，正在序列化对象错误，原因是不能序列化异常。解决方案：让实体类实现java.io.Serializable接口。这样在开启mybatis二级缓存才不会出现异常。]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>JavaWeb</tag>
+        <tag>问题解决</tag>
       </tags>
   </entry>
   <entry>
@@ -19,6 +37,7 @@
         <category>tomcat</category>
       </categories>
       <tags>
+        <tag>问题解决</tag>
         <tag>tomcat</tag>
       </tags>
   </entry>
@@ -69,7 +88,7 @@
   </entry>
   <entry>
     <title><![CDATA[MySql使用笔记]]></title>
-    <url>%2F2020%2F03%2F01%2FMysql%2F</url>
+    <url>%2F2020%2F03%2F01%2FMysql%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[Mysql使主键自动填入UUID()MySql应为Mysql不支持在插入时自动填入uuid()，所以只能通过触发器实现。创建触发器语法： 123456create 触发器名称before/after(触发的时间) insert/update/delete(触发事件) on table(触发的表名)for each ROWBEGIN SET new.id=UUID();END 针对实例，我们要给product表创建一个触发器 123456789DELIMITER ;;CREATE TRIGGER `foo_before_insert`BEFORE INSERT ON `product` FOR EACH ROWBEGIN IF new.id IS NULL THEN SET new.id = REPLACE(UUID(),'-',''); END IF;END;;DELIMITER ; 在现实的开发中，我们很少用到让MySQL自己生成uuid，因为在高并发场景下，这是不被允许的。通常是在代码中生成id，或者是使用专业的id服务器（Twitter-Snowflake）。 #]]></content>
       <categories>
         <category>MySql</category>
@@ -87,6 +106,7 @@
       </categories>
       <tags>
         <tag>linux</tag>
+        <tag>问题解决</tag>
       </tags>
   </entry>
   <entry>
@@ -406,17 +426,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[github学习]]></title>
-    <url>%2F2019%2F09%2F19%2Fgithub%E5%AD%A6%E4%B9%A0%2F</url>
-    <content type="text"><![CDATA[github基本操作 初始化 git init 状态查看 git status 添加到暂存区 git add 提交到本地库 git commit -m 查看历史 git log / git –online / git reflog 版本前进或后退 git reset –hard &lt;索引值&gt; / git reset –hard HEAD~2 比较工作区与暂存区文件差异 git diff [文件名] 将工作区与本地库文件比较 git diff [本地库历史版本（HEAD）] [文件名] 分支管理 创建分支 git branch [分支名] 查看分支 git branch -v 切换分支 git checkout [分支名] 合并分支 git merge [分支名] 解决冲突 git add git commit -m 远程库操作 创建远程库地址别名 git remote add [远程库地址]git remote add origin git@github.com:xiasf/github-note.git 查看别名 git remote -v 推送 git push [远程库地址名] [分支名] 克隆 git clone [远程库地址名] 拉取 git pull [远程库地址名] [远程库分支] 抓取 git fetch [远程库地址名] [远程库分支] 合并 git merge [远程库地址名/远程库分支] 跨团队合作 团队2进入团队1项目目录,点击fork。 团队2 git clone &lt;远程地址&gt;，修改并commit，git push 提交到远程库。 团队2进入页面，点击 pull requests、 new pull requests， Create pull requests 然后发消息给团队1。 团队1点击pull requests，Commits 、files changed 代码审核。 如果没有问题 则点击 merge pull request 并添加-m信息，结束远程库修改。 团队1将远程库拉取到本地 git pull origin master。]]></content>
-      <categories>
-        <category>基础知识学习</category>
-      </categories>
-      <tags>
-        <tag>git学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[hexo博客搭建]]></title>
     <url>%2F2019%2F09%2F19%2Fhexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%2F</url>
     <content type="text"><![CDATA[hexo博客搭建一、博客基本操作 博客部署到本地 hexo clean 清楚缓存hexo g 生成静态网页hexo s 本地启动预览查看 http://localhost:4000 部署到git服务器上 hexo deploy https://foreverxwwl.github.io/ next主题安装 git clone https://github.com/iissnan/hexo-theme-next themes/next 进入配置文件_config.yml 找到 theme 设置为 theme: next 二、next主题设置 增加标签页等页面 进入next主题的配置文件 _config.yml 找到menu: 将要添加的页面注释删掉 在blog页面 hexo n page tags 增加标签tags页面 hexo n page categories 增加分类categories页面 修改头像姓名等信息 主要参考文档在主题的_config文件中修改 头像 avatar: 修改地址主题 scheme: 设置大的标题、姓名在全局的_config.yml中的 title: 新建一篇博客 hexo n hexo博客搭建 用markdowm编写博客 启用功能 （1）启用侧边栏社交链接 进入主题的_config.yml文件 将social: 一栏的注释取消 （2）启用打赏功能 进入主题的_config.yml文件 将reward项目注释删除 comment：加上用语 也可在后面添加图片 （3）设置头像样式 进入目录 \blog\themes\next\source\css_common\components\sidebar 修改sidebar-author.styl文件中的样式 12345678910111213&gt; &gt; .site-author-image &#123;&gt; &gt; display: block;&gt; &gt; margin: 0 auto;&gt; &gt; padding: $site-author-image-padding;&gt; &gt; max-width: $site-author-image-width;&gt; &gt; height: $site-author-image-height;&gt; &gt; border: $site-author-image-border-width solid $site-author-image-border-color;&gt; &gt; border-radius: 50%;&gt; &gt; transition: 3s all;&gt; &gt; &#125;&gt; &gt; .site-author-image:hover&#123;&gt; &gt; transform: rotate(360deg);&gt; &gt; &#125; （3）设置首页阅读全文 在主题配置文件中找到auto_excerpt:选项 将false 改为true 并设置可看长度 也可在博客编辑时在相应位置添加;此代码以下的点击查看 （4）添加动态背景 在主题配置文件找到canvas 默认都是关闭的 将需要的设置为true （5）修改文章内链接样式 进入F:\blog\themes\next\source\css_common\components\post\post.sty 在尾部添加样式 123456789.post-body p a&#123; color: #345; border-bottom: none; font-size: 13px;/*字体大小*/ font-weight: 500; /*字体粗细*/ &amp;:hover&#123; color: #fcfcfc; &#125;&#125; （6）修改文章底部标签 进入F:\blog\themes\next\layout_macro\post.swig 修改 tag.path 可将这行的 # 替换成别的 1&lt;a href="&#123;&#123; url_for(tag.path) &#125;&#125;" rel="tag"&gt; &lt;i class="fa fa-tag"&gt;&lt;/i&gt; （7）Valine评论系统 进入主题配置文件 打开 valine https://leancloud.cn/ 网站配置appid并在配置文件中使用 （8）搜索，统计功能 都是进入next主题官网 开启第三方服务 三、一个小问题 再部署的时候 提示 ERROR Deployer not found: git按照晚上提示安装插件总是报错 npm install hexo-deployer-git –save然后用淘宝NPM镜像的“hexo-deployer-git”试了一下，成功了指令：$ cnpm install hexo-deployer-git –save]]></content>
@@ -425,6 +434,17 @@
       </categories>
       <tags>
         <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github学习]]></title>
+    <url>%2F2019%2F09%2F19%2Fgithub%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[github基本操作 初始化 git init 状态查看 git status 添加到暂存区 git add 提交到本地库 git commit -m 查看历史 git log / git –online / git reflog 版本前进或后退 git reset –hard &lt;索引值&gt; / git reset –hard HEAD~2 比较工作区与暂存区文件差异 git diff [文件名] 将工作区与本地库文件比较 git diff [本地库历史版本（HEAD）] [文件名] 分支管理 创建分支 git branch [分支名] 查看分支 git branch -v 切换分支 git checkout [分支名] 合并分支 git merge [分支名] 解决冲突 git add git commit -m 远程库操作 创建远程库地址别名 git remote add [远程库地址]git remote add origin git@github.com:xiasf/github-note.git 查看别名 git remote -v 推送 git push [远程库地址名] [分支名] 克隆 git clone [远程库地址名] 拉取 git pull [远程库地址名] [远程库分支] 抓取 git fetch [远程库地址名] [远程库分支] 合并 git merge [远程库地址名/远程库分支] 跨团队合作 团队2进入团队1项目目录,点击fork。 团队2 git clone &lt;远程地址&gt;，修改并commit，git push 提交到远程库。 团队2进入页面，点击 pull requests、 new pull requests， Create pull requests 然后发消息给团队1。 团队1点击pull requests，Commits 、files changed 代码审核。 如果没有问题 则点击 merge pull request 并添加-m信息，结束远程库修改。 团队1将远程库拉取到本地 git pull origin master。]]></content>
+      <categories>
+        <category>基础知识学习</category>
+      </categories>
+      <tags>
+        <tag>git学习</tag>
       </tags>
   </entry>
   <entry>
